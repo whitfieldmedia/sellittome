@@ -1,0 +1,40 @@
+@import 'assets';
+
+.main-row {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.header {
+    font-family: $sans2;
+    font-size: 40px;
+    font-weight: 500;
+    text-align: center;
+}
+.header2 {
+    font-family: $serif;
+    font-size: 35px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
+.main-button {
+    width: 200px;
+    height: 60px;
+    font-size: 30px;
+    background: $g;
+}
+
+.main-column {
+    height: auto;
+    position: relative;
+    top: 0;
+}

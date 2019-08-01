@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600|Fira+Sans:300,300i,400,400i,500,500i,600,700|Montserrat:300,300i,400,400i,500,500i,600,700|Playfair+Display:400,400i,700,700i&display=swap");
+#form-page {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  width: 80%;
+  max-width: 700px;
+  min-width: 300px;
+  margin: 10px auto;
+  height: 30px;
+  border: 1px solid #C6C4C5;
+}
+
+.email-form {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+}
+.email-form button {
+  height: 50px;
+  width: 250px;
+  color: #F1F1EF;
+  background: #3DA956;
+  margin-top: 30px;
+  font-size: 25px;
+}
+
+.Filename {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #000000;
+}
+
+.Row {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50px;
+  padding: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.ProgressWrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+}
+
+button {
+  font-family: "Roboto medium", sans-serif;
+  font-size: 14px;
+  display: inline-block;
+  height: 36px;
+  min-width: 88px;
+  padding: 6px 16px;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 0;
+  border-radius: 2px;
+  background: #673ab7;
+  color: #fff;
+  outline: 0;
+}
+
+button:disabled {
+  background: #bdbdbd;
+  cursor: default;
+}
+
+/*# sourceMappingURL=form.css.map */
