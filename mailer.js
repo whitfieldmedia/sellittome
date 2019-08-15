@@ -1,109 +1,71 @@
-const nodemailer = require("nodemailer");
+const express = require('express');
+const router = express.Router();
+let nodemailer = require('nodemailer');
+const multer = require('multer');
+const fs = require('fs');
+let UPLOAD_PATH = 'uploads';
+const upload = multer({ dest: `${UPLOAD_PATH}/` });
+const crypto = require('crypto');
 
-let transporter = nodemailer.createTransport({
-    service: 'godaddy',
-    host: process.env.host,
-    port: process.env.port,
-    secure: true,
+let myEmail = 'backmanspencer99@gmail.com';
+
+let transport = nodemailer.createTransport({
+    service: 'gmail',
     auth: {
-        user: process.env.username,
-        pass: process.env.password
+        user: myEmail,
+        pass: 'flyfish69'
     }
 })
 
-var message = {
-    from: 'spencer@wemakeads.com',
-    to: 'backmanspencer99@gmail.com',
-    subject: 'Hello World',
-    text: 'Plain Message'
-}
-
-transporter.sendMail(message, function (error, info) {
-    if(error) {
-        console.log(error);
-
-    } else {
-        console.log('Email Sent: ' + info.response)
+router.post('/email', upload.array('photos', 20), async (req, res) => {
+    try {
+        let images = [];
+        let name = req.name;
+        let subject = req.message;
+        let replyTo = req.replyTo;
+        let phone = req.phone;
+        const storage = multer.diskStorage({
+            destination: images,
+            filename: function(req, file, callback) {
+                crypto.pseudoRandomBytes(16, function(err, raw) {
+                    if(err) {return callback(err)}
+                    images.push(raw.toString('hex') + path.extname(file.originalname));
+                })
+            }
+        })
+        let message = {
+            from: myEmail,
+            to: 'spencer@wemakeads.com',
+            subject: subject,
+            text: `Reply To: ${replyTo}`,
+            attachments: images
+        }
+        transport.sendMail(message, function(err) {
+            if(err) {
+                console.log('unable to send email '+ err);
+            } 
+            console.log("Email sent.\n")
+        })
+    } catch(err){
+        console.log(err);
     }
 })
 
 
 
+// let message = {
+//     from: myEmail,
+//     to: 'spencer@wemakeads.com',
+//     subject: 'Nodemailer Message',
+//     text: 'This is a test'
+// };
 
-// var path = require("path");
-// var templatesDir = path.resolve(__dirname, "views/mailer");
-
-// const mailjet = require("node-mailjet").connect(
-//     process.env.MJ_APIKEY_PUBLIC,
-//     process.env.MJ_APIKEY_PRIVATE
-// )
-
-// const sendEmail = (messageInfo, text, html) => {
-//     return mailjet.post("send", {version: "v3.1"}).request({
-//         Messages: [
-//             {
-//                 From: { Email: messageInfo.replyTo, Name: messageInfo.name },
-//                 To: { Email: 'spencer@wemakeads.com' },
-//                 Subject: messageInfo.subject,
-//                 Attachments: messageInfo.attachments,
-//                 TextPart: text,
-//                 HTMLPart: html
-//             }
-//         ]
-//     })
-// }
-
-// exports.sendOne = function(messageInfo, locals) {
-//     const email = new Email({
-//         views: { root: templatesDir, options: { extendsion: "ejs" } }
-//     });
-
-//     return Promise.all([
-//         email.render(`/html`, locals),
-//         email.render(`/text`, locals)
-//     ])
-//     .then(([html, text]) => {
-//         return sendEmail(messageInfo, text, html);
-//     })
-//     .catch(console.error)
-// }
-
-
-
-
-
-
-
-
-
-
-// const mailjet = require("node-mailjet")
-// .connect('39323e173c73a872134cbf085865a10b', '6f398cd2316b2e38f655766421b6796d');
-
-// const request = mailjet
-// .post("send", {'version': 'v3.1'})
-// .request({
-//     "Messages": [
-//         {
-//             "From": {
-//                 "Email": "spencer@wemakeads.com",
-//                 "Name": "Spencer"
-//             },
-//             "To": [
-//                 {
-//                     "Email": "spencer@wemakeads.com",
-//                     "Name": "Spencer"
-//                 }
-//             ],
-//             "Subject": "Greetings from Mailjet.",
-//             "TextPart": "My first Mailjet email",
-//             "HTMLPart": "<h3>Dear passenger 1, welcome to <a href='https://www.mailjet/com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
-//             "CustomID": "AppGettingStartedTest"
-//         }
-//     ]
+// transport.sendMail(message, function(err) {
+//     if(err) {
+//         console.log('Failed to send email.\n');
+//         return
+//     }
+//     console.log("Email sent.\n")
 // })
-// request
-//     .then((result) => {
-//         console.log(result.body)
-//     })
-//     .catch(err => { console.log(err.statusCode) })
+
+module.exports = router;

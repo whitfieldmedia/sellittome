@@ -1,43 +1,47 @@
 const express = require('express');
-const app = express();
 const path = require("path");
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5800;
 const cors = require('cors');
-// const upload = require('./routes/upload');
+const bodyParser = require('body-parser');
+let nodemailer = require('nodemailer');
+const morgan = require('morgan');
 
-app.post('/send', function(req, res, next) {
-    const transporter = nodemailer.createTransport({
-        service: 'godaddy',
-        auth: {
-            user: 'spencer@wemakeads.com',
-            pass: 'gintonic24'
-        }
-    })
-    const mailOptions = {
-        from: `${req.body.email}`,
-        to: 'backmanspencer99@gmail.com',
-        subject: `${req.body.name}`,
-        text: `${req.body.message}`,
-        replyTo: `${req.body.email}`
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(morgan('dev'));
+app.use(cors());
+app.use(morgan('dev'));
+
+const myEmail = 'backmanspencer99@gmail.com';
+
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: myEmail,
+        pass: 'flyfish69'
     }
-    transporter.sendMail(mailOptions, function(err, res) {
-        if (err) { console.log(err) }
-        else { console.log('here is the res: ', res) 
-        }
-    })
 })
 
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200
-}
-
-app.use(cors(corsOptions));
-
-
-// app.post('/upload', upload);
-
-app.use(express.json());
+app.post('/send', (req, res) => {
+    let newFiles = req.body.files.map(file => {
+        return (
+            `<img src=${file} alt=${file} /> <br /> <br />`
+        )
+    })
+    const message = {
+        from: myEmail,
+        to: 'backmanspencer99@gmail.com',
+        subject: 'MR. CASH $$$$$',
+        html: ` <h2>NAME:</h2> <p>${req.body.name}</p> <br/> <h2>REPLY TO:</h2> <p> ${req.body.from}</p> <br/> <h2>PHONE NUMBER:</h2> <p> ${req.body.phone}</p> <br/> <h2>DESCRIPTION:</h2> <p>${req.body.description}</p> <div> ${newFiles} </div> `,
+    };
+    transporter.sendMail(message, function(err) {
+        if(err) { console.log('Unable to send message ' + err)}
+        console.log('EMAIL SENT.\n' )
+    })
+    array = [];
+})
 
 app.use(express.static(path.join(__dirname, "client", "build")));
 
