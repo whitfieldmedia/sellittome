@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600|Fira+Sans:300,300i,400,400i,500,500i,600,700|Montserrat:300,300i,400,400i,500,500i,600,700|Playfair+Display:400,400i,700,700i&display=swap");
+.pricing-page {
+  padding-top: 50px;
+}
+
+.price-container {
+  width: 70%;
+  max-width: 800px;
+  min-width: 300px;
+  border: 2px solid #C6C4C5;
+  border-radius: 15px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+}
+
+.price-vehicle {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 25px;
+  color: #454545;
+  text-align: center;
+}
+
+.price-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 22px;
+  color: #454545;
+  max-width: 95%;
+  width: auto;
+  margin: 0 auto;
+}
+
+.price-range {
+  font-family: "Montserrat", sans-serif;
+  font-size: 35px;
+  color: #454545;
+  text-align: center;
+  font-weight: 500;
+}
+
+.price-button {
+  width: 200px;
+  height: 50px;
+  margin: 30px auto;
+  font-family: "Fira Sans", sans-serif;
+  font-size: 30px;
+  color: #ffffff;
+  background: #454545;
+}
+
+#price-arrow {
+  font-size: 28px;
+}
+
+/*# sourceMappingURL=pricing.css.map */

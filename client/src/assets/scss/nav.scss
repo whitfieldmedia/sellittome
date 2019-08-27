@@ -1,0 +1,62 @@
+@import 'assets';
+
+.nav-bar-container {
+    display: flex;
+    flex-flow: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    z-index: 50;
+}
+
+.nav-top-row {
+    background: $white;
+    width: 100%;
+    height: auto;
+    margin: 0 0 0 0;
+    padding-top: 0;
+    padding-left: 50px;
+    h1 {
+        font-size: 30px;
+        color: $blue;
+        font-family: $sans;
+        line-height: 30px;
+        margin: 0;
+        padding: 5px;
+    }
+}
+
+.navbar {
+    padding: 0;
+    margin: 0;
+    background: $blu;
+    height: auto;
+    ul {
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-start;
+        justify-items: flex-start;
+        text-decoration: none;
+        margin: 0;
+        padding: 10px 0;
+        li {
+            list-style-type: none;
+            margin: auto 10px;
+            color: $black;
+            font-family: $sans;
+        }
+    }
+}
+.nav-link {
+    color: $black;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: $sans;
+    font-weight: 500;
+    margin: 0;
+    padding: 0 10px;
+}

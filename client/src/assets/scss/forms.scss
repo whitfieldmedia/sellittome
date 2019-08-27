@@ -1,5 +1,9 @@
 @import 'assets';
 
+.get-offer-page {
+    margin-top: 50px;
+}
+
 .select-row {
     width: 90%;
     margin: 20px auto;
@@ -17,4 +21,148 @@
 }
 .active {
     background: $lightBlue;
+}
+
+.form-container {
+    width: 80%;
+    min-width: 300px;
+    height: auto;
+    max-height: 80vh;
+    overflow-y: scroll;
+    background: $white;
+    margin: 0 auto;
+    border-radius: 10px;
+    position: relative;
+}
+.top-form-container {
+    padding: 10px 12px;
+    border-bottom: 3px solid $gray;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: $white;
+    height: 75px;
+    z-index: 100;
+}
+
+.form-header {
+    font-family: $sans2;
+    font-size: 35px;
+    color: $dGray;
+    text-align: center;
+}
+
+.option {
+    font-family: $sans;
+    font-size: 20px;
+    color: $dGray;
+    padding: 15px 0;
+    padding-left: 5%;
+    width: 95%;
+    border-bottom: 1px solid $gray;
+    background: $white;
+}
+
+.option:hover {
+    background: $blu;
+}
+
+.input-holder {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.mile-input {
+    width: 80%;
+    min-width: 280px;
+    height: 40px;
+    font-family: $sans;
+    font-size: 25px;
+    margin: 50px auto 30px auto;
+}
+
+.next-button {
+    width: 200px;
+    height: 40px;
+    font-size: 25px;
+    font-family: $sans;
+    color: $dGray;
+    margin-bottom: 50px;
+}
+
+.upload-photos-box {
+    width: 80%;
+    min-width: 280px;
+    height: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    margin: 15px auto;
+    border: 2px solid $gray;
+    border-radius: 15px;
+    background: $w;
+    padding-bottom: 20px;
+}
+
+.upload-button {
+    width: 200px;
+    height: 50px;
+    background: $blue;
+    font-size: 30px;
+    margin: 20px auto;
+    color: $white;
+}
+
+.thumbnail-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    justify-items:  flex-start;
+}
+.file-thumbnail-holder {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin-bottom: 40px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
+.file-thumbnail {
+    width: 100px;
+    height: auto;
+    max-height: 100px;
+    padding: 10px 20px;
+    position: relative;
+}
+
+.delete-thumbnail {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 25px;
+    color: white;
+    background: red;
+    border-radius: 50%;
+
+}
+
+.file-thumbnail-holder:hover {
+    background: rgba(1,1,1,.3);
+    .delete-thumbnail {
+        display: block;
+    }
 }

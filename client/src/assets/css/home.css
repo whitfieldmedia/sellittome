@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600|Fira+Sans:300,300i,400,400i,500,500i,600,700|Montserrat:300,300i,400,400i,500,500i,600,700|Playfair+Display:400,400i,700,700i&display=swap");
+.home-background {
+  position: absolute;
+  top: 80px;
+  height: auto;
+  min-height: 70vh;
+  width: 100vw;
+  background: url("../images/bmwLarge.png");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.home-background-overlay {
+  position: absolute;
+  top: 80px;
+  height: auto;
+  min-height: 70vh;
+  width: 100vw;
+  background: #151617;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.top-container {
+  position: relative;
+  height: 70vh;
+  top: 50px;
+  z-index: 10;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  justify-items: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.home-header {
+  font-family: "Montserrat", sans-serif;
+  height: auto;
+  position: relative;
+  margin-bottom: 25px;
+  font-size: 45px;
+  color: #ffffff;
+  text-align: center;
+}
+.home-header strong {
+  font-size: 55px;
+}
+
+.home-button {
+  width: 300px;
+  height: 50px;
+  font-size: 30px;
+  margin: 0 auto;
+  background: radial-gradient(#5485A8, #5485A8);
+  color: #ffffff;
+}
+
+#arrow {
+  padding-left: 10px;
+  font-size: 28px;
+}
+
+.home-row {
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.home-column {
+  width: 90%;
+  margin: 0 auto;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+}
+
+#left-column {
+  width: 80%;
+  min-width: 300px;
+}
+
+.home-list-container {
+  margin: 0 auto;
+  width: auto;
+}
+
+.home-list {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  margin: auto;
+  width: auto;
+  color: #F1F1EF;
+}
+
+.how-container {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.home-header2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
+  color: #151617;
+  border-bottom: 5px solid #5485A8;
+  border-radius: 5px;
+}
+
+.home-header3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  color: #5485A8;
+  text-align: center;
+}
+
+.home-par {
+  font-family: "Montserrat", sans-serif;
+  font-size: 22px;
+  color: #151617;
+}
+
+.how-row {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.how-column {
+  width: 50%;
+  min-width: 300px;
+  margin-bottom: 30px;
+}
+
+.how-steps {
+  font-size: 35px;
+  color: #5485A8;
+  border: 3px solid #5485A8;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.offer-container {
+  padding-top: 25px;
+  padding-bottom: 50px;
+  background: #f5f5f5;
+}
+
+.offer-header {
+  font-family: "Montserrat", sans-serif;
+  font-size: 35px;
+  text-align: center;
+  font-weight: 500;
+  padding-bottom: 30px;
+}
+
+/*# sourceMappingURL=home.css.map */

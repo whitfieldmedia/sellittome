@@ -1,31 +1,19 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import axios from 'axios';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import rootReducer from './reducers';
 
-
-export function sendEmail(email) {
-    return dispatch => {
-        axios.post('/api/send_email', email).then(response => {
-            dispatch({
-                type: 'SEND_EMAIL',
-                email: response
-            })
-        }).catch(err => {console.log(err)})
-    }
+const persistConfig = {
+    key: 'root',
+    storage,
 }
 
-const initialEmail = [];
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const reducer = (email = initialEmail, action) => {
-    switch(action.type) {
-        case "SEND_EMAIL":
-            return action.email;
-        default: 
-            return email
-    }
+
+export default () => {
+    let store = createStore(persistedReducer, compose(applyMiddleware(thunk)))
+    let persistor = persistStore(store);
+    return { store, persistor }
 }
-
-export default createStore(
-    reducer, 
-    applyMiddleware(thunk)
-)
