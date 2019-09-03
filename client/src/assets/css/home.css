@@ -1,65 +1,109 @@
-@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600|Fira+Sans:300,300i,400,400i,500,500i,600,700|Montserrat:300,300i,400,400i,500,500i,600,700|Playfair+Display:400,400i,700,700i&display=swap");
-.home-background {
-  position: absolute;
-  top: 80px;
-  height: auto;
-  min-height: 70vh;
-  width: 100vw;
-  background: url("../images/bmwLarge.png");
-  background-size: cover;
-  background-position: center;
-  z-index: 0;
-}
-
-.home-background-overlay {
-  position: absolute;
-  top: 80px;
-  height: auto;
-  min-height: 70vh;
-  width: 100vw;
-  background: #151617;
-  opacity: 0.3;
-  z-index: 1;
-}
-
+@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,700|Fira+Sans:300,300i,400,400i,500,500i,600,700,800,900|Montserrat:300,300i,400,400i,500,500i,600,700,800,900|Playfair+Display:400,400i,700,700i,900&display=swap");
 .top-container {
   position: relative;
-  height: 70vh;
-  top: 50px;
-  z-index: 10;
+  height: auto;
+  width: 100%;
   display: flex;
   flex-flow: column;
-  justify-content: flex-start;
-  justify-items: flex-start;
+  background: #F8F8F8;
+  padding: 10px 0 50px 0;
+}
+
+#main-top-row {
+  margin-top: 15px;
+}
+
+.top-row {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
   align-content: center;
   align-items: center;
 }
 
-.home-header {
+.top-column1 {
+  width: 100%;
+}
+
+.top-column2 {
+  width: 100vw;
+  display: flex;
+  flex-flow: row-reverse;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+}
+
+.mr-cash-holder {
+  position: relative;
+  height: auto;
+  width: auto;
+  right: 0;
+}
+
+.mr-cash {
+  height: auto;
+  max-height: 80vh;
+  width: auto;
+  max-width: 40vw;
+}
+
+.main-row {
+  width: 100vw;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+}
+
+.main-column {
+  display: flex;
+  flex-flow: column;
+  padding: 10px;
+}
+
+.header {
   font-family: "Montserrat", sans-serif;
   height: auto;
   position: relative;
-  margin-bottom: 25px;
-  font-size: 45px;
-  color: #ffffff;
+  margin: 10px auto;
+  font-size: 24px;
+  font-weight: 700;
+  color: #151617;
   text-align: center;
 }
-.home-header strong {
-  font-size: 55px;
+
+.header2 {
+  font-size: 35px;
+  color: #151617;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  position: relative;
+  margin: 5px auto;
 }
 
 .home-button {
-  width: 300px;
+  width: 250px;
+  max-width: 80vw;
   height: 50px;
-  font-size: 30px;
-  margin: 0 auto;
-  background: radial-gradient(#5485A8, #5485A8);
-  color: #ffffff;
+  font-size: 25px;
+  color: #F8F8F8;
+  background: #F6851F;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  border: 3px solid #F6851F;
+  box-shadow: 1px 1px 3px #556660;
+  border-radius: 5px;
 }
 
 #arrow {
   padding-left: 10px;
-  font-size: 28px;
+  font-size: 23px;
 }
 
 .home-row {
@@ -94,7 +138,7 @@
   font-size: 20px;
   margin: auto;
   width: auto;
-  color: #F1F1EF;
+  color: #F8F8F8;
 }
 
 .how-container {
@@ -112,14 +156,12 @@
   font-family: "Montserrat", sans-serif;
   font-size: 40px;
   color: #151617;
-  border-bottom: 5px solid #5485A8;
-  border-radius: 5px;
 }
 
 .home-header3 {
   font-family: "Montserrat", sans-serif;
   font-size: 30px;
-  color: #5485A8;
+  color: #151617;
   text-align: center;
 }
 
@@ -145,8 +187,8 @@
 
 .how-steps {
   font-size: 35px;
-  color: #5485A8;
-  border: 3px solid #5485A8;
+  color: #51997F;
+  border: 3px solid #51997F;
   border-radius: 50%;
   width: 40px;
   height: 40px;

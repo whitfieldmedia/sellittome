@@ -1,0 +1,44 @@
+@import 'assets';
+
+.pricing-page {
+    display: flex;
+    flex-flow: column;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    justify-items: center;
+}
+
+.price-vehicle {
+    font-family: $sans;
+    font-size: 30px;
+    color: $black;
+    text-align: center;
+}
+
+.price-range {
+    font-family: $sans;
+    font-size: 25px;
+    color: $dGray;
+    text-align: center;
+}
+
+.price-text {
+    width: 90%;
+    max-width: 800px;
+    min-width: 280px;
+    margin: 0 auto;
+    font-family: $sans;
+    font-size: 20px;
+    color: $dGray;
+}
+
+.price-button {
+    font-size: 25px;
+    color: $green;
+    background: $dGray;
+    font-family: $sans;
+    width: 200px;
+    height: 40px;
+    margin: 30px auto;
+}

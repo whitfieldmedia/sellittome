@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600|Fira+Sans:300,300i,400,400i,500,500i,600,700,800,900|Montserrat:300,300i,400,400i,500,500i,600,700,800,900|Playfair+Display:400,400i,700,700i&display=swap");
+.personal-form-header {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  color: #556660;
+  text-align: center;
+  font-weight: 500;
+}
+
+.personal-form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+}
+
+.input-holder {
+  display: flex;
+  width: 80%;
+  min-width: 300px;
+  flex-flow: column;
+  justify-content: center;
+  justify-items: center;
+  align-content: flex-start;
+  align-items: flex-start;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.personal-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  color: #151617;
+  text-align: left;
+}
+
+.input {
+  width: 100%;
+  min-width: 280px;
+  height: 40px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 25px;
+  margin: 0px auto;
+  border: 2px solid #C6C4C5;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding-left: 10px;
+}
+
+.submit-button {
+  height: 35px;
+  width: 200px;
+  background: #556660;
+  color: #51997F;
+  font-size: 25px;
+  font-family: "Montserrat", sans-serif;
+}
+
+/*# sourceMappingURL=personal.css.map */

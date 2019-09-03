@@ -1,6 +1,5 @@
 import React from 'react';
 import Home from './Home';
-import ContactForm from './Forms/ContactForm';
 import Nav from './Nav';
 import Offer from './Offer';
 import { Switch, Route } from 'react-router-dom';
@@ -14,7 +13,6 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/get-offer" component={Offer} />
-          <Route path="/upload" component={ContactForm} />
         </Switch>
       </div>
     )

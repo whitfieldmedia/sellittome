@@ -1,63 +1,102 @@
 @import 'assets';
 
-.home-background {
-    position: absolute;
-    top: 80px;
-    height: auto;
-    min-height: 70vh;
-    width: 100vw;
-    background: url('../images/bmwLarge.png');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-}
-.home-background-overlay {
-    position: absolute;
-    top: 80px;
-    height: auto;
-    min-height: 70vh;
-    width: 100vw;
-    background: $black;
-    opacity: .3;
-    z-index: 1;
-}
-
 .top-container {
     position: relative;
-    height: 70vh;
-    top: 50px;
-    z-index: 10;
+    height: auto;
+    width: 100%;
     display: flex;
     flex-flow: column;
-    justify-content: flex-start;
-    justify-items: flex-start;
+    background: $white;
+    padding: 10px 0 50px 0;
+}
+#main-top-row {
+    margin-top: 15px;
+}
+.top-row {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+.top-column1 {
+    width: 100%;
+}
+.top-column2 {
+    width: 100vw;
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: center;
+    justify-items: center;
     align-content: center;
     align-items: center;
 }
 
-.home-header {
+.mr-cash-holder {
+    position: relative;
+    height: auto;
+    width: auto;
+    right: 0;
+}
+.mr-cash {
+    height: auto;
+    max-height: 80vh;
+    width: auto;
+    max-width: 40vw;
+}
+
+.main-row {
+    width: 100vw;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+}
+.main-column {
+    display: flex;
+    flex-flow: column;
+    padding: 10px;
+}
+
+
+.header {
     font-family: $sans;
     height: auto;
     position: relative;
-    margin-bottom: 25px;
-    font-size: 45px;
-    color: $w;
+    margin: 10px auto;
+    font-size: 24px;
+    font-weight: 700;
+    color: $black;
     text-align: center;
-    strong {
-        font-size: 55px;
-    }
+}
+.header2 {
+    font-size: 35px;
+    color: $black;
+    font-family: $sans2;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    margin: 5px auto;
 }
 .home-button {
-    width: 300px;
+    width: 250px;
+    max-width: 80vw;
     height: 50px;
-    font-size: 30px;
-    margin: 0 auto;
-    background: radial-gradient($blue, $blue);
-    color: $w;
+    font-size: 25px;
+    color: $white;
+    background: $orange;
+    font-family: $sans;
+    font-weight: 800;
+    border: 3px solid $orange;
+    box-shadow: 1px 1px 3px $dGray;
+    border-radius: 5px;
 }
 #arrow {
     padding-left: 10px;
-    font-size: 28px;
+    font-size: 23px;
 }
 
 .home-row {
@@ -105,14 +144,12 @@
     font-family: $sans;
     font-size: 40px;
     color: $black;
-    border-bottom: 5px solid $blue;
-    border-radius: 5px;
 }
 
 .home-header3 {
     font-family: $sans;
     font-size: 30px;
-    color: $blue;
+    color: $black;
     text-align: center;
 }
 .home-par {
@@ -136,8 +173,8 @@
 }
 .how-steps {
     font-size: 35px;
-    color: $blue;
-    border: 3px solid $blue;
+    color: $green;
+    border: 3px solid $green;
     border-radius: 50%;
     width: 40px;
     height: 40px;

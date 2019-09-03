@@ -1,16 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import mrCash from './assets/images/mrcash.png';
 import './assets/scss/home.scss';
 
 class Home extends React.Component {
     render() {
         return (
-            <div>
-                <div className="home-background"></div>
-                <div className="home-background-overlay"></div>
+            <div className="home-container">
                 <div className="top-container">
-                    <h1 className="home-header"> Selling a car? <br/> <strong>SELL IT TO ME!</strong> <br/> It's fast, easy, and legit! </h1>
-                    <button className="home-button"> GET MY OFFER <i id="arrow" className="fas fa-arrow-circle-right"></i> </button>
+                    <div className="top-row">
+                    <h1 className="header"> Sell your car to Mr. Cash! </h1>
+                        <div className="main-row">
+                            <div className="main-column">
+                                <h1 className="header2"> FAST <br/> EASY <br/> CASH <br/> NOW! </h1>
+                            </div>
+                            <div className="mr-cash-holder">
+                                <img src={mrCash} className="mr-cash" alt="Mr. Cash"/>
+                            </div>
+                        </div>
+                        <div className="top-column2">
+                            <Link to="/get-offer">
+                                <button className="home-button"> Get My Offer </button>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
                 <div className="how-container">
                     <h2 className="home-header2"> How it works. </h2>
@@ -36,11 +49,11 @@ class Home extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="offer-container">
+                {/* <div className="offer-container">
                     <Link to="/get-offer">
                         <h2 className="offer-header"> Get An Instant Offer! </h2>
                     </Link>
-                </div>
+                </div> */}
             </div>
         )
     }

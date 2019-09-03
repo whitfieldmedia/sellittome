@@ -9,31 +9,38 @@ class Nav extends React.Component {
             isOpen: false
         }
     }
+    handleClick = e => {
+        e.preventDefault()
+        this.setState({ isOpen: !this.state.isOpen })
+    }
+    closeNav = e => {
+        e.preventDefault()
+        this.setState({ isOpen: false })
+    }
     render() {
+        console.log(this.state)
         return (
             <div className="nav-bar-container">
-                <div className="nav-top-row">
-                    <h1> SELL IT TO ME </h1>
+                <Link to="/">
+                    <h1 className="nav-header"> SELL IT TO ME </h1>
+                </Link>
+                <div className="nav-bars-holder" onClick={this.handleClick}>
+                    <i className="fas fa-bars" id="nav-bars"></i>
                 </div>
-                <div className="navbar-container">
-                    <ul className="navbar">
-                        <li className="nav-link-holder">
-                            <i class="fas fa-bars"></i>
-                        </li>
-                        <li className="nav-link-holder">
-                            <Link className="nav-link" to="/"> Home </Link>
-                        </li>
-                        <li className="nav-link-holder">
-                            <Link className="nav-link" to="/get-offer"> Get Offer </Link>
-                        </li>
-                        <li className="nav-link-holder">
-                            <Link className="nav-link" to="/enter-vin"> How it works </Link>
-                        </li>
-                        <li className="nav-link-holder">
-                            <Link className="nav-link" to="/contact"> Contact Us </Link>
-                        </li>
-                    </ul>
-                </div>
+                <ul className="navbar">
+                    <li onClick={this.closeNav} id="top-link" className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
+                        <Link className="nav-link" to="/"> Home </Link>
+                    </li>
+                    <li onClick={this.closeNav} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
+                        <Link className="nav-link" to="/get-offer"> Get Offer </Link>
+                    </li>
+                    <li onClick={this.closeNav} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
+                        <Link className="nav-link" to="/enter-vin"> How it works </Link>
+                    </li>
+                    <li onClick={this.closeNav} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
+                        <Link className="nav-link" to="/contact"> Contact Us </Link>
+                    </li>
+                </ul>
             </div>
         )
     }

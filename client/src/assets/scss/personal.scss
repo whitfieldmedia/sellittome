@@ -1,0 +1,60 @@
+@import 'assets';
+
+.personal-form-header {
+    font-family: $sans;
+    font-size: 20px;
+    color: $dGray;
+    text-align: center;
+    font-weight: 500;
+}
+
+.personal-form {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
+.input-holder {
+    display: flex;
+    width: 80%;
+    min-width: 300px;
+    flex-flow: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.personal-label {
+    font-family: $sans;
+    font-size: 20px;
+    color: $black;
+    text-align: left;
+}
+
+.input {
+    width: 100%;
+    min-width: 280px;
+    height: 40px;
+    font-family: $sans;
+    font-size: 25px;
+    margin: 0px auto;
+    border: 2px solid $gray;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+.submit-button {
+    height: 35px;
+    width: 200px;
+    background: $dGray;
+    color: $green;
+    font-size: 25px;
+    font-family: $sans;
+}

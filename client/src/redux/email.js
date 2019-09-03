@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = '/send';
+const url = 'http://localhost:5800/send';
 
 function setEmail(email) {
     return {

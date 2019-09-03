@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const url = "https://service.blackbookcloud.com/UsedCarWs/UsedCarWs/UsedVehicle/UVC/"
+const url = "https://service.blackbookcloud.com/UsedCarWs/UsedCarWs/UsedVehicle/"
 
-export function getBlackValue(uvc) {
+export function getBlackValue(uvc, miles) {
     return dispatch => {
-        axios.get(url + encodeURIComponent(uvc) + '?customerid=' + encodeURIComponent("test")).then(res => {
+        axios.get(url + "UVC/" + encodeURIComponent(uvc) + '?mileage=' + encodeURIComponent(miles) + '&customerid=' + encodeURIComponent("test")).then(res => {
             console.log('GET_BLACK_VALUE: ', res.data)
             dispatch({
                 type: "GET_BLACK_VALUE",
@@ -16,9 +16,24 @@ export function getBlackValue(uvc) {
     }
 }
 
+export function getBlackVin(vin, miles) {
+    return dispatch => {
+        axios.get(url + encodeURIComponent("VIN") + '/' + encodeURIComponent(vin) + '?mileage=' + encodeURIComponent(miles) + '&customerid=' + encodeURIComponent("test")).then(res => {
+            dispatch({
+                type: 'GET_BLACK_VIN',
+                blackValue: res.data
+            })
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+}
+
 export default function reducer(blackValue = [], action) {
     switch(action.type) {
         case "GET_BLACK_VALUE":
+            return action.blackValue
+        case "GET_BLACK_VIN":
             return action.blackValue
         default:
             return blackValue

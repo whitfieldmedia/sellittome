@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux';
-import blackVin from './BlackVin';
 import blackCar from './BlackCar';
 import blackModels from './BlackModels';
 import blackTrims from './BlackTrims';
 import blackValue from './BlackValue';
+import form from './Form';
 
 const rootReducer = combineReducers({
-    blackVin,
     blackCar,
     blackModels,
     blackTrims,
-    blackValue
+    blackValue,
+    form
 })
 
 export default rootReducer;

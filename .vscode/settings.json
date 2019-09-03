@@ -1,5 +1,8 @@
 {
-    "editor.fontFamily": "Hack",
+    "editor.fontFamily": "Consolas",
     "editor.fontLigatures": true,
-    "editor.fontSize": 14
+    "editor.fontSize": 15,
+    "files.autoSave": "afterDelay",
+    "editor.fontWeight": "400",
+    "peacock.lightForegroundColor": "#e8e8e8"
 }

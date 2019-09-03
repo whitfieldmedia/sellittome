@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600|Fira+Sans:300,300i,400,400i,500,500i,600,700|Montserrat:300,300i,400,400i,500,500i,600,700|Playfair+Display:400,400i,700,700i&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600|Fira+Sans:300,300i,400,400i,500,500i,600,700,800,900|Montserrat:300,300i,400,400i,500,500i,600,700,800,900|Playfair+Display:400,400i,700,700i&display=swap");
 body {
   width: 100vw;
   height: 100%;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  padding-top: 80px;
+  padding-top: 60px;
   scroll-behavior: smooth;
 }
 
