@@ -3,6 +3,7 @@ import blackCar from './BlackCar';
 import blackModels from './BlackModels';
 import blackTrims from './BlackTrims';
 import blackValue from './BlackValue';
+import years from './Year';
 import form from './Form';
 
 const rootReducer = combineReducers({
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
     blackModels,
     blackTrims,
     blackValue,
-    form
+    form,
+    years
 })
 
 export default rootReducer;

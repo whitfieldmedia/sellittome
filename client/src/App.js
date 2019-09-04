@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from './Home';
 import Nav from './Nav';
-import Offer from './Offer';
+import Offer from './ValueForm';
 import { Switch, Route } from 'react-router-dom';
 import './assets/scss/app.scss';
 

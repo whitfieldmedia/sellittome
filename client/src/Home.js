@@ -9,7 +9,7 @@ class Home extends React.Component {
             <div className="home-container">
                 <div className="top-container">
                     <div className="top-row">
-                    <h1 className="header"> Sell your car to Mr. Cash! </h1>
+                    <h1 className="header"> Sell your car to <br/> <strong> Mr. Cash </strong> </h1>
                         <div className="main-row">
                             <div className="main-column">
                                 <h1 className="header2"> FAST <br/> EASY <br/> CASH <br/> NOW! </h1>

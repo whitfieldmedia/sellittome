@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getBlackValue, getBlackVin } from '../redux/BlackValue';
+import { getBlackValue, getBlackVin, clearBlackValue } from '../redux/BlackValue';
 import { addIndex, clearForm, showError, emailSent } from '../redux/Form';
 import Vin from './Vin';
 import Year from './Year';
@@ -24,7 +24,6 @@ class Offer extends React.Component {
             fileError: false
         }
     }
-
     componentDidMount() {
         let props = this.props;
         let form = props.form;
@@ -48,6 +47,7 @@ class Offer extends React.Component {
             props.addIndex(2);
         } else if (form.year.length === 0) {
             props.addIndex(1)
+            props.clearBlackValue()
         } else {
             props.addIndex(1)
         }
@@ -65,6 +65,7 @@ class Offer extends React.Component {
     }
     handleClear = () => { 
         this.props.clearForm();
+        this.props.clearBlackValue();
     }
 
     //Go back one form entry
@@ -140,37 +141,13 @@ class Offer extends React.Component {
             }
         } else if(this.props.form.index === 9) {
             if(this.props.form.name.length > 0 && this.props.form.email.length > 0 && this.props.form.phone.length > 0) {
-                if(this.props.form.vin.length === 17) {
-                    return this.checkVin()
-                } else {
-                    return this.checkUvc()
-                }
+                    this.next();
             } else {
                 this.handleError();
             }
         }
     }
-    checkVin = () => {
-        var vin 
-        this.props.blackValue.used_vehicles.used_vehicle_list.map(list => vin = list.vin)
-        if(this.props.form.vin === vin) {
-            return this.next()
-        } else {
-            this.props.getBlackVin(this.props.form.vin, this.props.form.miles);
-            return this.next()
-        }
-    }
-    checkUvc = () => {
-        var uvc
-        this.props.blackValue.used_vehicles.used_vehicle_list.map(list => uvc = list.uvc)
-        console.log(uvc)
-        if(this.props.form.uvc === uvc) {
-            return this.next()
-        } else {
-            this.props.getBlackValue(this.props.form.uvc, this.props.form.miles);
-            return this.next()
-        }
-    }
+
     handleEmail = () => {
         if(this.props.form.sent) { 
             this.props.emailSent(false) 
@@ -313,4 +290,4 @@ class Offer extends React.Component {
     }
 }
 
-export default connect(state => state, { getBlackValue, getBlackVin, addIndex, clearForm, showError, emailSent })(Offer);
+export default connect(state => state, { getBlackValue, getBlackVin, addIndex, clearForm, showError, emailSent, clearBlackValue })(Offer);

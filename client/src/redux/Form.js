@@ -152,6 +152,14 @@ export function emailSent(value) {
         })
     }
 }
+export function addVehicleId(id) {
+    return dispatch => {
+        dispatch({
+            type: "ADD_VEHICLE_ID",
+            vehicleId: id
+        })
+    }
+}
 const initialForm = {
     vin: '',
     year: '',
@@ -160,6 +168,7 @@ const initialForm = {
     series: '',
     style: '',
     uvc: '',
+    vehicleId: '',
     miles: '',
     condition: '',
     zip: '',
@@ -276,6 +285,11 @@ export default function reducer(state = initialForm, action) {
             return {
                 ...state,
                 sent: action.sent
+            }
+        case "ADD_VEHICLE_ID":
+            return {
+                ...state,
+                vehicleId: action.vehicleId
             }
         case "CLEAR_FORM":
             return initialForm

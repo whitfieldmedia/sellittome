@@ -29,11 +29,22 @@ export function getBlackVin(vin, miles) {
     }
 }
 
+export function clearBlackValue() {
+    return dispatch => {
+        dispatch({
+            type: "CLEAR_BLACK_VALUE",
+            blackValue: []
+        })
+    }
+}
+ 
 export default function reducer(blackValue = [], action) {
     switch(action.type) {
         case "GET_BLACK_VALUE":
             return action.blackValue
         case "GET_BLACK_VIN":
+            return action.blackValue
+        case "CLEAR_BLACK_VALUE":
             return action.blackValue
         default:
             return blackValue

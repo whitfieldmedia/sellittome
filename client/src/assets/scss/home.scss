@@ -63,14 +63,19 @@
 
 
 .header {
-    font-family: $sans;
+    font-family: $sans2;
     height: auto;
     position: relative;
     margin: 10px auto;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 700;
     color: $black;
     text-align: center;
+    strong {
+        color: $orange;
+        font-size: 45px;
+        font-weight: 800;
+    }
 }
 .header2 {
     font-size: 35px;

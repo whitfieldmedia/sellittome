@@ -67,14 +67,19 @@
 }
 
 .header {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Fira Sans", sans-serif;
   height: auto;
   position: relative;
   margin: 10px auto;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 700;
   color: #151617;
   text-align: center;
+}
+.header strong {
+  color: #F6851F;
+  font-size: 45px;
+  font-weight: 800;
 }
 
 .header2 {

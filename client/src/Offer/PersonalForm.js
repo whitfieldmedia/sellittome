@@ -22,8 +22,12 @@ class PersonalForm extends React.Component {
     handlePhoneChange = e => {
         this.props.addPhone(e.target.value)
     }
-    handleSubmit = (e) => {
-        e.preventDefault();
+    handleSubmit = () => {
+        if(this.props.form.vin.length === 17) {
+            this.props.getBlackVin(this.props.form.vin, this.props.form.miles)
+        } else {
+            this.props.getBlackValue(this.props.form.uvc, this.props.form.miles)
+        }
         this.props.handleNext();
     }
     render() {
