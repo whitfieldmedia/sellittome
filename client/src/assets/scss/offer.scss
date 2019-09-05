@@ -57,12 +57,14 @@
     flex-flow: column;
     justify-content: flex-start;
     justify-items: flex-start;
-    align-content: center;
-    align-items: center;
+    align-content: flex-start;
+    align-items: flex-start;
+    padding-top: 0;
+    margin-top: 0;
     height: calc(100vh - 160px);
 }
 .option-container {
-    margin: 20px 0;
+    margin: 0px 0;
     padding: 0;
     display: flex;
     flex-flow: column;
@@ -94,42 +96,50 @@
 
 .next-button {
     font-size: 18px;
+    font-weight: 600;
     height: 35px;
     width: auto;
     color: $black;
-    background: $gray;
+    background: $white;
+    border: none;
     font-family: $sans;
     margin-right: 10px;
     border-radius: 5px;
+    padding: 5px 10px;
 }
 .next-button-long {
     height: 35px;
     width: auto;
     font-size: 16px;
+    font-weight: 600;
     color: $black;
-    background: $gray;
+    background: $white;
+    border: none;
     font-family: $sans;
     margin-right: 10px;
     border-radius: 5px;
+    padding: 5px 10px;
 }
 .prev-button {
     height: 35px;
     margin-left: 10px;
     width: auto;
     font-size: 18px;
+    font-weight: 600;
     color: $black;
-    background: $gray;
+    background: $white;
+    border: none;
     font-family: $sans;
     border-radius: 5px;
+    padding: 5px 10px;
 }
-
 
 .form-bottom-row {
     height: 50px;
     width: 100%;
     position: fixed;
     bottom: 0;
-    background: $w;
+    background: $dark;
     display: flex;
     flex-flow: row;
     justify-content: space-between;
@@ -144,7 +154,7 @@
     height: 40px;
     position: fixed;
     bottom: 50px;
-    background: $dGray;
+    background: $dark;
     display: flex;
     justify-content: space-between;
     justify-items: space-between;
@@ -158,24 +168,27 @@
     font-family: $sans;
     font-size: 18px;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
     padding-left: 10px;
 }
 .close-error {
-    background: red;
+    position: absolute;
+    opacity: 0.95;
+    top: -10px;
+    right: 15px;
+    color: #D4121F;
     border-radius: 50%;
     font-family: $sans;
     font-weight: bold;
-    font-size: 20px;
-    color: $w;
-    width: 23px;
-    height: 23px;
+    font-size: 17px;
+    background: $white;
+    width: 20px;
+    height: 20px;
     display: flex;
     justify-content: center;
     justify-items: center;
     align-content: center;
     align-items: center;
-    margin-right: 10px;
 }
 
 .form-radio-column {
@@ -209,9 +222,18 @@
     border-radius: 50%;
     margin-right: 10px;
 }
+.file-upload-page {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
 
 .upload-photos-box {
-    width: 80%;
+    width: 250px;
     margin: 30px auto 20px auto;
     display: flex;
     justify-content: center;
@@ -224,6 +246,9 @@
 .upload-button {
     width: 250px;
     height: 40px;
+    margin: auto;
+    justify-self: center;
+    align-self: center;
     font-family: $sans;
     font-size: 25px;
     color: $black;
@@ -276,9 +301,90 @@
 
 .reset-button {
     font-size: 18px;
-    color: $white;
-    padding: 5px;
+    font-weight: 600;
+    height: 35px;
+    width: auto;
+    color: $black;
+    border: none;
+    padding: 5px 10px;
     border-radius: 5px;
-    background: $green;
+    background: $white;
     margin-right: 10px;
+    font-family: $sans;
+}
+
+.input-container {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+.vin-button {
+    width: 100%;
+    min-width: 280px;
+    height: 50px;
+    border: 1px solid $gray;
+    background: $dGray;
+    font-family: $sans;
+    font-size: 20px;
+    text-align: center;
+    padding-left: 10px;
+    color: $white;
+    font-weight: 500;
+    margin: 0 auto;
+    border-top: none;
+}
+.vin-submit-button {
+    background: $green;
+    color: $white;
+    width: 200px;
+    height: 40px;
+    margin: 10px auto 0 auto;
+    border-radius: 5px;
+    font-family: $sans;
+    font-size: 25px;
+}
+
+@media only screen and (min-width: 500px) {
+    .offer-page {
+        background: $dBlue;
+        padding: 20px 0;
+    }
+    .form-container {
+        width: 90%;
+        max-width: 800px;
+        margin: auto;
+        border-radius: 15px;
+        padding: 0;
+        border: 2px solid $gray;
+    }
+    .form {
+        height: 70vh;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    .form-bottom-row {
+        height: 60px;
+    }
+    .next-button {
+        height: 50px;
+        width: 20%;
+        font-size: 30px;
+        font-weight: 400;
+    }
+    .prev-button {
+        height: 50px;
+        width: 20%;
+        font-size: 30px;
+        font-weight: 400;
+    }
+    .reset-button {
+        height: 50px;
+        width: 20%;
+        font-size: 30px;
+        font-weight: 400;
+    }
 }

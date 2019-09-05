@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getBlackValue, getBlackVin, clearBlackValue } from '../redux/BlackValue';
-import { addIndex, clearForm, showError, emailSent } from '../redux/Form';
+import { addIndex, clearForm, showError } from '../redux/Form';
 import Vin from './Vin';
 import Year from './Year';
 import Make from './Make';
@@ -20,8 +19,6 @@ class Offer extends React.Component {
         super();
         this.state = {
             usedVin: false, 
-            vinError: false,
-            fileError: false
         }
     }
     componentDidMount() {
@@ -47,7 +44,6 @@ class Offer extends React.Component {
             props.addIndex(2);
         } else if (form.year.length === 0) {
             props.addIndex(1)
-            props.clearBlackValue()
         } else {
             props.addIndex(1)
         }
@@ -65,7 +61,6 @@ class Offer extends React.Component {
     }
     handleClear = () => { 
         this.props.clearForm();
-        this.props.clearBlackValue();
     }
 
     //Go back one form entry
@@ -80,28 +75,24 @@ class Offer extends React.Component {
             this.next(); 
         } else if(this.props.form.index === 1) {
             if(this.props.form.year.length === 4) {
-                this.handleEmail()
                 this.next();
             } else {
                 this.handleError();
             }
         } else if(this.props.form.index === 2) {
             if(this.props.form.make.length > 0) {
-                this.handleEmail()
                 this.next();
             } else {
                 this.handleError();
             }
         } else if(this.props.form.index === 3) {
             if(this.props.form.model.length > 0) {
-                this.handleEmail()
                 this.next()
             } else {
                 this.handleError();
             }
         } else if(this.props.form.index === 4) {
             if(this.props.form.uvc.length > 0) {
-                this.handleEmail()
                 this.next();
             } else {
                 this.handleError();
@@ -109,21 +100,18 @@ class Offer extends React.Component {
         }
         else if(this.props.form.index === 5) {
             if(this.props.form.miles.length > 0) {
-                this.handleEmail()
                 this.next();
             } else {
                 this.handleError();
             }
         } else if(this.props.form.index === 6) {
             if(this.props.form.condition.length > 0) {
-                this.handleEmail()
                 this.next();
             } else {
                 this.handleError();
             }
         } else if(this.props.form.index === 7) {
             if(this.props.form.zip.length === 5) {
-                this.handleEmail()
                 this.next();
             } else {
                 this.handleError();
@@ -131,7 +119,6 @@ class Offer extends React.Component {
         } else if(this.props.form.index === 8) {
             if(this.props.form.files.length > 0 || this.state.fileError) {
                 this.setState({ fileError: false })
-                this.handleEmail()
                 this.next();
             } else {
                 if(!this.state.fileError) {
@@ -145,12 +132,6 @@ class Offer extends React.Component {
             } else {
                 this.handleError();
             }
-        }
-    }
-
-    handleEmail = () => {
-        if(this.props.form.sent) { 
-            this.props.emailSent(false) 
         }
     }
     //Moves user to next input
@@ -261,6 +242,9 @@ class Offer extends React.Component {
             return ( <Price /> )
         }
     } 
+    handleVinClick = () => {
+        this.props.addIndex(0)
+    }
     render() {
         console.log(this.props)
         return (
@@ -290,4 +274,4 @@ class Offer extends React.Component {
     }
 }
 
-export default connect(state => state, { getBlackValue, getBlackVin, addIndex, clearForm, showError, emailSent, clearBlackValue })(Offer);
+export default connect(state => state, { addIndex, clearForm, showError })(Offer);

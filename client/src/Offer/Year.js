@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addYear, addIndex } from '../redux/Form';
+import { addYear, addIndex, emailSent } from '../redux/Form';
 import { getBlackMakes } from '../redux/BlackCar';
 
 class Year extends React.Component {
@@ -12,23 +12,24 @@ class Year extends React.Component {
     }
     componentDidMount() {
         if(this.state.year.length === 0 && this.props.form.year.length === 4) {
-            return this.setState({
-                year: this.props.form.year
-            })
+            this.props.emailSent(false)
+            return this.setState({ year: this.props.form.year })
         } 
     }
     componentDidUpdate() {
-        if(this.props.form.year.length === 4) {
-            if(this.props.form.year !== this.state.year || this.props.blackModels.drilldown.class_list.length === 0) {
-                this.props.getBlackMakes(this.props.form.year);
-                var index = (this.props.form.index + 1)
-                this.props.addIndex(index)
-            }
+        if(this.props.form.year.length === 4 && this.props.form.year !== this.state.year) {
+
+            var index = (this.props.form.index + 1)
+            this.props.addIndex(index)
         }
     }
     handleChange = (e) => {
         this.props.addYear(e.target.value)
     }
+    handleVin = () => {
+        this.props.addIndex(0);
+    }
+
     render() {
         console.log(this.props)
         return (
@@ -47,4 +48,4 @@ class Year extends React.Component {
     }
 }
 
-export default connect(state => state, { addYear, getBlackMakes, addIndex })(Year)
+export default connect(state => state, { addYear, getBlackMakes, addIndex, emailSent })(Year)

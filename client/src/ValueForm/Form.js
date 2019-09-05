@@ -25,41 +25,38 @@ class Form extends React.Component {
     }
     render() {
         return (
-            <div>
-                <div className="personal-form-holder">
-                    <h1 className="personal-form-header"> Enter your contact information so we can send you an official offer. </h1>
-                    <form className="personal-form" onSubmit={this.handleSubmit}>
-                        <div className="input-holder">
-                            <label className="personal-label" htmlFor="name"> *Name </label>
-                            <input type="text" 
-                                className="input"
-                                onChange={this.handleNameChange}
-                                name="name"
-                                value={this.props.form.name}
-                                placeholder="Enter Name" />
-                        </div>
-                        <div className="input-holder">
-                            <label className="personal-label" htmlFor="email"> *Email </label>
-                            <input type="text"
+            <div className="form-page">
+                <form className="personal-form" onSubmit={this.handleSubmit}>
+                    <div className="input-holder">
+                        <label className="personal-label" htmlFor="name"> *Name </label>
+                        <input type="text" 
                             className="input"
-                            onChange={this.handleEmailChange}
-                            name="email"
-                            value={this.props.form.email}
-                            placeholder="Enter Email" />
-                        </div>
-                        <div className="input-holder">
-                            <label className="personal-label" htmlFor="phone"> *Phone </label>
-                            <input type="number"
-                                name="phone"
-                                className="input"
-                                max-length="10"
-                                onChange={this.handlePhoneChange}
-                                value={this.props.form.phone}
-                                placeholder="Enter Phone" />
-                        </div>
-                        <button onClick={this.handleFileNext} className="submit-button"> Submit </button>
-                    </form>
-                </div>
+                            onChange={this.handleNameChange}
+                            name="name"
+                            value={this.props.form.name}
+                            placeholder="Enter Name" />
+                    </div>
+                    <div className="input-holder">
+                        <label className="personal-label" htmlFor="email"> *Email </label>
+                        <input type="text"
+                        className="input"
+                        onChange={this.handleEmailChange}
+                        name="email"
+                        value={this.props.form.email}
+                        placeholder="Enter Email" />
+                    </div>
+                    <div className="input-holder">
+                        <label className="personal-label" htmlFor="phone"> *Phone </label>
+                        <input type="number"
+                            name="phone"
+                            className="input"
+                            max-length="10"
+                            onChange={this.handlePhoneChange}
+                            value={this.props.form.phone}
+                            placeholder="Enter Phone" />
+                    </div>
+                    <button onClick={this.handleFileNext} className="submit-button"> Submit </button>
+                </form>
             </div>
         )
     }

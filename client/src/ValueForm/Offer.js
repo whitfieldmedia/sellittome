@@ -1,22 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { sendEmail } from '../redux/email';
-import { emailSent } from '../redux/Form';
+import { emailSent, addYear, addMake, addModel, addStyle, addLowPrice, addHighPrice, addVehicleId, addBasePrice } from '../redux/Form';
 import '../assets/scss/price.scss';
 
 class Offer extends React.Component {
     constructor() {
         super();
         this.state = {
-            value: 0,
-            lowOffer: 0,
-            highOffer: 0,
-            year: '',
-            make: '',
-            model: '',
-            style: '',
-            vehicleId: '',
-            vin: '',
             usedVin: false,
             finishedLoading: false
         }
@@ -25,31 +16,35 @@ class Offer extends React.Component {
         if(this.props.form.vin.length === 17 && !this.state.usedVin) {
             this.setState({ usedVin: true })
         }
+
+        if(this.props.form.lowPrice > 0 && this.props.form.highPrice > 0) {
+            this.sendEmail()
+        } else if(this.props.form.basePrice > 0) {
+            this.getRange()
+        }
     }
     componentDidUpdate() {
         if(parseInt(this.props.years.result.map(res => res.adjustedcleantrade)) > 0) {
             this.getPrice()
         }
-        if(this.state.value !== 0) {
+        if(this.props.form.basePrice > 0) {
             this.getRange()
         }
-        if(this.state.lowOffer > 0 && this.state.highOffer > 0) {
+        if(this.props.form.lowPrice > 0 && this.props.form.highPrice > 0) {
             this.sendEmail();
-            if(!this.state.finishedLoading) {
-                this.setState({ finishedLoading: true })
-            }
         }
     }
     getPrice = () => {
         var condition = this.props.form.condition;
-        if(this.state.value === 0) {
+        var props = this.props;
+        if(this.props.form.basePrice === 0) {
             if(this.state.usedVin) {
                 this.props.years.result[0].map(res => {
-                    var year = res.modelyear;
-                    var make = res.make;
-                    var model = res.model;
-                    var body = res.body;
-                    var vehicleId = res.ucgvehicleid;
+                    props.addYear(res.modelyear);
+                    props.addMake(res.make);
+                    props.addModel(res.model);
+                    props.addStyle(res.body);
+                    props.addVehicleId(res.ucgvehicleid);
                     var price = 0;
                     if(condition === 'clean') {
                         price = parseInt(res.adjustedcleantrade, 10)
@@ -58,8 +53,8 @@ class Offer extends React.Component {
                     } else {
                         price = parseInt(res.adjustedroughtrade, 10)
                     }
-                    this.setState({ year: year, make: make, model: model,
-                        style: body, vehicleId: vehicleId, value: price })
+                    props.addBasePrice(price);
+                    return this.getRange();
                 })
             } else {
                 this.props.years.result.map(res => {
@@ -71,48 +66,46 @@ class Offer extends React.Component {
                     } else {
                         price = parseInt(res.adjustedroughtrade, 10)
                     }
-                    var form = this.props.form
-                    this.setState({ year: form.year, model: form.model, make: form.make,
-                        style: form.style, vehicleId: form.vehicleId, value: price })
+                    this.props.addBasePrice(price);
+                    return this.getRange()
                 })
             }
         }
-        this.getRange()
     }
 
     getRange = () => {
-        if( this.state.lowOffer === 0 || this.state.highOffer === 0 && this.state.value > 0) {
+        if( ((this.props.form.lowPrice === 0 || this.props.form.highPrice === 0) && this.props.form.basePrice > 0)) {
             let fileLength = this.props.form.files.length;
-            var low = 0;
-            var high = 0;
-            var price = this.state.value
+            var price = this.props.form.basePrice;
+            var low = price;
+            var high = price;
             if(fileLength > 0) {
-                low = (price * .8)
-                high = (price * .9)
+                low = (low * 0.8)
+                high = (high * 0.9)
             } else {
-                low = (price * .7)
-                high = (price * .8)
+                low = (low * .7)
+                high = (high * .8)
             }
-            this.setState({ lowOffer: low, highOffer: high })
+            this.props.addHighPrice(high);
+            this.props.addLowPrice(low);
         }
     }
 
     sendEmail = () => {
         var form = this.props.form;
-        var state = this.state
         if(!form.sent) {
             var message = {
-                lowPrice: state.lowOffer,
-                highPrice: state.highOffer,
+                lowPrice: form.lowPrice,
+                highPrice: form.highPrice,
                 name: form.name,
                 from: form.email,
                 phone: form.phone,
-                year: state.year,
-                make: state.make,
-                model: state.model,
-                style: state.style,
-                vehicleId: state.vehicleId,
-                vin: state.vin,
+                year: form.year,
+                make: form.make,
+                model: form.model,
+                style: form.style,
+                vehicleId: form.vehicleId,
+                vin: form.vin,
                 zip: form.zip,
                 condition: form.condition,
                 files: form.files,
@@ -120,19 +113,22 @@ class Offer extends React.Component {
             }
             this.props.sendEmail(message);
             this.props.emailSent(true)
-        }   
+        } else {
+            if(!this.state.finishedLoading) {
+                this.setState({ finishedLoading: true })
+            }
+        }  
     }
     render() {
-        console.log("OFFER STATE: ", this.state)
-        console.log("OFFER PROPS: ", this.props)
+        console.log(this.props)
         return (
             <div>
                 {this.state.finishedLoading 
                 ?
                 <div className="pricing-page">
                     <div className="price-container">
-                        <h2 className="price-vehicle"> {this.state.year} {this.state.make} {this.state.model} {this.state.style} </h2>
-                        <h2 className="price-range"> ${parseInt(this.state.lowOffer - 800)} - ${parseInt(this.state.highOffer - 800)} </h2>
+                        <h2 className="price-vehicle"> {this.props.form.year} {this.props.form.make} {this.props.form.model} {this.props.form.style} </h2>
+                        <h2 className="price-range"> ${parseInt(this.props.form.lowPrice - 800)} - ${parseInt(this.props.form.highPrice - 800)} </h2>
                         <p className="price-text"> If you decide to continue we will send you a final offer within 24 hours. The price can go up or down from the range. If you accept the offer we will come to you and pick up the vehicle and you'll get paid!  </p>
                     </div>
                 </div>
@@ -142,4 +138,4 @@ class Offer extends React.Component {
     }
 }
 
-export default connect(state => state, { sendEmail, emailSent })(Offer);
+export default connect(state => state, { sendEmail, emailSent, addYear, addMake, addModel, addStyle, addLowPrice, addHighPrice, addVehicleId, addBasePrice })(Offer);

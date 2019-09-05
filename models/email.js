@@ -36,7 +36,7 @@ const emailSchema = new Schema({
     },
     vin: {
         type: String,
-        required: true
+        required: false
     },
     uvc: {
         type: String, 
@@ -55,11 +55,11 @@ const emailSchema = new Schema({
         required: false
     },
     lowPrice: {
-        type: String,
+        type: Number,
         required: false
     },
     highPrice: {
-        type: String,
+        type: Number,
         required: false
     },
     zip: {

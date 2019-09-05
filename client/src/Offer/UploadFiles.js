@@ -32,7 +32,7 @@ class UploadFiles extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="file-upload-page">
                 <div className="upload-photos-box"> 
                     <button className="upload-button" onClick={this.showWidget}> Choose files </button>
                 </div>

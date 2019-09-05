@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,700|Fira+Sans:300,300i,400,400i,500,500i,600,700,800,900|Montserrat:300,300i,400,400i,500,500i,600,700,800,900|Playfair+Display:400,400i,700,700i,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800|Merriweather:400,700,900&display=swap");
 .nav-bar-container {
   display: flex;
   flex-flow: row;
@@ -10,7 +11,8 @@
   margin: 0;
   padding: 0;
   z-index: 50;
-  background: #3a3a3a;
+  background: #353D42;
+  border-bottom: 2px solid #2F9044;
 }
 
 .nav-header {
@@ -40,11 +42,11 @@
   position: absolute;
   height: auto;
   top: 60px;
-  background: #556660;
+  background: #353D42;
 }
 
 #top-link {
-  border-top: 1px solid #51997F;
+  border-top: 1px solid #2F9044;
 }
 
 .nav-link {
@@ -57,7 +59,7 @@
 }
 
 .nav-link:hover {
-  color: #51997F;
+  color: #2F9044;
 }
 
 .nav-link-holder {
@@ -65,7 +67,7 @@
   position: relative;
   text-align: center;
   padding: 10px;
-  border-bottom: 1px solid #51997F;
+  border-bottom: 1px solid #2F9044;
   width: 100%;
 }
 
@@ -87,10 +89,16 @@
 }
 
 #nav-bars:hover {
-  color: #51997F;
+  color: #2F9044;
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 750px) {
+  .nav-bar-container {
+    display: flex;
+    flex-flow: row;
+    height: 60px;
+  }
+
   #top-link {
     border: none;
   }
@@ -109,50 +117,16 @@
   }
 
   .navbar {
-    width: 100%;
-    margin-left: auto;
+    width: 500px;
     flex-flow: row;
+    top: 0;
+    right: 0;
     justify-content: space-evenly;
     justify-items: space-evenly;
     align-content: center;
     align-items: center;
     height: 60px;
-    border-top: 1px solid #51997F;
-  }
-}
-@media only screen and (min-width: 510px) {
-  .navbar {
-    padding-right: 5px;
-  }
-}
-@media only screen and (min-width: 530px) {
-  .navbar {
-    padding-right: 15px;
-  }
-}
-@media only screen and (min-width: 520px) {
-  .navbar {
-    padding-right: 10px;
-  }
-}
-@media only screen and (min-width: 540px) {
-  .navbar {
-    padding-right: 20px;
-  }
-}
-@media only screen and (min-width: 750px) {
-  .nav-bar-container {
-    display: flex;
-    flex-flow: row;
-    height: 60px;
-  }
-
-  .navbar {
-    width: 500px;
-    top: 0;
-    right: 0;
-    height: 55px;
-    border: none;
+    border-bottom: 1px solid #2F9044;
   }
 }
 

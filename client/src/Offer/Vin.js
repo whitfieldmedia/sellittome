@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addVin, addIndex } from '../redux/Form';
-import { getBlackVin } from '../redux/BlackValue';
+import { getVin } from '../redux/BlackValue';
 import '../assets/scss/offer.scss';
 
 class Vin extends React.Component {
@@ -32,7 +32,7 @@ class Vin extends React.Component {
 
     render() {
         return (
-            <div className="vin-container">
+            <div className="input-container">
                 <input type="text" maxLength="17"
                     value={this.state.vin} onChange={this.handleChange}
                     name="vin" placeholder="17 digit Vin Number"
@@ -43,4 +43,4 @@ class Vin extends React.Component {
     }
 }
 
-export default connect(state => state, { addVin, addIndex, getBlackVin })(Vin)
+export default connect(state => state, { addVin, addIndex, getVin })(Vin)

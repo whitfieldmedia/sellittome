@@ -1,36 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,700|Fira+Sans:300,300i,400,400i,500,500i,600,700,800,900|Montserrat:300,300i,400,400i,500,500i,600,700,800,900|Playfair+Display:400,400i,700,700i,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800|Merriweather:400,700,900&display=swap');
 
 $sans: 'Montserrat', sans-serif;
 $sans2: 'Fira Sans', sans-serif;
-$serif: 'Playfair Display', serif;
+$sans3: 'Merriweather Sans', sans-serif;
+$serif: 'Merriweather', serif;
 $serif2: 'Cormorant Garamond', serif;
 
 $gray: #C6C4C5;
 $white: #F8F8F8;
-$lightBlue: #6199C2;
 $black: #151617;
 $b: #000000;
 $w: #ffffff;
 $dark: #353D42;
-// $light: #A3BBCC;
-$blu: #d5e4f0;
-// $dGray: #454545;
-
-$g: #E8EAE3;
-$orange: #F6851F;
-$lightOrange: #FFC536;
-
-// $green: #18805B;
-// $dGreen: #0b4732;
-
-$blue: #024873;
-$blue2: #023859;
-// $light: #CDD6DF;
-
-$red: #C10525;
-$r: #C65524;
-
-$green: #51997F;
-$dGreen: #294d40;
-$light: #7F998F;
-$dGray: #556660;
+$orange: #F58C20;
+$dOrange: #A85805;
+$green: #2F9044;
+$dBlue: #003242;
+$dGray: #4a4a4a;

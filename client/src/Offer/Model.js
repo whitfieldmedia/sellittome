@@ -1,23 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addModel } from '../redux/Form';
-import { getBlackTrims } from '../redux/BlackTrims';
+import { addModel, addIndex } from '../redux/Form';
+import { getModels } from '../redux/BlackValue';
 
 class Model extends React.Component {
-    componentDidUpdate() {
-        if(this.props.form.model.length > 0) {
-            this.props.getBlackTrims(this.props.form.year, this.props.form.make, this.props.form.model)
-            this.props.handleNext()
-        }
+    componentDidMount() {
+        this.props.getModels(this.props.form.year, this.props.form.make)
     }
     handleClick = e => {
         e.preventDefault();
         this.props.addModel(e.target.value);
+        var index = this.props.form.index + 1;
+        this.props.addIndex(index);
     }
     mapModels = () => {
-        if(this.props.blackModels.drilldown.class_list.length > 0) {
+        if(this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.length > 0))) {
             return (
-                this.props.blackModels.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.map(make => make.model_list.map(model => (
+                this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.map(make => make.model_list.map(model => (
                     <option className="option" onClick={this.handleClick} key={model.name} value={model.name} name="model"> {model.name} </option>
                 )))))
             )
@@ -33,4 +32,4 @@ class Model extends React.Component {
     }
 }
 
-export default connect(state => state, { addModel, getBlackTrims })(Model)
+export default connect(state => state, { addModel, getModels, addIndex })(Model)

@@ -33,12 +33,12 @@ class Files extends React.Component {
     render() {
         console.log(this.props)
         return (
-            <div>
+            <div className="file-upload-page">
                 <div className="upload-photos-box"> 
                     <button className="upload-button" onClick={this.showWidget}> Choose files </button>
                 </div>
                     <div className="thumbnail-container">
-                        {this.state.files.map(file => (
+                        {this.props.form.files.map(file => (
                         <div className="file-thumbnail-holder" key={file} onClick={() => this.deleteFile(file)}> 
                             <img src={file} className="file-thumbnail" alt="uploaded File" /> 
                             <i className="fas fa-minus-circle delete-thumbnail"></i> 

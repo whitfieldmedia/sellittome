@@ -9,19 +9,24 @@ class Home extends React.Component {
             <div className="home-container">
                 <div className="top-container">
                     <div className="top-row">
-                    <h1 className="header"> Sell your car to <br/> <strong> Mr. Cash </strong> </h1>
+                    <h1 className="header"> Sell your Car to Mr. Cash </h1>
+                    <h1 className="header2"> FAST EASY CASH NOW! </h1>
                         <div className="main-row">
                             <div className="main-column">
-                                <h1 className="header2"> FAST <br/> EASY <br/> CASH <br/> NOW! </h1>
+                                <h2 className="header3"> We will match or beat any offer guaranteed </h2>
+                                <h2 className="header3"> Get a estimated offer in minutes </h2>
+                                <h2 className="header3"> We come to you </h2>
+                                <h2 className="header3"> What are you waiting for? Sell it to me! </h2>
+                                <Link to="/get-offer">
+                                    <button className="home-button"> Get My Offer </button>
+                                </Link>
                             </div>
                             <div className="mr-cash-holder">
                                 <img src={mrCash} className="mr-cash" alt="Mr. Cash"/>
                             </div>
                         </div>
                         <div className="top-column2">
-                            <Link to="/get-offer">
-                                <button className="home-button"> Get My Offer </button>
-                            </Link>
+
                         </div>
                     </div>
                 </div>
@@ -45,7 +50,7 @@ class Home extends React.Component {
                         <div className="how-column">
                             <h2 className="how-steps"> 3 </h2>
                             <h3 className="home-header3"> Get Paid! </h3>
-                            <p className="home-par"> When you accept the offer we can pick up the car or you can deliver it to us. Once everything checks out and we have your car you get paid! </p>
+                            <p className="home-par"> When you accept the offer we can pick up the car and you get paid! </p>
                         </div>
                     </div>
                 </div>

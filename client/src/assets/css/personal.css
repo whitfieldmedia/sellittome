@@ -1,13 +1,26 @@
 @import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,700|Fira+Sans:300,300i,400,400i,500,500i,600,700,800,900|Montserrat:300,300i,400,400i,500,500i,600,700,800,900|Playfair+Display:400,400i,700,700i,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800|Merriweather:400,700,900&display=swap");
+.form-page {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+}
+
 .personal-form-header {
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
-  color: #556660;
+  color: #4a4a4a;
   text-align: center;
   font-weight: 500;
+  padding: 10px 0;
 }
 
 .personal-form {
+  width: 100%;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -41,7 +54,7 @@
   min-width: 280px;
   height: 40px;
   font-family: "Montserrat", sans-serif;
-  font-size: 25px;
+  font-size: 18px;
   margin: 0px auto;
   border: 2px solid #C6C4C5;
   border-radius: 5px;
@@ -50,10 +63,13 @@
 }
 
 .submit-button {
-  height: 35px;
+  height: 40px;
   width: 200px;
-  background: #556660;
-  color: #51997F;
+  margin: 20px auto 50px auto;
+  background: #2F9044;
+  color: #F8F8F8;
+  border-radius: 5px;
+  font-weight: 600;
   font-size: 25px;
   font-family: "Montserrat", sans-serif;
 }

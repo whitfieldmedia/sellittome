@@ -1,16 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,700|Fira+Sans:300,300i,400,400i,500,500i,600,700,800,900|Montserrat:300,300i,400,400i,500,500i,600,700,800,900|Playfair+Display:400,400i,700,700i,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800|Merriweather:400,700,900&display=swap");
 .top-container {
   position: relative;
   height: auto;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-flow: column;
-  background: #F8F8F8;
+  background: #003242;
   padding: 10px 0 50px 0;
-}
-
-#main-top-row {
-  margin-top: 15px;
 }
 
 .top-row {
@@ -21,10 +18,6 @@
   justify-items: center;
   align-content: center;
   align-items: center;
-}
-
-.top-column1 {
-  width: 100%;
 }
 
 .top-column2 {
@@ -46,7 +39,7 @@
 
 .mr-cash {
   height: auto;
-  max-height: 80vh;
+  max-height: 70vh;
   width: auto;
   max-width: 40vw;
 }
@@ -56,40 +49,49 @@
   display: flex;
   flex-flow: row;
   justify-content: space-evenly;
-  align-content: center;
-  align-items: center;
+  align-content: flex-start;
+  align-items: flex-start;
 }
 
 .main-column {
   display: flex;
   flex-flow: column;
+  justify-content: flex-start;
+  align-content: flex-start;
   padding: 10px;
 }
 
 .header {
-  font-family: "Fira Sans", sans-serif;
+  font-family: "Merriweather", serif;
   height: auto;
   position: relative;
   margin: 10px auto;
-  font-size: 30px;
-  font-weight: 700;
-  color: #151617;
+  font-size: 35px;
+  font-weight: 600;
+  color: #F8F8F8;
   text-align: center;
 }
 .header strong {
-  color: #F6851F;
-  font-size: 45px;
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 35px;
   font-weight: 800;
 }
 
 .header2 {
-  font-size: 35px;
-  color: #151617;
-  font-family: "Fira Sans", sans-serif;
+  font-size: 30px;
+  color: #F8F8F8;
+  font-family: "Merriweather Sans", sans-serif;
   font-weight: 500;
   text-align: center;
   position: relative;
   margin: 5px auto;
+}
+
+.header3 {
+  font-size: 20px;
+  color: #F8F8F8;
+  font-family: "Montserrat", sans-serif;
+  margin: 10px 0;
 }
 
 .home-button {
@@ -98,11 +100,12 @@
   height: 50px;
   font-size: 25px;
   color: #F8F8F8;
-  background: #F6851F;
+  margin-top: 50px;
+  background: #F58C20;
   font-family: "Montserrat", sans-serif;
   font-weight: 800;
-  border: 3px solid #F6851F;
-  box-shadow: 1px 1px 3px #556660;
+  border: 3px solid #F58C20;
+  box-shadow: 1px 1px 3px #4a4a4a;
   border-radius: 5px;
 }
 
@@ -192,8 +195,8 @@
 
 .how-steps {
   font-size: 35px;
-  color: #51997F;
-  border: 3px solid #51997F;
+  color: #2F9044;
+  border: 3px solid #2F9044;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -213,6 +216,18 @@
   text-align: center;
   font-weight: 500;
   padding-bottom: 30px;
+}
+
+@media only screen and (min-width: 330px) {
+  .header {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 500px) {
+  .header {
+    width: 90%;
+  }
 }
 
 /*# sourceMappingURL=home.css.map */

@@ -160,6 +160,14 @@ export function addVehicleId(id) {
         })
     }
 }
+export function addBasePrice(price) {
+    return dispatch => {
+        dispatch({
+            type: "ADD_BASE_PRICE",
+            basePrice: price
+        })
+    }
+}
 const initialForm = {
     vin: '',
     year: '',
@@ -175,8 +183,9 @@ const initialForm = {
     files: [],
     index: 1,
     error: false,
-    lowPrice: '',
-    highPrice: '',
+    lowPrice: 0,
+    highPrice: 0,
+    basePrice: 0,
     name: '',
     email: '',
     phone: '',
@@ -290,6 +299,11 @@ export default function reducer(state = initialForm, action) {
             return {
                 ...state,
                 vehicleId: action.vehicleId
+            }
+        case "ADD_BASE_PRICE":
+            return {
+                ...state,
+                basePrice: action.basePrice
             }
         case "CLEAR_FORM":
             return initialForm

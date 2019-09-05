@@ -42,10 +42,14 @@ class ValueForm extends React.Component {
             props.addIndex(3)
         } else if(form.year.length === 4) {
             props.addIndex(2);
-        } else if (form.year.length === 0) {
-            props.addIndex(1)
         } else {
             props.addIndex(1)
+        }
+    }
+    componentDidUpdate(prevProps) {
+        var form = this.props.form;
+        if(((prevProps.form.year !== form.year) || (prevProps.form.make !== form.make) ||(prevProps.form.model !== form.model) || (prevProps.form.vehicleId !== form.vehicleId) || (prevProps.form.email !== form.email) || (prevProps.form.name !== form.name)) && this.props.form.sent) {
+            this.props.emailSent(false)
         }
     }
     handleError = () => {
@@ -70,28 +74,24 @@ class ValueForm extends React.Component {
             this.next(); 
         } else if(this.props.form.index === 1) {
             if(this.props.form.year.length === 4) {
-                this.handleEmail()
                 this.next();
             } else {
                 this.handleError();
             }
         } else if(this.props.form.index === 2) {
             if(this.props.form.make.length > 0) {
-                this.handleEmail()
                 this.next();
             } else {
                 this.handleError();
             }
         } else if(this.props.form.index === 3) {
             if(this.props.form.model.length > 0) {
-                this.handleEmail()
                 this.next()
             } else {
                 this.handleError();
             }
         } else if(this.props.form.index === 4) {
-            if(this.props.form.uvc.length > 0) {
-                this.handleEmail()
+            if(this.props.form.vehicleId.length > 0 && this.props.form.style.length > 0) {
                 this.next();
             } else {
                 this.handleError();
@@ -99,21 +99,18 @@ class ValueForm extends React.Component {
         }
         else if(this.props.form.index === 5) {
             if(this.props.form.miles.length > 0) {
-                this.handleEmail()
                 this.next();
             } else {
                 this.handleError();
             }
         } else if(this.props.form.index === 6) {
             if(this.props.form.condition.length > 0) {
-                this.handleEmail()
                 this.next();
             } else {
                 this.handleError();
             }
         } else if(this.props.form.index === 7) {
             if(this.props.form.zip.length === 5) {
-                this.handleEmail()
                 this.next();
             } else {
                 this.handleError();
@@ -121,7 +118,6 @@ class ValueForm extends React.Component {
         } else if(this.props.form.index === 8) {
             if(this.props.form.files.length > 0 || this.state.fileError) {
                 this.setState({ fileError: false })
-                this.handleEmail()
                 this.next();
             } else {
                 if(!this.state.fileError) {
@@ -137,12 +133,6 @@ class ValueForm extends React.Component {
             }
         }
     }
-
-    handleEmail = () => {
-        if(this.props.form.sent) { 
-            this.props.emailSent(false) 
-        }
-    }
     //Moves user to next input
     next = () => { 
         let index = (this.props.form.index + 1)
@@ -155,18 +145,18 @@ class ValueForm extends React.Component {
     //show next unless they are on the vin input page
     showNext = () => {
         if(this.props.form.index > 0) {
-            return ( <button onClick={this.handleNext} className="next-button"> next <i className="fas fa-arrow-right"></i>   </button> )
+            return ( <button onClick={this.handleNext} className="next-button"> next </button> )
         } else if (this.props.form.index === 0) {
-            return ( <button onClick={this.handleNext} className="next-button-long"> no vin? <i className="fas fa-arrow-right"></i> </button> )
+            return ( <button onClick={this.handleNext} className="next-button-long"> enter by make </button> )
         }
     }
 
     //show prev unless they are on the first page then give them option to enter vin
     showPrev = () => {
         if(this.props.form.index > 1) {
-            return ( <button onClick={this.handlePrev} className="prev-button"> <i className="fas fa-arrow-left"></i> back </button> )
+            return ( <button onClick={this.handlePrev} className="prev-button"> prev </button> )
         } else if (this.props.form.index === 1) {
-            return ( <button onClick={this.handlePrev} className="prev-button"> <i className="fas fa-arrow-left"></i> enter vin  </button> )
+            return ( <button onClick={this.handlePrev} className="prev-button"> enter vin  </button> )
         }
     }
 
@@ -205,7 +195,7 @@ class ValueForm extends React.Component {
         if(this.props.form.index === 0) {
             return ( <h1 className="form-header"> Enter Cars Vin </h1> )
         } else if(this.props.form.index === 1) {
-            return ( <h1 className="form-header"> Enter Cars Year </h1> )
+            return ( <h1 className="form-header"> Select A Year </h1> )
         } else if(this.props.form.index === 2) {
             return ( <h1 className="form-header"> Select A Make </h1> )
         } else if(this.props.form.index === 3) {
@@ -266,8 +256,8 @@ class ValueForm extends React.Component {
                     </div>
                     {this.props.form.error 
                     ? <div className="form-error-row" onClick={this.clearError}>
-                        {this.formError()}
                         <p className="close-error"> X </p>
+                        {this.formError()}
                     </div>
                     : null}
                     <div className="form-bottom-row">

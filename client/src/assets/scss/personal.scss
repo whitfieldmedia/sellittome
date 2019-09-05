@@ -1,14 +1,26 @@
 @import 'assets';
 
+.form-page {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
 .personal-form-header {
     font-family: $sans;
     font-size: 20px;
     color: $dGray;
     text-align: center;
     font-weight: 500;
+    padding: 10px 0;
 }
 
 .personal-form {
+    width: 100%;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -42,7 +54,7 @@
     min-width: 280px;
     height: 40px;
     font-family: $sans;
-    font-size: 25px;
+    font-size: 18px;
     margin: 0px auto;
     border: 2px solid $gray;
     border-radius: 5px;
@@ -51,10 +63,13 @@
 }
 
 .submit-button {
-    height: 35px;
+    height: 40px;
     width: 200px;
-    background: $dGray;
-    color: $green;
+    margin: 20px auto 50px auto;
+    background: $green;
+    color: $white;
+    border-radius: 5px;
+    font-weight: 600;
     font-size: 25px;
     font-family: $sans;
 }

@@ -1,18 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getBlackValue, getBlackVin } from '../redux/BlackValue';
+import { getValue , getVin } from '../redux/BlackValue';
 import { addName, addEmail, addPhone, addIndex, emailSent } from '../redux/Form';
 import '../assets/scss/personal.scss';
 
 class PersonalForm extends React.Component {
-    componentDidUpdate(prevProps) {
-        console.log(prevProps)
-        if(this.props.form.sent) {
-            if((this.prevProps.form.name !== this.props.form.name) || (this.prevProps.form.email !== this.props.form.email) ||(this.prevProps.form.phone !== this.props.form.phone)) {
-                this.props.emailSent(false)
-            }
-        }
-    }
     handleNameChange = e => {
         this.props.addName(e.target.value)
     }
@@ -24,11 +16,12 @@ class PersonalForm extends React.Component {
     }
     handleSubmit = () => {
         if(this.props.form.vin.length === 17) {
-            this.props.getBlackVin(this.props.form.vin, this.props.form.miles)
+            this.props.getVin(this.props.form.vin, this.props.form.miles)
         } else {
-            this.props.getBlackValue(this.props.form.uvc, this.props.form.miles)
+            this.props.getValue(this.props.form.uvc, this.props.form.miles)
         }
-        this.props.handleNext();
+        var index = this.props.form.index + 1;
+        this.props.addIndex(index);
     }
     render() {
         return (
@@ -72,4 +65,4 @@ class PersonalForm extends React.Component {
     }
 }
 
-export default connect(state => state, { addName, addEmail, addPhone, getBlackValue, getBlackVin, addIndex, emailSent })(PersonalForm);
+export default connect(state => state, { addName, addEmail, addPhone, getValue, getVin, addIndex, emailSent })(PersonalForm);

@@ -1,29 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addYear, addIndex } from '../redux/Form';
-import { getYears, getMakes } from '../redux/Year';
+import { addYear, addIndex, showError } from '../redux/Form';
+import { getYears } from '../redux/Year';
 
 class Year extends React.Component {
-    componentDidMount() {
-        this.props.getYears();
-    }
+    componentDidMount() { this.props.getYears(); }
+
     handleClick = e => {
-        this.props.addYear(e.target.value)
-        this.props.getMakes(e.target.value)
-        var index = this.props.form.index + 1;
-        this.props.addIndex(index);
+        if(e.target.value.length === 4) {
+            this.props.addYear(e.target.value)
+            var index = this.props.form.index + 1;
+            this.props.addIndex(index);
+        } else {
+            this.props.showError(true)
+        }
+    }
+
+    mapYears = () => {
+        if(this.props.years.result.length > 0) {
+            return ( 
+                this.props.years.result.map((year, index) => (
+                    <option className="option" onClick={this.handleClick} key={index} value={year.modelyear}> {year.modelyear} </option>
+                ))
+            )
+        }
     }
 
     render() {
         console.log(this.props)
         return (
             <div className="option-container">
-                {this.props.years.result.map(year => (
-                    <option className="option" onClick={this.handleClick} key={year.modelyear} value={year.modelyear}> {year.modelyear} </option>
-                ))}
+                {this.mapYears()}
             </div>
         )
     }
 }
 
-export default connect(state => state, { getYears, getMakes, addYear, addIndex })(Year)
+export default connect(state => state, { getYears, addYear, addIndex, showError })(Year)

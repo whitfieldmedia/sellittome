@@ -11,7 +11,8 @@
     margin: 0;
     padding: 0;
     z-index: 50;
-    background: #3a3a3a;
+    background: $dark;
+    border-bottom: 2px solid $green;
 }
 .nav-header {
     font-size: 30px;
@@ -40,7 +41,7 @@
     position: absolute;
     height: auto;
     top: 60px;
-    background: $dGray;
+    background: $dark;
 }
 #top-link {
     border-top: 1px solid $green;
@@ -86,7 +87,12 @@
     color: $green;
 }
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 750px) {
+    .nav-bar-container {
+        display: flex;
+        flex-flow: row;
+        height: 60px;
+    }
     #top-link {
         border: none;
     }
@@ -102,52 +108,15 @@
         height: auto;
     }
     .navbar {
-        width: 100%;
-        margin-left: auto;
+        width: 500px;
         flex-flow: row;
+        top: 0;
+        right: 0;
         justify-content: space-evenly;
         justify-items: space-evenly;
         align-content: center;
         align-items: center;
         height: 60px;
-        border-top: 1px solid $green;
-    }
-}
-@media only screen and (min-width: 510px) {
-    .navbar {
-        padding-right: 5px;
-    }
-}
-@media only screen and (min-width: 530px) {
-    .navbar {
-        padding-right: 15px;
-    }
-}
-
-@media only screen and (min-width: 520px) {
-    .navbar {
-        padding-right: 10px;
-    }
-}
-
-
-@media only screen and (min-width: 540px) {
-    .navbar {
-        padding-right: 20px;
-    }
-}
-
-@media only screen and (min-width: 750px) {
-    .nav-bar-container {
-        display: flex;
-        flex-flow: row;
-        height: 60px;
-    }
-    .navbar {
-        width: 500px;
-        top: 0;
-        right: 0;
-        height: 55px;
-        border: none;
+        border-bottom: 1px solid $green;
     }
 }
