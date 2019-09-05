@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addYear, addIndex, emailSent } from '../redux/Form';
-import { getBlackMakes } from '../redux/BlackCar';
 
 class Year extends React.Component {
     constructor() {
@@ -48,4 +47,4 @@ class Year extends React.Component {
     }
 }
 
-export default connect(state => state, { addYear, getBlackMakes, addIndex, emailSent })(Year)
+export default connect(state => state, { addYear, addIndex, emailSent })(Year)

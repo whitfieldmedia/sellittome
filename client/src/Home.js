@@ -15,18 +15,15 @@ class Home extends React.Component {
                             <div className="main-column">
                                 <h2 className="header3"> We will match or beat any offer guaranteed </h2>
                                 <h2 className="header3"> Get a estimated offer in minutes </h2>
-                                <h2 className="header3"> We come to you </h2>
-                                <h2 className="header3"> What are you waiting for? Sell it to me! </h2>
-                                <Link to="/get-offer">
-                                    <button className="home-button"> Get My Offer </button>
-                                </Link>
                             </div>
                             <div className="mr-cash-holder">
                                 <img src={mrCash} className="mr-cash" alt="Mr. Cash"/>
                             </div>
                         </div>
                         <div className="top-column2">
-
+                            <Link to="/get-offer">
+                                <button className="home-button"> Get My Offer </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
