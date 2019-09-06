@@ -14,12 +14,20 @@ app.use(morgan('dev'));
 app.use(cors());
 
 var transporter = nodemailer.createTransport({
-    service: "Outlook365",
+    service: "smtp.office365.com",
     host: 'smtp.office365.com',
+    server: 'dedrelay.secureserver.net',
     port: 587,
+    starttls: {
+        enable: true,
+    },
+    secureConnection: true,
     auth: {
         user: process.env.USERNAME,
         pass: process.env.PASSWORD
+    },
+    tls: {
+        ciphers: 'SSLv3'
     }
 })
 
