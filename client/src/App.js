@@ -3,7 +3,7 @@ import Home from './Home';
 import Nav from './Nav';
 import Offer from './Offer';
 import { Switch, Route } from 'react-router-dom';
-import './assets/css/app.css';
+import './assets/scss/app.scss';
 
 class App extends React.Component {
   render() {

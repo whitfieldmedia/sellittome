@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import mrCash from './assets/images/mrcash.png';
-import './assets/css/home.css';
+import './assets/scss/home.scss';
 
 class Home extends React.Component {
     render() {

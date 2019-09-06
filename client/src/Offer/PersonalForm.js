@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getValue , getVin } from '../redux/BlackValue';
-import { addName, addEmail, addPhone, addIndex, emailSent } from '../redux/Form';
-import '../assets/css/personal.css';
+import { addName, addEmail, addPhone, addIndex, emailSent, showError } from '../redux/Form';
+import '../assets/scss/personal.scss';
 
 class PersonalForm extends React.Component {
     handleNameChange = e => {
@@ -15,13 +15,12 @@ class PersonalForm extends React.Component {
         this.props.addPhone(e.target.value)
     }
     handleSubmit = () => {
-        if(this.props.form.vin.length === 17) {
-            this.props.getVin(this.props.form.vin, this.props.form.miles)
+        if(this.props.form.name.length > 1 && this.props.form.phone.length === 10 && this.props.form.email.length > 5) {
+            var index = this.props.form.index + 1;
+            return this.props.addIndex(index);
         } else {
-            this.props.getValue(this.props.form.uvc, this.props.form.miles)
+            this.props.showError(true)
         }
-        var index = this.props.form.index + 1;
-        return this.props.addIndex(index);
     }
     render() {
         return (
@@ -49,10 +48,9 @@ class PersonalForm extends React.Component {
                         </div>
                         <div className="input-holder">
                             <label className="personal-label" htmlFor="phone"> *Phone </label>
-                            <input type="number"
+                            <input type="string"
                                 name="phone"
                                 className="input"
-                                max-length="10"
                                 onChange={this.handlePhoneChange}
                                 value={this.props.form.phone}
                                 placeholder="Enter Phone" />
@@ -65,4 +63,4 @@ class PersonalForm extends React.Component {
     }
 }
 
-export default connect(state => state, { addName, addEmail, addPhone, getValue, getVin, addIndex, emailSent })(PersonalForm);
+export default connect(state => state, { addName, addEmail, addPhone, getValue, getVin, addIndex, emailSent, showError })(PersonalForm);
