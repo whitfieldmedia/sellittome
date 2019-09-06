@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { sendEmail } from '../redux/email';
 import { getValue, getVin } from '../redux/BlackValue';
 import { emailSent, addYear, addMake, addModel, addStyle, addLowPrice, addHighPrice, addUvc, addBasePrice } from '../redux/Form';
-import '../assets/scss/price.scss';
+import '../assets/css/price.css';
 
 class Price extends React.Component {
     constructor() {

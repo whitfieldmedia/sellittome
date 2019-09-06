@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addVin, addIndex } from '../redux/Form';
 import { getVin } from '../redux/BlackValue';
-import '../assets/scss/offer.scss';
 
 class Vin extends React.Component {
     constructor() {

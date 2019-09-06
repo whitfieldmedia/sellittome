@@ -12,7 +12,7 @@ import Zip from './Zip';
 import UploadFiles from './UploadFiles';
 import Price from './Price';
 import PersonalForm from './PersonalForm';
-import '../assets/scss/offer.scss'
+import '../assets/css/offer.css';
 
 class Offer extends React.Component {
     constructor() {
