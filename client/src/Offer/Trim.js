@@ -29,9 +29,9 @@ class Trim extends React.Component {
         if(this.state.loaded) {
             return (
                 this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.map(make => make.model_list.map(model => model.series_list.map(series => series.style_list.map(style => (
-                    <option className="option" onClick={() => this.handleClick(style.uvc, style.name)} key={style.uvc} value={style.uvc} name="trim">  
+                    <a href="#" className="option" onClick={() => this.handleClick(style.uvc, style.name)} key={style.uvc} value={style.uvc} name="trim">  
                         {style.name} {series.name}
-                        </option>
+                        </a>
                 )))))))
             )
         }

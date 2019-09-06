@@ -18,26 +18,23 @@ class Make extends React.Component {
             this.setState({ loaded: true })
         }
     }
-    handleClick = e => {
-        e.preventDefault();
-        this.props.addMake(e.target.value);
+    handleClick = (make) => {
+        this.props.addMake(make);
         var index = this.props.form.index + 1;
         this.props.addIndex(index)
     }
     mapMakes = () => {
-        if(this.state.loaded) {
-            return (
-                this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.map(make => (
-                    <option className="option" onClick={this.handleClick} key={make.name} value={make.name} name="make"> {make.name} </option> 
-                ))))
-            )
-        }
+        return ( this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.map(make => (
+            <a href="#" className="option" name={make.name} key={make.name} onClick={() => this.handleClick(make.name)}>{make.name} </a> 
+        ))))
+        )
     }
     render() {
-        console.log(this.props)
         return (
             <div className="option-container">
-                {this.mapMakes()}
+                {this.state.loaded 
+                ? this.mapMakes()
+                : <h2> Getting Makes </h2>   }
             </div>
         )
     }

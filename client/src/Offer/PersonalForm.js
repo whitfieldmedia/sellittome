@@ -21,7 +21,7 @@ class PersonalForm extends React.Component {
             this.props.getValue(this.props.form.uvc, this.props.form.miles)
         }
         var index = this.props.form.index + 1;
-        this.props.addIndex(index);
+        return this.props.addIndex(index);
     }
     render() {
         return (
