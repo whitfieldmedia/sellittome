@@ -16,7 +16,6 @@ app.use(cors());
 var transporter = nodemailer.createTransport({
     service: "smtp.office365.com",
     host: 'smtp.office365.com',
-    server: 'dedrelay.secureserver.net',
     port: 587,
     starttls: {
         enable: true,
