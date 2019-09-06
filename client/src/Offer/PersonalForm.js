@@ -12,10 +12,11 @@ class PersonalForm extends React.Component {
         this.props.addEmail(e.target.value)
     }
     handlePhoneChange = e => {
-        this.props.addPhone(e.target.value)
+        var number = e.target.value.replace(/\D/,'')
+        this.props.addPhone(number)
     }
     handleSubmit = () => {
-        if(this.props.form.name.length > 1 && this.props.form.phone.length === 10 && this.props.form.email.length > 5) {
+        if(this.props.form.name.length > 1 && this.props.form.phone.length >= 10 && this.props.form.email.length > 5) {
             var index = this.props.form.index + 1;
             return this.props.addIndex(index);
         } else {
@@ -48,7 +49,7 @@ class PersonalForm extends React.Component {
                         </div>
                         <div className="input-holder">
                             <label className="personal-label" htmlFor="phone"> *Phone </label>
-                            <input type="string"
+                            <input type="text"
                                 name="phone"
                                 className="input"
                                 onChange={this.handlePhoneChange}

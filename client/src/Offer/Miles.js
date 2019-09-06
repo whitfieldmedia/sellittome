@@ -4,7 +4,8 @@ import { addMiles } from '../redux/Form';
 
 class Miles extends React.Component {
     handleChange = (e) => {
-        this.props.addMiles(e.target.value)
+        var number = e.target.value.replace(/\D/,'')
+        this.props.addMiles(number)
     }
     render() {
         return (
