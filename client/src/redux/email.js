@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5800/send';
-
 function setEmail(email) {
     return {
         type: "SET_EMAIL",
@@ -9,19 +7,9 @@ function setEmail(email) {
     }
 }
 
-export function getEmails() {
-    return dispatch => {
-        axios.get(url).then(res => {
-            dispatch(setEmail(res));
-        }).catch(err => {
-            console.log(err);
-        })
-    }
-}
-
 export function sendEmail(email) {
     return dispatch => {
-        axios.post(url, email).then(res => {
+        axios.post('/send', email).then(res => {
             console.log(res.data)
             dispatch(setEmail(res.data))
         }).catch(err => {
