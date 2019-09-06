@@ -5,18 +5,14 @@ const nodemailer = require('nodemailer');
 require("dotenv").config();
 
 let transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: 'Godaddy',
+    host: 'smtpout.secureserver.net',
+    secure: true,
+    port: 465,
     auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS
+        user: process.env.USERNAME,
+        pass: process.env.PASSWORD
     }
-})
-
-emailRouter.get('/', (req, res) => {
-    Email.find((err, email) => {
-        if (err) return res.status(500).send(err);
-        return res.status(200).send(email);
-    })
 })
 
 emailRouter.post('/', (req, res) => {
@@ -26,8 +22,8 @@ emailRouter.post('/', (req, res) => {
         )
     })
     const message = {
-        from: myEmail,
-        to: 'backmanspencer99@gmail.com',
+        from: 'mrcash@sellittome.com',
+        to: 'mrcash@sellittome.com',
         subject: 'MR. CASH $$$$$',
         html: `<h2> Vehicle: </h2> <p> ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.series} ${req.body.style} </p> 
         <p> VIN: ${req.body.vin} </p>
@@ -45,9 +41,9 @@ emailRouter.post('/', (req, res) => {
         <div> ${newFiles} </div> `,
     };
     const message2 = {
-        from: myEmail,
+        from: 'mrcash@sellittome.com',
         to: req.body.from,
-        subject: req.body.vehicle,
+        subject: "Sell It To Me",
         html: ` <h2> Thank you ${req.body.name} for using sellittome.com. </h2>
         <p> We are happy to be doing business with you. Your estimated vehicle value is $${req.body.lowPrice} - $${req.body.highPrice}. We will get back with you shortly with the actual offer for your ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.series} ${req.body.style}. </p>`
     }
@@ -65,23 +61,6 @@ emailRouter.post('/', (req, res) => {
         return res.status(201).send(newEmail);
     })
 
-})
-
-emailRouter.get('/:id', (req, res) => {
-    Email.findOne({_id: req.params.id}, (err, email) => {
-        if (err) return res.status(500).send(err)
-        if (!email) return res.status(404).send("No Email Found.")
-        return res.status(201).send(email)
-    })
-})
-
-emailRouter.delete('/:id', (req, res) => {
-    Email.findOneAndRemove(
-        {_id: req.params.id}, (err, deletedEmail) => {
-            if (err) return res.status(500).send(err);
-            return res.send({message: 'Email has been successfully deleted', deletedEmail})
-        }
-    )
 })
 
 module.exports = emailRouter;

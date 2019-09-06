@@ -58,7 +58,9 @@ class Price extends React.Component {
                     } else {
                         price = parseInt(res.adjusted_tradein_rough, 10)
                     }
-                    props.addBasePrice(price);
+                    if(this.props.form.basePrice !== price) {
+                        props.addBasePrice(price);
+                    }
                     return this.getRange();
                 })
             } else {
@@ -71,7 +73,10 @@ class Price extends React.Component {
                     } else {
                         price = parseInt(res.adjusted_tradein_rough, 10)
                     }
-                    this.props.addBasePrice(price);
+                    console.log(price)
+                    if(this.props.form.basePrice !== price) {
+                        this.props.addBasePrice(price);
+                    }
                     return this.getRange()
                 })
             }
@@ -79,7 +84,8 @@ class Price extends React.Component {
     }
 
     getRange = () => {
-        if( ((this.props.form.lowPrice === 0 || this.props.form.highPrice === 0) && this.props.form.basePrice > 0)) {
+        console.log("GET RANGE")
+        if( ((this.props.form.lowPrice === 0 || this.props.form.highPrice === 0) && this.props.form.basePrice !== 0)) {
             let fileLength = this.props.form.files.length;
             var price = this.props.form.basePrice;
             var low = price;
@@ -92,8 +98,11 @@ class Price extends React.Component {
                 high = (high * .8)
             }
             if((low - 800) < 0 && !this.state.noOffer) {
+                console.log('noOffer')
                 this.setState({ noOffer: true })
             } else {
+                console.log(high)
+                console.log(low)
                 this.props.addHighPrice(high);
                 this.props.addLowPrice(low);
             }
@@ -101,6 +110,7 @@ class Price extends React.Component {
     }
 
     sendEmail = () => {
+        console.log("SEND EMAIL")
         let form = this.props.form
         if(!form.sent) {
             if(this.state.noOffer) {
