@@ -1,61 +1,52 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import mrCash from './assets/images/mrcash.png';
-import './assets/css/home.css';
+import mrCash from './assets/images/mr-cash-flying.png';
+import header from './assets/images/header-bubble3.svg';
+import button from './assets/images/get-offer-button.svg';
+import './assets/scss/home.scss';
 
 class Home extends React.Component {
+    constructor() {
+        super()
+        this.state = { isLoaded: false, error: false }
+    }
     render() {
         return (
             <div className="home-container">
                 <div className="top-container">
-                    <div className="top-row">
-                    <h1 className="header"> Sell your Car to Mr. Cash </h1>
-                    <h1 className="header2"> FAST EASY CASH NOW! </h1>
-                        <div className="main-row">
-                            <div className="main-column">
-                                <h2 className="header3"> We will match or beat any offer guaranteed </h2>
-                                <h2 className="header3"> Get a estimated offer in minutes </h2>
-                            </div>
-                            <div className="mr-cash-holder">
-                                <img src={mrCash} className="mr-cash" alt="Mr. Cash"/>
-                            </div>
-                        </div>
-                        <div className="top-column2">
-                            <Link to="/get-offer">
-                                <button className="home-button"> Get My Offer </button>
-                            </Link>
-                        </div>
-                    </div>
+                    <img src={header} onLoad={this.handleImageLoad} onError={this.handleImageError} className="header-bubble" alt="Sell your car to Mr. Cash Fast, Easy, and hassle-free"/>
+                    <img src={mrCash} className="mr-cash" alt="Mr. Cash"/>
+                    <Link to="/get-offer">
+                        <img src={button} className="cta-button" alt="Get my offer"/>
+                    </Link>
                 </div>
                 <div className="how-container">
-                    <h2 className="home-header2"> How it works. </h2>
+                    <div className="how-header-container">
+                        <h2 className="home-header2"> How it works. </h2>
+                    </div>
                     <div className="how-row">
                         <div className="how-column">
-                            <h2 className="how-steps"> 1 </h2>
-                            <h3 className="home-header3"> Enter information about your car </h3>
-                            <p className="home-par"> Give us the vin or year, make, model, and trim. Let us know the mileage and condition the cars in. Upload photos for a better offer. </p>
+                            <div id="step1">
+                                <h2 className="how-steps"> 1. Tell us about your car. </h2>
+                            </div>
+                            <p className="home-par"> Enter your vin or enter your car by make & answer a few questions about your car. </p>
                         </div>
                     </div>
                     <div className="how-row">
                         <div className="how-column">
-                            <h2 className="how-steps"> 2 </h2>
-                            <h3 className="home-header3"> Get an instant offer </h3>
-                            <p className="home-par"> We'll make you a estimated offer for your car right away! Obligation and hassle free! Within 24hrs we will send you an official offer for your car. </p>
+                            <h2 className="how-steps"> 2. Get an estimated offer in minutes. </h2>
+                            <p className="home-par"> We'll give you a estimated offer for your car right away! Obligation and hassle free! Within 24hrs we will send you an official offer for your car. </p>
                         </div>
                     </div>
                     <div className="how-row">
                         <div className="how-column">
-                            <h2 className="how-steps"> 3 </h2>
-                            <h3 className="home-header3"> Get Paid! </h3>
-                            <p className="home-par"> When you accept the offer we can pick up the car and you get paid! </p>
+                            <h2 className="how-steps"> 3. Get paid! </h2>
+                            <p className="home-par"> 
+                                When you accept the offer we come pick up the car and inspect it, if everything checks out you get paid instantly!
+                            </p>
                         </div>
                     </div>
                 </div>
-                {/* <div className="offer-container">
-                    <Link to="/get-offer">
-                        <h2 className="offer-header"> Get An Instant Offer! </h2>
-                    </Link>
-                </div> */}
             </div>
         )
     }

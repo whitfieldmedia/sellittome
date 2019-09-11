@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,700|Fira+Sans:300,300i,400,400i,500,500i,600,700,800,900|Montserrat:300,300i,400,400i,500,500i,600,700,800,900|Playfair+Display:400,400i,700,700i,900&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800|Merriweather:400,700,900&display=swap");
+@import url("https://use.typekit.net/sdx4hhx.css");
 .offer-page {
   margin: 0;
   padding: 0;
@@ -23,7 +24,7 @@
 }
 
 .top-form-container {
-  border-bottom: 3px solid #C6C4C5;
+  border-bottom: 3px solid #e8e8e8;
   position: sticky;
   top: 0;
   width: 100%;
@@ -71,7 +72,7 @@
   display: flex;
   flex-flow: column;
   width: 100%;
-  border-top: 1px solid #C6C4C5;
+  border-top: 1px solid #e8e8e8;
 }
 
 .option {
@@ -79,7 +80,7 @@
   font-family: "Montserrat", sans-serif;
   color: #4a4a4a;
   padding: 8px 0px 8px 15px;
-  border-bottom: 1px solid #C6C4C5;
+  border-bottom: 1px solid #e8e8e8;
   width: 100%;
   text-decoration: none;
 }
@@ -91,7 +92,7 @@
   font-family: "Montserrat", sans-serif;
   font-size: 25px;
   margin: 10px auto 0 auto;
-  border: 2px solid #C6C4C5;
+  border: 2px solid #e8e8e8;
   border-radius: 5px;
   box-sizing: border-box;
   padding-left: 10px;
@@ -151,7 +152,7 @@
   justify-items: space-between;
   align-content: center;
   align-items: center;
-  border-top: 1px solid #C6C4C5;
+  border-top: 1px solid #e8e8e8;
 }
 
 .form-error-row {
@@ -260,7 +261,7 @@
   font-size: 25px;
   color: #151617;
   box-sizing: border-box;
-  border: 2px solid #C6C4C5;
+  border: 2px solid #e8e8e8;
   border-radius: 5px;
 }
 
@@ -334,7 +335,7 @@
   width: 100%;
   min-width: 280px;
   height: 50px;
-  border: 1px solid #C6C4C5;
+  border: 1px solid #e8e8e8;
   background: #4a4a4a;
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
@@ -369,7 +370,7 @@
     margin: auto;
     border-radius: 15px;
     padding: 0;
-    border: 2px solid #C6C4C5;
+    border: 2px solid #e8e8e8;
   }
 
   .form {

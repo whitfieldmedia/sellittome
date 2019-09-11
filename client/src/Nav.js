@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './assets/css/nav.css';
+import './assets/scss/nav.scss';
 
 class Nav extends React.Component {
     constructor() {
@@ -18,27 +18,21 @@ class Nav extends React.Component {
         this.setState({ isOpen: false })
     }
     render() {
-        console.log(this.state)
         return (
             <div className="nav-bar-container">
-                <Link to="/">
-                    <h1 className="nav-header"> SELL IT TO ME </h1>
-                </Link>
+                <Link to="/" className="nav-header"> SELL IT TO ME </Link>
                 <div className="nav-bars-holder" onClick={this.handleClick}>
                     <i className="fas fa-bars" id="nav-bars"></i>
                 </div>
                 <ul className="navbar">
-                    <li onClick={this.closeNav} id="top-link" className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
-                        <Link className="nav-link" to="/"> Home </Link>
+                    <li onClick={this.closeNav} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
+                        <Link to="/" className="nav-link"> Home </Link>
                     </li>
                     <li onClick={this.closeNav} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
                         <Link className="nav-link" to="/get-offer"> Get Offer </Link>
                     </li>
                     <li onClick={this.closeNav} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
-                        <Link className="nav-link" to="/enter-vin"> How it works </Link>
-                    </li>
-                    <li onClick={this.closeNav} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
-                        <Link className="nav-link" to="/contact"> Contact Us </Link>
+                        <Link className="nav-link" to="/contact"> Contact </Link>
                     </li>
                 </ul>
             </div>

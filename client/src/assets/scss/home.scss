@@ -3,77 +3,105 @@
 .top-container {
     position: relative;
     height: auto;
+    min-height: 70vh;
+    max-height: 90vh;
     width: 100vw;
-    display: flex;
-    flex-flow: column;
-    background: $dBlue;
-    padding: 10px 0 50px 0;
-}
-.top-row {
-    display: flex;
-    flex-flow: column;
-    width: 100%;
-    justify-content: center;
-    justify-items: center;
-    align-content: center;
-    align-items: center;
-}
-.top-column2 {
-    width: 100vw;
-    display: flex;
-    flex-flow: row-reverse;
-    justify-content: center;
-    justify-items: center;
-    align-content: center;
-    align-items: center;
-}
-
-.mr-cash-holder {
-    position: relative;
-    height: auto;
-    width: auto;
-    right: 0;
-}
-.mr-cash {
-    height: auto;
-    max-height: 60vh;
-    width: auto;
-    max-width: 30vw;
-}
-
-.main-row {
-    width: 100vw;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-evenly;
-    align-content: flex-start;
-    align-items: flex-start;
-}
-.main-column {
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
-    align-content: flex-start;
-    padding: 10px;
+    align-content: center;
+    align-items: center;
+    background: $dBlue;
+    padding: 20px 0 0 0;
+    perspective: 800px;
+}
+.top-row {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0 auto;
+    height: auto;
+    justify-items: flex-end;
+    justify-content: center;
+    position: relative;
+    padding-top: 0px;
+}
+
+.top-column {
+    display: flex;
+    flex-flow: column;
+    width: auto;
+    height: auto;
+    position: relative;
+    justify-content: flex-start;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.comic-bubble {
+    width: 60vw;
+    position: relative;
+    left: 40px;
+    margin-top: 5px;
+}
+
+.comic-bubble2 {
+    width: 50vw;
+    position: relative;
+    margin: auto;
+}
+
+.cta-button {
+    width: 90%;
+    padding-bottom: 10px;
+    height: auto;
+    display: block;
+    position: relative;
+    margin: auto;
+}
+
+.mr-cash {
+    height: auto;
+    max-height: 30vh;
+    width: auto;
+    display: block;
+    max-width: 80vw;
+    position: relative;
+    margin: auto;
+    animation-name: fly;
+    animation-delay: 0;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    -webkit-animation-name: fly;
+    -webkit-animation-delay: 0;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-out;
+}
+.header-bubble {
+    margin: 0 auto -50px auto;
+    padding: 0;
+    width: 100%;
+    z-index: 1;
+    max-width: 500px;
 }
 
 .header {
-    font-family: $serif;
+    font-family: $classic;
+    font-style: italic;
     height: auto;
     position: relative;
     margin: 10px auto;
-    font-size: 35px;
+    font-size: calc(25px + 15 * ((100vw - 320px) / 680));
     font-weight: 600;
     color: $white;
     text-align: center;
-    strong {
-        font-family: $sans3;
-        font-size: 35px;
-        font-weight: 800;
-    }
 }
 .header2 {
-    font-size: 30px;
+    font-size: calc(18px + 15 * ((100vw - 320px) / 680));
     color: $white;
     font-family: $sans3;
     font-weight: 500;
@@ -81,11 +109,21 @@
     position: relative;
     margin: 5px auto;
 }
-.header3 {
-    font-size: 20px;
-    color: $white;
+.list-header {
+    font-size: calc(22px + 10 * ((100vw - 320px) / 680));
+    color: $black;
+    font-family: $sans3;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    margin: 5px auto;
+}
+.top-list {
     font-family: $sans;
-    margin: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: $black;
+    padding: 5px;
 }
 .home-button {
     width: 250px;
@@ -93,7 +131,7 @@
     height: 50px;
     font-size: 25px;
     color: $white;
-    margin-top: 50px;
+    margin: 50px auto 10px auto;
     background: $orange;
     font-family: $sans;
     font-weight: 800;
@@ -148,9 +186,24 @@
     padding-bottom: 50px;
 }
 .home-header2 {
-    font-family: $sans;
-    font-size: 40px;
+    width: 100%;
+    font-family: $cc;
+    font-size: 30px;
     color: $black;
+    text-align: center;
+    height: auto;
+    line-height: auto;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+.how-header-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 20px 0;
+    margin: 0;
+    border-bottom: 3px solid $black;
 }
 
 .home-header3 {
@@ -163,30 +216,47 @@
     font-family: $sans;
     font-size: 22px;
     color: $black;
-
+    position: relative;
+    margin: auto;
+    height: auto;
+    width: 90%;
+    padding-bottom: 20px;
+}
+#how-par {
+    margin-top: -50px;
 }
 .how-row {
     display: flex;
     flex-flow: row;
     justify-content: center;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
+    border-bottom: 3px solid $black;
 }
 
 .how-column {
-    width: 50%;
+    width: 100%;
     min-width: 300px;
-    margin-bottom: 30px;
+    position: relative;
+    padding: 0px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
 }
+
 .how-steps {
-    font-size: 35px;
-    color: $green;
-    border: 3px solid $green;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    font-size: 30px;
+    color: $orange;
+    font-family: $classic;
+    width: auto;
+    height: auto;
     text-align: center;
     margin: 0 auto;
+    position: relative;
+    padding: 10px 0;
 }
 
 .offer-container {
@@ -203,15 +273,11 @@
     padding-bottom: 30px;
 }
 
-@media only screen and (min-width: 330px) {
-    .header {
-        width: 300px;
-        margin: 0 auto;
+@keyframes fly {
+    0% {
+        transform: scale(.1);
     }
-}
-
-@media only screen and (min-width: 500px) {
-    .header {
-        width: 90%;
+    100% {
+        transform: scale(1);
     }
 }
