@@ -145,7 +145,7 @@
   width: 100%;
   position: fixed;
   bottom: 0;
-  background: #353D42;
+  background: #4b4b4b;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
@@ -160,7 +160,7 @@
   height: 40px;
   position: fixed;
   bottom: 50px;
-  background: #353D42;
+  background: #4b4b4b;
   display: flex;
   justify-content: space-between;
   justify-items: space-between;

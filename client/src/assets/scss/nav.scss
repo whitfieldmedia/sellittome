@@ -4,10 +4,6 @@
     display: flex;
     flex-flow: row;
     position: fixed;
-    justify-content: space-between;
-    justify-items: space-between;
-    align-content: space-between;
-    align-items: space-between;
     top: 0;
     left: 0;
     width: 100vw;
@@ -17,6 +13,7 @@
     padding: 0;
     z-index: 50;
     background: $dark;
+    box-shadow: 2px 5px 5px 0 rgba(0,0,0,.12);
 }
 .nav-header {
     font-size: 25px;
@@ -26,7 +23,7 @@
     text-decoration: none;
     color: $white;
     font-family: $comic;
-    margin: auto;
+    margin: auto 0 auto 15px;
 }
 .nav-link {
     color: $white;
@@ -38,7 +35,7 @@
 }
 
 .nav-link:hover {
-    color: $orange;
+    color: $green;
 }
 
 .navbar {
@@ -83,7 +80,7 @@
     color: $white;
 }
 #nav-bars:hover {
-    color: $orange;
+    color: $green;
 }
 
 @media only screen and (min-width: 750px) {
@@ -116,6 +113,5 @@
         align-content: center;
         align-items: center;
         height: 60px;
-        border-bottom: 1px solid $orange;
     }
 }

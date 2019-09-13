@@ -24,9 +24,11 @@ class Offer extends React.Component {
     componentDidMount() {
         let props = this.props;
         let form = props.form;
-        if(form.name.length > 0 && form.email.length > 0 && form.phone.length === 10) {
+        if(form.index === 0) {
+            props.addIndex(0)
+        } else if(form.name.length > 0 && form.email.length > 0 && form.phone.length === 10) {
             props.addIndex(10)
-        } else if(form.files.length > 0 || form.vin.length === 17) {
+        } else if(form.files.length > 0) {
             props.addIndex(9)
         } else if (form.zip.length === 5) {
             props.addIndex(8)
@@ -34,7 +36,7 @@ class Offer extends React.Component {
             props.addIndex(7)
         } else if (form.miles.length > 0) {
             props.addIndex(6)
-        } else if (form.uvc.length > 0) {
+        } else if (form.uvc.length > 0 || form.vin.length === 17) {
             props.addIndex(5)
         } else if (form.model.length > 0) {
             props.addIndex(4)
@@ -43,8 +45,6 @@ class Offer extends React.Component {
         } else if(form.year.length === 4) {
             props.addIndex(2);
         } else if (form.year.length === 0) {
-            props.addIndex(1)
-        } else {
             props.addIndex(1)
         }
     }
