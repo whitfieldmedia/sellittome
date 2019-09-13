@@ -11,7 +11,7 @@ import Vin from './Offer/VinHome';
 import bigHeader from './assets/images/headerBig.svg';
 import bigBubble from './assets/images/big-bubble.svg';
 import headerMid from './assets/images/headerMid.svg';
-import './assets/scss/home.scss';
+import './assets/css/home.css';
 
 class Home extends React.Component {
    constructor() {
