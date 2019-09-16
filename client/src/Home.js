@@ -2,15 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import mrCash from './assets/images/mr-cash-flying.png';
 import mrCashTall from './assets/images/mrcashtall2.png';
-import header from './assets/images/header-bubble.svg';
-import button from './assets/images/get-offer-button.svg';
+import header from './assets/images/header-bubble.png';
+import button from './assets/images/offer-button.svg';
 import car from './assets/images/automobile.svg';
 import offer from './assets/images/offer.svg';
 import money from './assets/images/money-bag.svg';
 import Vin from './Offer/VinHome';
-import bigHeader from './assets/images/headerBig.svg';
-import bigBubble from './assets/images/big-bubble.svg';
-import headerMid from './assets/images/headerMid.svg';
+import bigHeader from './assets/images/headerBig.png';
+import bigBubble from './assets/images/big-bubble.png';
+import headerMid from './assets/images/headerMid.png';
 import './assets/css/home.css';
 
 class Home extends React.Component {
