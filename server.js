@@ -14,19 +14,12 @@ app.use(morgan('dev'));
 app.use(cors());
 
 var transporter = nodemailer.createTransport({
-    service: "smtp.office365.com",
     host: 'smtp.office365.com',
-    port: 587,
-    starttls: {
-        enable: true,
-    },
-    secureConnection: true,
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.USERNAME,
         pass: process.env.PASSWORD
-    },
-    tls: {
-        ciphers: 'SSLv3'
     }
 })
 
@@ -56,7 +49,7 @@ app.use('/send', (req, res) => {
         <div> ${newFiles} </div> `,
     };
     var message2 = {
-        from: 'mrcash@sellittome.com',
+        from: process.env.USERNAME,
         to: req.body.from,
         subject: "Sell It To Me",
         html: ` <h2> Thank you ${req.body.name} for using sellittome.com. </h2>
@@ -71,7 +64,6 @@ app.use('/send', (req, res) => {
         console.log('EMAIL2 SENT.\n')
     })
 })
-
 
 app.use(express.static(path.join(__dirname, "client", "build")));
 

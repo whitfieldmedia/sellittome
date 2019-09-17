@@ -87,7 +87,7 @@ class Home extends React.Component {
                         <img src={money} className="money" alt="Get Paid!"/>
                         <h3 className="how-steps"> Get paid! </h3>
                         <p className="home-par">
-                           We come to you to pick up the vehicle and if the inspection provided by us checks out you get paid on the spot!
+                           We can come to your to pick up the vehicle or you can go to one of our vehicle drop-off locations. We take possession of the vehicle and you take possession of cash!
                         </p>
                      </div>
                   </div>
@@ -95,9 +95,7 @@ class Home extends React.Component {
                <div className="about-container">
                   <h3 className="home-header3"> Disclaimers </h3>
                   <p className="disclaimer">
-                     All offers are subject to an in person vehicle inspection provided by us. 
-                     We need a signature from whoever has the vehicle title in their name or is the car is leased or has a loan we need the provider of the leaser or bank. 
-                     If you owe more then we offer we will still buy your car you just need to pay difference on your loan or lease. 
+                     All offers are subject to an in person vehicle inspection. Clear title must be provided at time of payment. If vehicle has a lean, lean must be satisfied upon acception of vehicle purchase. Owner is responsible for any remaining balance on the vehicle above the offer.
                   </p>
                </div>
             </div>

@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,700|Fira+Sans:300,300i,400,400i,500,500i,600,700,800,900|Montserrat:300,300i,400,400i,500,500i,600,700,800,900|Playfair+Display:400,400i,700,700i,900&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800|Merriweather:400,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Manjari:400,700|Montserrat:300,400,500,600|Poppins:300,400,500,600&display=swap");
 @import url("https://use.typekit.net/sdx4hhx.css");
 .pricing-page {
   display: flex;
@@ -19,7 +18,7 @@
 }
 
 .price-range {
-  font-family: "Fira Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 30px;
   color: #4b4b4b;
   font-weight: 500;

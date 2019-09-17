@@ -1,9 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,700|Fira+Sans:300,300i,400,400i,500,500i,600,700,800,900|Montserrat:300,300i,400,400i,500,500i,600,700,800,900|Playfair+Display:400,400i,700,700i,900&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,800|Merriweather:400,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Manjari:400,700|Montserrat:300,400,500,600|Poppins:300,400,500,600&display=swap");
 @import url("https://use.typekit.net/sdx4hhx.css");
 .offer-page {
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: calc(100vh - 60px);
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .form-container {
@@ -41,7 +44,7 @@
 }
 
 .form-header {
-  font-family: "Fira Sans", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 25px;
   color: #4a4a4a;
   text-align: left;
@@ -53,6 +56,9 @@
 
 .form {
   width: 100%;
+  height: calc(100% - 100px);
+  overflow-x: hidden;
+  overflow-y: scroll;
   position: relative;
   margin: auto;
   display: flex;
@@ -63,11 +69,10 @@
   align-items: flex-start;
   padding-top: 0;
   margin-top: 0;
-  height: calc(100% - 160px);
 }
 
 .option-container {
-  margin: 0px 0;
+  margin: 0;
   padding: 0;
   display: flex;
   flex-flow: column;
