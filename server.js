@@ -14,7 +14,8 @@ app.use(morgan('dev'));
 app.use(cors());
 
 var transporter = nodemailer.createTransport({
-    host: 'smtp.office365.com',
+    service: 'Godaddy',
+    host: 'smtpout.secureserver.net',
     port: 465,
     secure: true,
     auth: {
