@@ -5,19 +5,19 @@ const port = process.env.PORT || 5800;
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
-const cors = require('cors');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('dev'));
-app.use(cors());
 
 var transporter = nodemailer.createTransport({
-    service: 'Godaddy',
-    host: 'smtpout.secureserver.net',
-    port: 465,
-    secure: true,
+    server: 'smtp.office365.com',
+    host: 'smtp.office365.com',
+    port: 587,
+    requireTLS: true,
     auth: {
         user: process.env.USERNAME,
         pass: process.env.PASSWORD
