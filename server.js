@@ -21,6 +21,9 @@ var transporter = nodemailer.createTransport({
     auth: {
         user: process.env.USERNAME,
         pass: process.env.PASSWORD
+    },
+    tls: {
+        rejectUnauthorized: false
     }
 })
 
@@ -61,12 +64,12 @@ app.use('/send', (req, res) => {
             let send1 = await transporter.sendMail(message, function(err) {
                 if(err) { console.log('Unable to send message 1 ' + err); return false }
                 console.log('EMAIL SENT.\n')
-                return true;
+                return res.status(201);
             })
             let send2 = await transporter.sendMail(message2, function(err) {
                 if(err) { console.log('UNABLE TO SEND MESSAGE 2 ' + err); return false }
                 console.log('EMAIL2 SENT.\n')
-                return true;
+                return res.status(201);
             })
             console.log("IT WORKED!!!")
         } catch (error) {
