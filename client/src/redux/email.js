@@ -3,10 +3,7 @@ import axios from 'axios';
 export function sendEmail(email) {
     return dispatch => {
         axios.post('/send', email).then(res => {
-            dispatch({
-                type: "SEND_EMAIL",
-                email: res.data
-            })
+            dispatch({ type: "SEND_EMAIL", email: res.data })
         }).catch(err => {
             console.log(err)
         })

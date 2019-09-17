@@ -56,14 +56,24 @@ app.use('/send', (req, res) => {
         html: ` <h2> Thank you ${req.body.name} for using sellittome.com. </h2>
         <p> We are happy to be doing business with you. Your estimated vehicle value is $${req.body.lowPrice} - $${req.body.highPrice}. We will get back with you shortly with the actual offer for your ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.style}. </p>`
     }
-    transporter.sendMail(message, function(err) {
-        if(err) { console.log('Unable to send message 1 ' + err)}
-        console.log('EMAIL SENT.\n')
-    })
-    transporter.sendMail(message2, function(err) {
-        if(err) { console.log('Unable to send message 2 ' + err)}
-        console.log('EMAIL2 SENT.\n')
-    })
+    async function send() {
+        try {
+            let send1 = await transporter.sendMail(message, function(err) {
+                if(err) { console.log('Unable to send message 1 ' + err); return false }
+                console.log('EMAIL SENT.\n')
+                return true;
+            })
+            let send2 = await transporter.sendMail(message2, function(err) {
+                if(err) { console.log('UNABLE TO SEND MESSAGE 2 ' + err); return false }
+                console.log('EMAIL2 SENT.\n')
+                return true;
+            })
+            console.log("IT WORKED!!!")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    send();
 })
 
 app.use(express.static(path.join(__dirname, "client", "build")));

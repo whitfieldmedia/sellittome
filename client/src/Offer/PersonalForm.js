@@ -5,6 +5,11 @@ import { addName, addEmail, addPhone, addIndex, emailSent, showError } from '../
 import '../assets/css/personal.css';
 
 class PersonalForm extends React.Component {
+    componentDidUpdate(prevProps) {
+        if(this.props.form.sent && ((this.props.form.name !== prevProps.form.name) || (this.props.form.email !== prevProps.form.email) || (this.props.form.phone !== prevProps.form.phone))) {
+            this.props.emailSent(false);
+        }
+    }
     handleNameChange = e => {
         this.props.addName(e.target.value)
     }
