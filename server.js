@@ -14,9 +14,11 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('dev'));
 
 app.use('/send', (req, res) => {
+    "use strict";
     const transporter = nodemailer.createTransport({
         host: 'smtp.office365.com',
-        port: 25,
+        port: 587,
+        sendMail: true,
         auth: {
             user: process.env.USERNAME,
             pass: process.env.PASSWORD
@@ -43,7 +45,7 @@ app.use('/send', (req, res) => {
         )
     })
     const message = {
-        from: process.env.USERNAME,
+        from: 'Johnny Cash <mrcash@sellittome.com>',
         to: process.env.USERNAME,
         subject: 'Sell it to me',
         html: `<h2> Vehicle: </h2> <p> ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.style} </p> 
@@ -62,7 +64,7 @@ app.use('/send', (req, res) => {
         <div> ${newFiles} </div> `,
     };
     const message2 = {
-        from: process.env.USERNAME,
+        from: 'Johnny Cash <mrcash@sellittome.com',
         to: req.body.from,
         subject: "Thank you for using Sellittome.com",
         html: ` <h2> Thank you ${req.body.name} for using sellittome.com. </h2>
@@ -73,7 +75,7 @@ app.use('/send', (req, res) => {
             console.log('Unable to send message 1 ' + error); 
             res.status(400).send({success: false})
         } else {
-            console.log('EMAIL SENT.\n' + info.message)
+            console.log('EMAIL SENT.\n' + info.response)
             res.status(200).send({success: true})
         }
     })
@@ -82,7 +84,7 @@ app.use('/send', (req, res) => {
             console.log('UNABLE TO SEND MESSAGE 2 ' + error); 
             res.status(200).send({success: true})
         } else {
-            console.log('EMAIL2 SENT.\n' + info.message)
+            console.log('EMAIL2 SENT.\n' + info.response)
             res.status(200).send({success: true})
         }
     })
