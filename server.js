@@ -13,27 +13,36 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('dev'));
 
-var transporter = nodemailer.createTransport({
-    server: 'smtp.office365.com',
-    host: 'smtp.office365.com',
-    port: 587,
-    requireTLS: true,
-    auth: {
-        user: process.env.USERNAME,
-        pass: process.env.PASSWORD
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-})
-
 app.use('/send', (req, res) => {
+    const transporter = nodemailer.createTransport({
+        host: 'smtp.office365.com',
+        port: 25,
+        auth: {
+            user: process.env.USERNAME,
+            pass: process.env.PASSWORD
+        },
+        dkim: {
+            keys: [
+                {
+                    domainName: 'sellittome.com',
+                    keySelector: 'selector1._domainkey',
+                    privateKey: 'selector1-sellittome-com._domainkey.netorg5537947.onmicrosoft.com'
+
+                }, {
+                    domainName: 'sellittome.com',
+                    keySelector: 'selector2._domainkey',
+                    privateKey: 'selector2-sellittome-com._domainkey.netorg5537947.onmicrosoft.com'
+                }
+            ],
+            cacheDir: false
+        }
+    })
     var newFiles = req.body.files.map(file => {
         return (
             `<img src=${file} alt=${file} />`
         )
     })
-    var message = {
+    const message = {
         from: process.env.USERNAME,
         to: process.env.USERNAME,
         subject: 'Sell it to me',
@@ -52,31 +61,32 @@ app.use('/send', (req, res) => {
         <h2> Zip Code: </h2> <p> ${req.body.zip} </p>
         <div> ${newFiles} </div> `,
     };
-    var message2 = {
+    const message2 = {
         from: process.env.USERNAME,
         to: req.body.from,
-        subject: "Sell It To Me",
+        subject: "Thank you for using Sellittome.com",
         html: ` <h2> Thank you ${req.body.name} for using sellittome.com. </h2>
         <p> We are happy to be doing business with you. Your estimated vehicle value is $${req.body.lowPrice} - $${req.body.highPrice}. We will get back with you shortly with the actual offer for your ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.style}. </p>`
     }
-    async function send() {
-        try {
-            let send1 = await transporter.sendMail(message, function(err) {
-                if(err) { console.log('Unable to send message 1 ' + err); return false }
-                console.log('EMAIL SENT.\n')
-                return res.status(201);
-            })
-            let send2 = await transporter.sendMail(message2, function(err) {
-                if(err) { console.log('UNABLE TO SEND MESSAGE 2 ' + err); return false }
-                console.log('EMAIL2 SENT.\n')
-                return res.status(201);
-            })
-            console.log("IT WORKED!!!")
-        } catch (error) {
-            console.log(error)
+    transporter.sendMail(message, (error, info) => {
+        if(error) { 
+            console.log('Unable to send message 1 ' + error); 
+            res.status(400).send({success: false})
+        } else {
+            console.log('EMAIL SENT.\n' + info.message)
+            res.status(200).send({success: true})
         }
-    }
-    send();
+    })
+    transporter.sendMail(message2, (error, info) => {
+        if(error) { 
+            console.log('UNABLE TO SEND MESSAGE 2 ' + error); 
+            res.status(200).send({success: true})
+        } else {
+            console.log('EMAIL2 SENT.\n' + info.message)
+            res.status(200).send({success: true})
+        }
+    })
+    transporter.close();
 })
 
 app.use(express.static(path.join(__dirname, "client", "build")));
