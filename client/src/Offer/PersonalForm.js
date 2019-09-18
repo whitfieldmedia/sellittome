@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getValue , getVin } from '../redux/BlackValue';
 import { addName, addEmail, addPhone, addIndex, emailSent, showError } from '../redux/Form';
-import '../assets/scss/personal.scss';
+import '../assets/css/personal.css';
 
 class PersonalForm extends React.Component {
     constructor() {
