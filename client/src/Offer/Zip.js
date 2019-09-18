@@ -17,11 +17,13 @@ class Zip extends React.Component {
         }
     }
     componentDidUpdate() {
-        if(this.props.form.zip.length === 5) {
-            if(this.props.form.zip !== this.state.zip) {
-                var index = (this.props.form.index + 1);
-                this.props.addIndex(index)
-            }
+        if(this.props.form.zip.length === 5 && this.props.form.zip !== this.state.zip) {
+            setTimeout(
+                function() {
+                    var index = (this.props.form.index + 1);
+                    this.props.addIndex(index)
+                }.bind(this), 1000
+            )
         } 
     }
     handleChange = e => {

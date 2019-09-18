@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Manjari:400,700|Montserrat:300,400,500,600|Poppins:300,400,500,600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600&display=swap");
 @import url("https://use.typekit.net/sdx4hhx.css");
 .pricing-page {
   display: flex;
@@ -10,16 +10,17 @@
 }
 
 .price-vehicle {
-  font-family: "Montserrat", sans-serif;
-  font-size: 25px;
-  color: #151617;
-  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  font-size: 23px;
+  color: #4b4b4b;
+  font-weight: 500;
   text-align: center;
+  padding: 0 10px;
 }
 
 .price-range {
-  font-family: "Montserrat", sans-serif;
-  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+  font-size: 25px;
   color: #4b4b4b;
   font-weight: 500;
   text-align: center;
@@ -30,7 +31,7 @@
   max-width: 800px;
   min-width: 280px;
   margin: 0 auto;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
   color: #4a4a4a;
 }
@@ -39,7 +40,7 @@
   font-size: 25px;
   color: #2F9044;
   background: #4a4a4a;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   width: 200px;
   height: 40px;
   margin: 30px auto;

@@ -1,12 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMiles } from '../redux/Form';
+import { addMiles, addIndex } from '../redux/Form';
 
 class Miles extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            miles: ''
+        }
+    }
+    componentDidMount() {
+        if(this.state.miles.length === 0 && this.props.form.miles.length > 0) {
+            this.setState({
+                miles: this.props.form.miles
+            })
+        }
+    }
+    componentDidUpdate() {
+        if(this.props.form.miles.length === 6 && this.props.form.miles !== this.state.miles) {
+            setTimeout(
+                function() {
+                    var index = (this.props.form.index + 1);
+                    this.props.addIndex(index);
+                }.bind(this), 1000
+            )
+        }
+    }
+    componentWillUnmount() {
+        clearTimeout();
+    }
     handleChange = (e) => {
         var number = e.target.value.replace(/\D/,'')
         this.props.addMiles(number)
     }
+
     render() {
         return (
             <div className="input-container">
@@ -23,4 +50,4 @@ class Miles extends React.Component {
     }
 }
 
-export default connect(state => state, { addMiles })(Miles);
+export default connect(state => state, { addMiles, addIndex })(Miles);

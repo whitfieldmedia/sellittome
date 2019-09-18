@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { sendEmail } from '../redux/email';
 import { getValue, getVin } from '../redux/BlackValue';
 import { emailSent, addYear, addMake, addModel, addStyle, addLowPrice, addHighPrice, addUvc, addBasePrice } from '../redux/Form';
-import '../assets/css/price.css';
+import '../assets/scss/price.scss';
 
 class Price extends React.Component {
     constructor() {
@@ -15,11 +15,6 @@ class Price extends React.Component {
         }
     }
     componentDidMount() {
-        if(this.props.form.vin.length === 17) {
-            this.props.getVin(this.props.form.vin, this.props.form.miles)
-        } else {
-            this.props.getValue(this.props.form.uvc, this.props.form.miles)
-        }
         if(this.props.form.vin.length === 17 && !this.state.usedVin) {
             this.setState({ usedVin: true })
         } else {

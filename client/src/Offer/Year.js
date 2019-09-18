@@ -17,10 +17,15 @@ class Year extends React.Component {
     }
     componentDidUpdate() {
         if(this.props.form.year.length === 4 && this.props.form.year !== this.state.year) {
-
-            var index = (this.props.form.index + 1)
-            this.props.addIndex(index)
+            setTimeout(
+                function() {
+                    var index = (this.props.form.index + 1)
+                    this.props.addIndex(index);
+                }.bind(this), 1000)
         }
+    }
+    componentWillUnmount() {
+        clearTimeout()
     }
     handleChange = (e) => {
         this.props.addYear(e.target.value)

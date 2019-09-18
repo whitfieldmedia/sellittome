@@ -33,8 +33,9 @@ class UploadFiles extends React.Component {
     render() {
         return (
             <div className="file-upload-page">
+                <p className="par"> Click to delete pictures </p>
                 <div className="upload-photos-box"> 
-                    <button className="upload-button" onClick={this.showWidget}> Choose files </button>
+                    <div className="upload-button" onClick={this.showWidget}> Choose files </div>
                 </div>
                     <div className="thumbnail-container">
                         {this.state.files.map(file => (

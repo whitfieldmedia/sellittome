@@ -12,7 +12,7 @@ import Zip from './Zip';
 import UploadFiles from './UploadFiles';
 import Price from './Price';
 import PersonalForm from './PersonalForm';
-import '../assets/css/offer.css';
+import '../assets/scss/offer.scss';
 
 class Offer extends React.Component {
     constructor() {
@@ -46,6 +46,8 @@ class Offer extends React.Component {
             props.addIndex(2);
         } else if (form.year.length === 0) {
             props.addIndex(1)
+        } else if (form.vin.length < 17) {
+            props.addIndex(0)
         }
     }
 
@@ -213,6 +215,8 @@ class Offer extends React.Component {
             return ( <h1 className="form-header"> Upload Pictures </h1> )
         } else if (this.props.form.index === 9) {
             return ( <h1 className="form-header"> Enter Your Contact Info </h1> )
+        } else if (this.props.form.index === 10) {
+            return ( <h2 className="form-header"> Your Estimated Offer </h2> )
         }
     }
 

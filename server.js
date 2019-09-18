@@ -16,6 +16,7 @@ app.use(morgan('dev'));
 app.use('/send', (req, res) => {
     "use strict";
     const transporter = nodemailer.createTransport({
+        server: 'smtp.office365.com',
         host: 'smtp.office365.com',
         port: 587,
         sendMail: true,
@@ -45,7 +46,7 @@ app.use('/send', (req, res) => {
         )
     })
     const message = {
-        from: 'Johnny Cash <mrcash@sellittome.com>',
+        from: 'Mr. Cash <mrcash@sellittome.com>',
         to: process.env.USERNAME,
         subject: 'Sell it to me',
         html: `<h2> Vehicle: </h2> <p> ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.style} </p> 
@@ -64,9 +65,9 @@ app.use('/send', (req, res) => {
         <div> ${newFiles} </div> `,
     };
     const message2 = {
-        from: 'Johnny Cash <mrcash@sellittome.com',
+        from: 'Mr. Cash <mrcash@sellittome.com',
         to: req.body.from,
-        subject: "Thank you for using Sellittome.com",
+        subject: "Thank you for using sellittome.com",
         html: ` <h2> Thank you ${req.body.name} for using sellittome.com. </h2>
         <p> We are happy to be doing business with you. Your estimated vehicle value is $${req.body.lowPrice} - $${req.body.highPrice}. We will get back with you shortly with the actual offer for your ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.style}. </p>`
     }

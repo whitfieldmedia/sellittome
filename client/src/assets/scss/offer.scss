@@ -84,9 +84,22 @@
     font-family: $sans;
     color: $dGray;
     padding: 8px 0px 8px 15px;
+    border: none;
     border-bottom: 1px solid $gray;
     width: 100%;
+    text-align: left;
     text-decoration: none;
+    background: inherit;
+}
+.not-selected {
+    display: none;
+}
+.option-selected {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 20px;
+    color: $green;
+    content: "\2713";
 }
 
 .offer-input {
@@ -107,8 +120,8 @@
     font-weight: 600;
     height: 35px;
     width: auto;
-    color: $black;
-    background: $white;
+    color: $white;
+    background: $green;
     border: none;
     font-family: $sans;
     margin-right: 10px;
@@ -134,8 +147,8 @@
     width: auto;
     font-size: 18px;
     font-weight: 600;
-    color: $black;
-    background: $white;
+    color: $white;
+    background: red;
     border: none;
     font-family: $sans;
     border-radius: 5px;
@@ -253,7 +266,7 @@
 
 .upload-button {
     width: 250px;
-    height: 40px;
+    height: 45px;
     margin: auto;
     justify-self: center;
     align-self: center;
@@ -261,8 +274,10 @@
     font-size: 25px;
     color: $black;
     box-sizing: border-box;
-    border: 2px solid $gray;
+    border: 2px solid #5a5a5a;
     border-radius: 5px;
+    text-align: center;
+
 }
 
 .thumbnail-container {
@@ -354,22 +369,19 @@
     font-family: $sans;
     font-size: 25px;
 }
+.par {
+    font-family: $sans;
+    font-size: 22px;    
+    margin-bottom: 0;
+    padding-bottom: 0;
+    text-align: center;
+}
+
 
 @media only screen and (min-width: 500px) {
     .offer-page {
         background: $dBlue;
         padding: 20px 0 100px 0;
-    }
-    .form-container {
-        width: 90%;
-        max-width: 800px;
-        margin: auto;
-        border-radius: 15px;
-        padding: 0;
-        border: 2px solid $gray;
-    }
-    .form {
-        height: 70vh;
     }
 }
 

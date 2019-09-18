@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Manjari:400,700|Montserrat:300,400,500,600|Poppins:300,400,500,600&display=swap");
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600&display=swap");
 @import url("https://use.typekit.net/sdx4hhx.css");
 .offer-page {
   margin: 0;
@@ -44,7 +45,7 @@
 }
 
 .form-header {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 25px;
   color: #4a4a4a;
   text-align: left;
@@ -82,19 +83,34 @@
 
 .option {
   font-size: 20px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #4a4a4a;
   padding: 8px 0px 8px 15px;
+  border: none;
   border-bottom: 1px solid #e8e8e8;
   width: 100%;
+  text-align: left;
   text-decoration: none;
+  background: inherit;
+}
+
+.not-selected {
+  display: none;
+}
+
+.option-selected {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 20px;
+  color: #2F9044;
+  content: "✓";
 }
 
 .offer-input {
   width: 80%;
   min-width: 280px;
   height: 50px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 25px;
   margin: 10px auto 0 auto;
   border: 2px solid #e8e8e8;
@@ -108,10 +124,10 @@
   font-weight: 600;
   height: 35px;
   width: auto;
-  color: #151617;
-  background: #F8F8F8;
+  color: #F8F8F8;
+  background: #2F9044;
   border: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin-right: 10px;
   border-radius: 5px;
   padding: 5px 10px;
@@ -125,7 +141,7 @@
   color: #151617;
   background: #F8F8F8;
   border: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin-right: 10px;
   border-radius: 5px;
   padding: 5px 10px;
@@ -137,10 +153,10 @@
   width: auto;
   font-size: 18px;
   font-weight: 600;
-  color: #151617;
-  background: #F8F8F8;
+  color: #F8F8F8;
+  background: red;
   border: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   border-radius: 5px;
   padding: 5px 10px;
 }
@@ -176,7 +192,7 @@
 
 .error-text {
   color: #F8F8F8;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: bold;
   text-align: left;
@@ -190,7 +206,7 @@
   right: 15px;
   color: #D4121F;
   border-radius: 50%;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
   font-size: 17px;
   background: #F8F8F8;
@@ -258,16 +274,17 @@
 
 .upload-button {
   width: 250px;
-  height: 40px;
+  height: 45px;
   margin: auto;
   justify-self: center;
   align-self: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 25px;
   color: #151617;
   box-sizing: border-box;
-  border: 2px solid #e8e8e8;
+  border: 2px solid #5a5a5a;
   border-radius: 5px;
+  text-align: center;
 }
 
 .thumbnail-container {
@@ -324,7 +341,7 @@
   border-radius: 5px;
   background: #F8F8F8;
   margin-right: 10px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .input-container {
@@ -342,7 +359,7 @@
   height: 50px;
   border: 1px solid #e8e8e8;
   background: #4a4a4a;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
   text-align: center;
   padding-left: 10px;
@@ -359,27 +376,22 @@
   height: 40px;
   margin: 10px auto 0 auto;
   border-radius: 5px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 25px;
+}
+
+.par {
+  font-family: "Poppins", sans-serif;
+  font-size: 22px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  text-align: center;
 }
 
 @media only screen and (min-width: 500px) {
   .offer-page {
     background: #003242;
     padding: 20px 0 100px 0;
-  }
-
-  .form-container {
-    width: 90%;
-    max-width: 800px;
-    margin: auto;
-    border-radius: 15px;
-    padding: 0;
-    border: 2px solid #e8e8e8;
-  }
-
-  .form {
-    height: 70vh;
   }
 }
 @media only screen and (min-width: 750px) {

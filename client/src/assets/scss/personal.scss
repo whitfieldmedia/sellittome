@@ -16,7 +16,7 @@
     color: $dGray;
     text-align: center;
     font-weight: 500;
-    padding: 10px 0;
+    padding: 10px;
 }
 
 .personal-form {
@@ -32,14 +32,13 @@
 .input-holder {
     display: flex;
     width: 80%;
-    min-width: 300px;
+    min-width: 280px;
+    margin: 10px auto;
     flex-flow: column;
     justify-content: center;
     justify-items: center;
     align-content: flex-start;
     align-items: flex-start;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .personal-label {
@@ -59,7 +58,6 @@
     border: 2px solid $gray;
     border-radius: 5px;
     box-sizing: border-box;
-    padding-left: 10px;
 }
 
 .submit-button {
