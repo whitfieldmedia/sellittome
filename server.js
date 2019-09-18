@@ -17,7 +17,7 @@ app.use('/send', (req, res) => {
     "use strict";
     const transporter = nodemailer.createTransport({
         host: 'smtp.office365.com',
-        port: 25,
+        port: 587,
         sendMail: true,
         auth: {
             user: process.env.USERNAME,
