@@ -416,6 +416,8 @@
     border-radius: 15px;
     padding: 0 0px 10px 0px;
     margin-left: 15px;
+    border: 2px solid #4a4a4a;
+    overflow: hidden;
   }
 
   .select-box {
@@ -435,7 +437,6 @@
   }
 
   #vin-select {
-    border-top-left-radius: 15px;
     width: 50%;
     text-align: center;
     font-family: "Poppins", sans-serif;
@@ -446,7 +447,6 @@
 
   #make-select {
     padding: 10px 0;
-    border-top-right-radius: 15px;
     width: 50%;
     text-align: center;
     font-family: "Poppins", sans-serif;

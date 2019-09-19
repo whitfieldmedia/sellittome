@@ -7,7 +7,6 @@ class Make extends React.Component {
     constructor() {
         super()
         this.state = {
-            loaded: false,
             clicked: true,
             make: ''
         }
@@ -18,11 +17,6 @@ class Make extends React.Component {
             this.setState({
                 make: this.props.form.make
             })
-        }
-    }
-    componentDidUpdate() {
-        if(this.props.blackValue.drilldown.class_list.length > 0 && !this.state.loaded) {
-            this.setState({ loaded: true })
         }
     }
     componentWillUnmount() {
@@ -49,9 +43,7 @@ class Make extends React.Component {
     render() {
         return (
             <div className="option-container">
-                {this.state.loaded 
-                ? this.mapMakes()
-                : <h2> Getting Makes </h2>   }
+                {this.mapMakes()}
             </div>
         )
     }
