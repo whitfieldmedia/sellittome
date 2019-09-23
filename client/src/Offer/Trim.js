@@ -6,10 +6,15 @@ import { getTrims } from '../redux/BlackValue'
 class Trim extends React.Component {
     constructor() {
         super()
-        this.state = { uvc: '', style: '' }
+        this.state = { uvc: '', style: '', isLoaded: false }
     }
-    componentDidMount() {
-        this.props.getTrims(this.props.form.year, this.props.form.make, this.props.form.model)
+    async componentDidMount() {
+        try {
+            await this.props.getTrims(this.props.form.year, this.props.form.make, this.props.form.model)
+            this.setState({ isLoaded: true })
+        } catch(err) {
+            console.log(err)
+        }
         if(this.props.form.uvc.length > 0) {
             this.setState({ uvc: this.props.form.uvc })
         }
@@ -47,7 +52,9 @@ class Trim extends React.Component {
     render() {
         return (
             <div className="option-container">
-                {this.mapTrims()}
+                { this.state.isLoaded 
+                ? this.mapTrims()
+                : null}
             </div>
         )
     }

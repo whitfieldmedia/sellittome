@@ -8,11 +8,19 @@ class Make extends React.Component {
         super()
         this.state = {
             clicked: true,
-            make: ''
+            make: '',
+            isLoaded: false
         }
     }
-    componentDidMount() {
-        this.props.getMakes(this.props.form.year)
+    async componentDidMount() {
+        try {
+            await this.props.getMakes(this.props.form.year)
+            this.setState({
+                isLoaded: true
+            })
+        } catch(err) {
+            console.log(err)
+        }
         if(this.props.form.make.length > 0 && this.state.make.length === 0) {
             this.setState({
                 make: this.props.form.make
@@ -43,7 +51,9 @@ class Make extends React.Component {
     render() {
         return (
             <div className="option-container">
-                {this.mapMakes()}
+                {this.state.isLoaded 
+                ? this.mapMakes()
+                : null}
             </div>
         )
     }

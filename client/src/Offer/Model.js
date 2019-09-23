@@ -7,11 +7,20 @@ class Model extends React.Component {
     constructor() {
         super();
         this.state = {
-            model: ''
+            model: '',
+            isLoaded: false
         }
     }
-    componentDidMount() {
-        this.props.getModels(this.props.form.year, this.props.form.make);
+    async componentDidMount() {
+        try {
+            await this.props.getModels(this.props.form.year, this.props.form.make);
+            this.setState({
+                isLoaded: true
+            })
+        }
+        catch(err) {
+            console.log(err)
+        }
         if((this.props.form.model.length > 0) && (this.state.model.length === 0)) {
             this.setState({
                 model: this.props.form.model
@@ -43,7 +52,9 @@ class Model extends React.Component {
     render() {
         return (
             <div className="option-container">
-                {this.mapModels()}
+                {this.state.isLoaded
+                ? this.mapModels()
+                : null}
             </div>
         )
     }

@@ -31,9 +31,6 @@ class Nav extends React.Component {
                     <li onClick={this.closeNav} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
                         <Link className="nav-link" to="/get-offer"> Get Offer </Link>
                     </li>
-                    <li onClick={this.closeNav} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
-                        <Link className="nav-link" to="/contact"> Contact </Link>
-                    </li>
                 </ul>
             </div>
         )
