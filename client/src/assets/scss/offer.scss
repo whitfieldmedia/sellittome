@@ -77,18 +77,22 @@
     flex-flow: column;
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
     border-top: 1px solid $gray;
 }
 
 .option {
     font-size: 20px;
     display: block;
+    position: relative;
     font-family: $sans;
     color: $dGray;
-    padding: 8px 5px 8px 15px;
+    padding: 0 0 0 15px;
     border: none;
     border-bottom: 1px solid $gray;
     width: 100%;
+    height: 50px;
+    min-height: 40px;
     text-align: left;
     text-decoration: none;
     background: inherit;
@@ -161,6 +165,8 @@
     height: 50px;
     width: 100%;
     position: fixed;
+    padding-bottom: 10px;
+    padding-top: 5px;
     bottom: 0;
     background: $dark;
     display: flex;
@@ -176,7 +182,7 @@
     width: 100%;
     height: 40px;
     position: fixed;
-    bottom: 50px;
+    bottom: 70px;
     background: $dark;
     display: flex;
     justify-content: space-between;
@@ -232,11 +238,14 @@
 
 .radio-label {
     font-size: 23px;
+    font-family: $sans;
     color: $dGray;
     display: flex;
     flex-flow: row;
     justify-content: center;
     justify-items: center;
+    align-content: center;
+    align-items: center;
 }
 
 .radio-input {
@@ -256,7 +265,7 @@
 }
 
 .upload-photos-box {
-    width: 250px;
+    width: auto;
     margin: 30px auto 20px auto;
     display: flex;
     justify-content: center;
@@ -269,9 +278,6 @@
 .upload-button {
     width: 250px;
     height: 45px;
-    margin: auto;
-    justify-self: center;
-    align-self: center;
     font-family: $sans;
     font-size: 25px;
     color: $black;
@@ -279,7 +285,8 @@
     border: 2px solid #5a5a5a;
     border-radius: 5px;
     text-align: center;
-
+    display: block;
+    position: relative;
 }
 
 .thumbnail-container {
@@ -379,6 +386,27 @@
     text-align: center;
 }
 
+.radio-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #cccccc;
+    margin-right: 10px;
+    position: relative;
+}
+
+.radio-circle-active {
+    background: #2196F3;
+}
+.inner-white-circle {
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    height: 8px;
+    width: 8px;
+    background: $white;
+    border-radius: 50%;
+}
 
 @media only screen and (min-width: 500px) {
     .offer-page {

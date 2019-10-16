@@ -9,8 +9,8 @@ class UploadFiles extends React.Component {
             files: []
         }
     }
-    //Cloudinary widget for file upload
-    showWidget = e => {
+
+    showWidget = (e) => {
         e.preventDefault();
         let widget = window.cloudinary.createUploadWidget({ cloudName: 'duw9diprk', uploadPreset: 'my_preset'}, 
         (error, result) => {
@@ -25,7 +25,6 @@ class UploadFiles extends React.Component {
         widget.open()
     }
 
-    //Deletes file from array in state if user clicks on the file
     deleteFile = (url) => {
         var array = this.state.files.filter(file => file !== url)
         this.setState({ files: array })
@@ -33,11 +32,11 @@ class UploadFiles extends React.Component {
     render() {
         return (
             <div className="file-upload-page">
-                <p className="par"> Click to delete pictures </p>
                 <div className="upload-photos-box"> 
                     <div className="upload-button" onClick={this.showWidget}> Choose files </div>
                 </div>
                     <div className="thumbnail-container">
+                        <p> *Click to delete photos </p>                        
                         {this.state.files.map(file => (
                         <div className="file-thumbnail-holder" key={file} onClick={() => this.deleteFile(file)}> 
                             <img src={file} className="file-thumbnail" alt="uploaded File" /> 

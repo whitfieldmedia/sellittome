@@ -7,7 +7,7 @@ export function getMakes(year) {
         axios.get(url + 'Drilldown/' + encodeURIComponent("ALL") + '/' + encodeURIComponent(year) + '?drilldeep=' + encodeURIComponent('false') + '&getclass=' + encodeURIComponent("false") + "&customerid=" + encodeURIComponent('false')).then(res => {
             dispatch({
                 type: 'GET_MAKES2',
-                blackValue: res.data
+                makes: res.data
             })
         }).catch(err => {
             console.log(err)
@@ -21,7 +21,7 @@ export function getModels(year, make) {
             console.log(res.data)
             dispatch({
                 type: 'GET_MODELS2',
-                blackValue: res.data
+                models: res.data
             })
         }).catch(err => {
             console.log(err)
@@ -35,7 +35,7 @@ export function getTrims(year, make, model) {
             console.log(res.data)
             dispatch({
                 type: "GET_TRIMS2",
-                blackValue: res.data
+                trims: res.data
             })
         }).catch(err => {
             console.log(err)
@@ -49,7 +49,7 @@ export function getValue(uvc, miles) {
             console.log('GET_BLACK_VALUE: ', res.data)
             dispatch({
                 type: "GET_VALUE2",
-                blackValue: res.data
+                value: res.data
             })
         }).catch(err => {
             console.log(err)
@@ -62,26 +62,45 @@ export function getVin(vin, miles) {
         axios.get(url + "UsedVehicle/" + encodeURIComponent("VIN") + '/' + encodeURIComponent(vin) + '?mileage=' + encodeURIComponent(miles) + '&customerid=' + encodeURIComponent("test")).then(res => {
             dispatch({
                 type: 'GET_VIN2',
-                blackValue: res.data
+                vinValue: res.data
             })
         }).catch(err => {
             console.log(err)
         })
     }
 }
+
+
+var initialState = {
+    makes: {},
+    models: {},
+    trims: {},
+    vinValue: {},
+    value: {}
+}
+
+export function purgeBlackValue() {
+    return dispatch => {
+        dispatch({
+            type: "PURGE_BLACK_VALUE"
+        });
+    }
+}
  
-export default function reducer(blackValue = [], action) {
+export default function reducer(blackValue = initialState, action) {
     switch(action.type) {
         case "GET_VALUE2":
-            return action.blackValue
+            return action.value
         case "GET_VIN2":
-            return action.blackValue
+            return action.vinValue
         case "GET_MAKES2":
-            return action.blackValue
+            return action.makes
         case "GET_MODELS2":
-            return action.blackValue
+            return action.models
         case "GET_TRIMS2":
-            return action.blackValue
+            return action.trims
+        case "PURGE_BLACK_VALUE":
+            return {}
         default:
             return blackValue
     }

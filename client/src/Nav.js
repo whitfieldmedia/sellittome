@@ -1,4 +1,6 @@
 import React from 'react';
+import { logout } from './redux/auth';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './assets/css/nav.css';
 
@@ -17,7 +19,11 @@ class Nav extends React.Component {
         e.preventDefault()
         this.setState({ isOpen: false })
     }
+    logout = () => {
+        this.props.logout();
+    }
     render() {
+        console.log("NAV this.props.auth.isAuthenticated", this.props)
         return (
             <div className="nav-bar-container">
                 <Link to="/" className="nav-header"> SELL IT TO ME </Link>
@@ -31,10 +37,16 @@ class Nav extends React.Component {
                     <li onClick={this.closeNav} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
                         <Link className="nav-link" to="/get-offer"> Get Offer </Link>
                     </li>
+                    {this.props.auth.isAuthenticated
+                    ?
+                    <li onClick={this.logout} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
+                        <p className="nav-link"> Log Out </p>
+                    </li>
+                    : null}
                 </ul>
             </div>
         )
     }
 }
 
-export default Nav;
+export default connect(state => state, { logout })(Nav);

@@ -15,18 +15,19 @@ class Price extends React.Component {
         }
     }
     componentDidMount() {
-        if(this.props.form.vin.length === 17 && !this.state.usedVin) {
-            this.setState({ usedVin: true })
+        if(this.props.form.vin.length === 17) {
+            this.props.getVin(this.props.form.vin, this.props.form.miles)
+            this.setState({
+                usedVin: true
+            })
         } else {
-            this.setState({ usedVin: false })
+            this.props.getValue(this.props.form.uvc, this.props.form.miles)
         }
-        if(this.props.form.lowPrice > 0 && this.props.form.highPrice > 0) {
-            this.sendEmail()
-        } else if(this.props.form.basePrice > 0) {
-            this.getRange()
-        } 
     }
     componentDidUpdate() {
+        if(this.props.blackValue.used_vehicles.used_vehicle_list.length > 0) {
+            this.getPrice();
+        }
         if(this.props.blackValue.used_vehicles) {
             this.getPrice()
         }

@@ -1,142 +1,24 @@
 const express = require('express');
 require("dotenv").config();
 const path = require("path");
-const port = process.env.PORT || 5800;
+const port = 5800;
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
-const nodemailer = require('nodemailer');
 const cors = require('cors');
+const secret = process.env.SECRET || "secret key";
+const expressJwt = require("express-jwt");
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('dev'));
 
-// var DOMAIN = 'sellittome.com';
-// var API_KEY = process.env.KEY;
-// var mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN})
+app.use('/profile', expressJwt({ secret: secret }));
 
-// app.use('/send', (req, res) => {
-//     var newFiles = req.body.files.map(file => {
-//         return (
-//             `<img src=${file} alt=${file} />`
-//         )
-//     })
-//     const message = {
-//         from: 'Mr. Cash <mrcash@sellittome.com>',
-//         to: process.env.USERNAME,
-//         subject: 'Sell it to me',
-//         html: `<h2> Vehicle: </h2> <p> ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.style} </p> 
-//         <p> VIN: ${req.body.vin} </p>
-//         <p> UVC: ${req.body.uvc} </p>
-//         <h2> Price range Customer Received </h2> 
-//         <h2> Low Price: </h2> <p> $${req.body.lowPrice} </p>
-//         <h2> High Price: </h2> <p> $${req.body.highPrice} </p>
-//         <h2> MILES: </h2> <p> ${req.body.miles} </p>
-//         <h2> Condition: </h2> <p>${req.body.condition}</p> 
-//         <br /> <h1> Customer Info </h1>
-//         <h2> Customer Name:</h2> <p>${req.body.name}</p> 
-//         <h2> ${req.body.name} email address:</h2> <p> ${req.body.from}</p> 
-//         <h2> PHONE NUMBER: </h2> <p> ${req.body.phone}</p> <br />
-//         <h2> Zip Code: </h2> <p> ${req.body.zip} </p>
-//         <div> ${newFiles} </div> `,
-//     };
-//     const message2 = {
-//         from: 'Mr. Cash <mrcash@sellittome.com',
-//         to: req.body.from,
-//         subject: "Thank you for using sellittome.com",
-//         html: ` <h2> Thank you ${req.body.name} for using sellittome.com. </h2>
-//         <p> We are happy to be doing business with you. Your estimated vehicle value is $${req.body.lowPrice} - $${req.body.highPrice}. We will get back with you shortly with the actual offer for your ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.style}. </p>`
-//     }
-//     mailgun.messages().send(message, function(error, body) {
-//         console.log(body)
-//     })
-//     mailgun.messages().send(message2, function(error, body) {
-//         console.log(body)
-//     })
-// })
-app.use('/send', (req, res) => {
-    "use strict";
-    const transporter = nodemailer.createTransport({
-        host: 'smtp.office365.com',
-        port: 587,
-        sendMail: true,
-        auth: {
-            user: process.env.USERNAME,
-            pass: process.env.PASSWORD
-        },
-        dkim: {
-            keys: [
-                {
-                    domainName: 'sellittome.com',
-                    keySelector: 'selector1._domainkey',
-                    privateKey: 'selector1-sellittome-com._domainkey.netorg5537947.onmicrosoft.com'
-
-                }, {
-                    domainName: 'sellittome.com',
-                    keySelector: 'selector2._domainkey',
-                    privateKey: 'selector2-sellittome-com._domainkey.netorg5537947.onmicrosoft.com'
-                }
-            ],
-            cacheDir: false
-        }
-    })
-    var newFiles = req.body.files.map(file => {
-        return (
-            `<img src=${file} alt=${file} />`
-        )
-    })
-    const message = {
-        from: 'Mr. Cash <mrcash@sellittome.com>',
-        to: process.env.USERNAME,
-        subject: 'Sell it to me',
-        html: `<h2> Vehicle: </h2> <p> ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.style} </p> 
-        <p> VIN: ${req.body.vin} </p>
-        <p> UVC: ${req.body.uvc} </p>
-        <h2> Price range Customer Received </h2> 
-        <h2> Low Price: </h2> <p> $${req.body.lowPrice} </p>
-        <h2> High Price: </h2> <p> $${req.body.highPrice} </p>
-        <h2> MILES: </h2> <p> ${req.body.miles} </p>
-        <h2> Condition: </h2> <p>${req.body.condition}</p> 
-        <br /> <h1> Customer Info </h1>
-        <h2> Customer Name:</h2> <p>${req.body.name}</p> 
-        <h2> ${req.body.name} email address:</h2> <p> ${req.body.from}</p> 
-        <h2> PHONE NUMBER: </h2> <p> ${req.body.phone}</p> <br />
-        <h2> Zip Code: </h2> <p> ${req.body.zip} </p>
-        <div> ${newFiles} </div> `,
-    };
-    const message2 = {
-        from: 'Mr. Cash <mrcash@sellittome.com',
-        to: req.body.from,
-        subject: "Thank you for using sellittome.com",
-        html: ` <h2> Thank you ${req.body.name} for using sellittome.com. </h2>
-        <p> We are happy to be doing business with you. Your estimated vehicle value is $${req.body.lowPrice} - $${req.body.highPrice}. We will get back with you shortly with the final offer for your ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.style}. </p>
-        <p> We will need your vin number and various information about your vehicle to give you a cash offer. </p>
-        <p> If you didn't upload pictures please send pictures of your vehicle to mrcash@sellittome.com. So we can give you the best offer possible. </p>
-        <p> All offers are dependent upon an in person inspection of the vehicle. </p>
-        `
-    }
-    transporter.sendMail(message, (error, info) => {
-        if(error) { 
-            console.log('Unable to send message 1 ' + error); 
-            res.status(400).send({success: false})
-        } else {
-            console.log('EMAIL SENT.\n' + info.response)
-            res.status(200).send({success: true})
-        }
-    })
-    transporter.sendMail(message2, (error, info) => {
-        if(error) { 
-            console.log('UNABLE TO SEND MESSAGE 2 ' + error); 
-            res.status(200).send({success: true})
-        } else {
-            console.log('EMAIL2 SENT.\n' + info.response)
-            res.status(200).send({success: true})
-        }
-    })
-    transporter.close();
-})
+app.use('/profile', require('./routes/profile'));
+app.use('/auth', require('./routes/auth'));
+app.use('/vehicle', require('./routes/vehicleDatabase'));
 
 app.use(express.static(path.join(__dirname, "client", "build")));
 

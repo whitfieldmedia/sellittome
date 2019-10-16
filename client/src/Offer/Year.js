@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addYear, addIndex, emailSent } from '../redux/Form';
+import { addYear, addIndex, emailSent, showError } from '../redux/Form';
 
 class Year extends React.Component {
     constructor() {
@@ -20,10 +20,12 @@ class Year extends React.Component {
             setTimeout(
                 function() {
                     var index = (this.props.form.index + 1)
+                    this.props.showError(false)
                     this.props.addIndex(index);
                 }.bind(this), 1000)
         }
     }
+
     componentWillUnmount() {
         clearTimeout()
     }
@@ -52,4 +54,4 @@ class Year extends React.Component {
     }
 }
 
-export default connect(state => state, { addYear, addIndex, emailSent })(Year)
+export default connect(state => state, { addYear, addIndex, emailSent, showError })(Year)

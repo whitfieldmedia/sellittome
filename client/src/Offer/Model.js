@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addModel, addIndex } from '../redux/Form';
+import { addModel, addIndex, showError } from '../redux/Form';
 import { getModels } from '../redux/BlackValue';
 
 class Model extends React.Component {
@@ -11,19 +11,13 @@ class Model extends React.Component {
             isLoaded: false
         }
     }
-    async componentDidMount() {
-        try {
-            await this.props.getModels(this.props.form.year, this.props.form.make);
+    componentDidMount() {
+            this.props.getModels(this.props.form.year, this.props.form.make);
+    }
+    componentDidUpdate() {
+        if(this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.length > 0)) && !this.state.isLoaded) {
             this.setState({
                 isLoaded: true
-            })
-        }
-        catch(err) {
-            console.log(err)
-        }
-        if((this.props.form.model.length > 0) && (this.state.model.length === 0)) {
-            this.setState({
-                model: this.props.form.model
             })
         }
     }
@@ -31,11 +25,11 @@ class Model extends React.Component {
         clearTimeout();
     }
     handleClick = model => {
-        this.setState({ model: model })
+        this.props.addModel(model);
         setTimeout(
             function() {
-                this.props.addModel(model);
                 var index = this.props.form.index + 1;
+                this.props.showError(false)
                 this.props.addIndex(index);
             }.bind(this), 500
         )
@@ -44,7 +38,7 @@ class Model extends React.Component {
         if(this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.length > 0))) {
             return (
                 this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.map(make => make.model_list.map(model => (
-                    <button className="option" onClick={() => this.handleClick(model.name)} key={model.name} value={model.name} name="model"> {model.name} <span className={(this.state.model === model.name) ? "option-selected" : "not-selected"}>&#10003;</span> </button>
+                    <button className="option" onClick={() => this.handleClick(model.name)} key={model.name} value={model.name} name="model"> {model.name} <span className={(this.props.form.model === model.name) ? "option-selected" : "not-selected"}>&#10003;</span> </button>
                 )))))
             )
         }
@@ -60,4 +54,4 @@ class Model extends React.Component {
     }
 }
 
-export default connect(state => state, { addModel, getModels, addIndex })(Model)
+export default connect(state => state, { addModel, getModels, addIndex, showError })(Model)

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addVin, addIndex } from '../redux/Form';
+import { addVin, addIndex, showError } from '../redux/Form';
 import { getVin } from '../redux/BlackValue';
 
 class Vin extends React.Component {
@@ -23,6 +23,7 @@ class Vin extends React.Component {
         var vin = this.state.vin
         if(vin.length === 17) {
             this.props.addVin(vin);
+            this.props.showError(false)
             this.props.addIndex(5)
         } else {
             this.props.handleError()
@@ -42,4 +43,4 @@ class Vin extends React.Component {
     }
 }
 
-export default connect(state => state, { addVin, addIndex, getVin })(Vin)
+export default connect(state => state, { addVin, addIndex, getVin, showError })(Vin)

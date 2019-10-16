@@ -8,6 +8,7 @@
     justify-items: center;
     align-content: center;
     align-items: center;
+    position: relative;
 }
 
 .personal-form-header {
@@ -17,6 +18,7 @@
     text-align: center;
     font-weight: 500;
     padding: 10px;
+    position: relative;
 }
 
 .personal-form {
@@ -27,6 +29,7 @@
     justify-items: center;
     align-content: center;
     align-items: center;
+    position: relative;
 }
 
 .input-holder {
@@ -39,6 +42,7 @@
     justify-items: center;
     align-content: flex-start;
     align-items: flex-start;
+    position: relative;
 }
 
 .personal-label {
@@ -46,6 +50,8 @@
     font-size: 20px;
     color: $black;
     text-align: left;
+    display: block;
+    position: relative;
 }
 
 .input {
@@ -58,6 +64,8 @@
     border: 2px solid $gray;
     border-radius: 5px;
     box-sizing: border-box;
+    display: block;
+    position: relative;
 }
 
 .submit-button {
@@ -70,4 +78,6 @@
     font-weight: 600;
     font-size: 25px;
     font-family: $sans;
+    display: block;
+    position: relative;
 }

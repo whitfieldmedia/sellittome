@@ -5,10 +5,6 @@ import { addName, addEmail, addPhone, addIndex, emailSent, showError } from '../
 import '../assets/css/personal.css';
 
 class PersonalForm extends React.Component {
-    constructor() {
-        super()
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
     componentDidUpdate(prevProps) {
         if(this.props.form.sent && ((this.props.form.name !== prevProps.form.name) || (this.props.form.email !== prevProps.form.email) || (this.props.form.phone !== prevProps.form.phone))) {
             this.props.emailSent(false);
@@ -28,30 +24,8 @@ class PersonalForm extends React.Component {
         var number = e.target.value.replace(/\D/,'')
         this.props.addPhone(number)
     }
-    async handleSubmit() {
-        let props = this.props;
-        let form = this.props.form;
-        if(form.name.length > 1 && form.phone.length === 10 && form.email.length > 3) {
-            if(this.props.form.vin.length === 17) {
-                try {
-                    await props.getVin(form.vin, form.miles)
-                    this.props.addIndex(this.props.form.index + 1)
-                } catch (err) {
-                    console.log(err)
-                    this.props.showError(true)
-                }
-            } else {
-                try {
-                    await this.props.getValue(form.uvc, form.miles)
-                    this.props.addIndex(this.props.form.index + 1)
-                } catch (err) {
-                    console.log("ERRORREOIR ", err);
-                    this.props.showError(true)
-                }
-            }
-        } else {
-            this.props.showError(true)
-        }
+    handleSubmit = () => {
+        return this.props.addIndex(this.props.index + 1)
     }
     render() {
         return (

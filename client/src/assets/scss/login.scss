@@ -1,0 +1,37 @@
+@import 'assets';
+
+.login-header {
+    font-family: $sans2;
+    font-size: 30px;
+    color: $dark;
+    font-weight: bold;
+    text-align: center;
+}
+
+.login-form-container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    input {
+        width: 300px;
+        height: 35px;
+        color: $dark;
+        border: 1px solid $dark;
+        margin: 10px;
+        font-size: 20px;
+        padding-left: 10px;
+    }
+}
+.login-submit-button {
+    width: 150px;
+    height: 35px;
+    color: $white;
+    font-family: $sans;
+    border: none;
+    font-size: 20px;
+    background: $dark2;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-top: 10px;
+}

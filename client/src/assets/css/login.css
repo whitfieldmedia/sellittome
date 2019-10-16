@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600&display=swap");
+@import url("https://use.typekit.net/sdx4hhx.css");
+.login-header {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  color: #4b4b4b;
+  font-weight: bold;
+  text-align: center;
+}
+
+.login-form-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-form-container input {
+  width: 300px;
+  height: 35px;
+  color: #4b4b4b;
+  border: 1px solid #4b4b4b;
+  margin: 10px;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.login-submit-button {
+  width: 150px;
+  height: 35px;
+  color: #F8F8F8;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  font-size: 20px;
+  background: #6a6a6a;
+  border-radius: 25px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=login.css.map */

@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600&display=swap");
+@import url("https://use.typekit.net/sdx4hhx.css");
+.database-wrapper {
+  width: 100%;
+  height: auto;
+  margin: 50px 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.database-page {
+  width: auto;
+  max-width: 600px;
+  margin: 25px auto;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+}
+
+.database-container {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.database-header-container {
+  width: 100%;
+  height: 100%;
+  background: #F8F8F8;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid #4b4b4b;
+}
+.database-header-container i {
+  position: absolute;
+  right: 15px;
+  color: #151617;
+}
+.database-header-container h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  color: #151617;
+  padding: 0 15px;
+  margin-right: 30px;
+}
+
+.database-header-container:hover {
+  cursor: pointer;
+}
+.database-header-container:hover i {
+  color: #4a4a4a;
+  transform: scale(1.02);
+}
+.database-header-container:hover h2 {
+  color: #4a4a4a;
+  transform: scale(1.02);
+}
+
+.database-information-container {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.database-row {
+  width: 100%;
+  border-bottom: 1px solid #4b4b4b;
+}
+.database-row td {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  color: #4b4b4b;
+  padding: 8px 10px;
+}
+.database-row td:first-child {
+  font-weight: 600;
+}
+
+.database-column {
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+}
+.database-column p {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  color: #4b4b4b;
+  padding: 5px;
+  margin: 0;
+}
+
+.database-images {
+  width: auto;
+  height: auto;
+  max-width: 200px;
+  max-height: 200px;
+  display: block;
+}
+
+tr:nth-child(even) {
+  background: #F8F8F8;
+}
+
+tr:nth-child(odd) {
+  background: #f0f0f0;
+}
+
+.database-search-input {
+  width: 90%;
+  min-width: 300px;
+  max-width: 550px;
+  height: 40px;
+  font-size: 25px;
+  color: #4b4b4b;
+  border: 1px solid #4b4b4b;
+  padding-left: 10px;
+}
+
+/*# sourceMappingURL=database.css.map */

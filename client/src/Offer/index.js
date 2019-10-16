@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { purgeBlackValue } from '../redux/BlackValue';
 import { addIndex, clearForm, showError } from '../redux/Form';
 import Vin from './Vin';
 import Year from './Year';
@@ -19,6 +20,7 @@ class Offer extends React.Component {
         super();
         this.state = {
             usedVin: false, 
+            fileError: false
         }
     }
     componentDidMount() {
@@ -63,11 +65,13 @@ class Offer extends React.Component {
     }
     handleClear = () => { 
         this.props.clearForm();
+        this.props.purgeBlackValue();
     }
 
     //Go back one form entry
     handlePrev = () => { 
         let index = (this.props.form.index - 1)
+        this.props.showError(false)
         return this.props.addIndex(index);
     }
 
@@ -278,4 +282,4 @@ class Offer extends React.Component {
     }
 }
 
-export default connect(state => state, { addIndex, clearForm, showError })(Offer);
+export default connect(state => state, { addIndex, clearForm, showError, purgeBlackValue })(Offer);

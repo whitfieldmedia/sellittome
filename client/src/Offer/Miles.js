@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMiles, addIndex } from '../redux/Form';
+import { addMiles, addIndex, showError } from '../redux/Form';
 
 class Miles extends React.Component {
     constructor() {
@@ -21,6 +21,7 @@ class Miles extends React.Component {
             setTimeout(
                 function() {
                     var index = (this.props.form.index + 1);
+                    this.props.showError(false)
                     this.props.addIndex(index);
                 }.bind(this), 1000
             )
@@ -50,4 +51,4 @@ class Miles extends React.Component {
     }
 }
 
-export default connect(state => state, { addMiles, addIndex })(Miles);
+export default connect(state => state, { addMiles, addIndex, showError })(Miles);
