@@ -35,18 +35,6 @@ authRouter.post("/signup", (req, res) => {
             })
         }
     })
-    // User.findOne({ username: req.body.username }, (err, existingUser) => {
-    //     if(err) return res.status(500).send({success: false, err});
-    //     if (existingUser !== null) {
-    //         return res.status(400).send({success: false, message: "Username already exists."})
-    //     }
-    //     const newUser = new User(req.body)
-    //     newUser.save((err, user) => {
-    //         if (err) return res.status(500).send({ success: false, err});
-    //         const token = jwt.sign(user.toObject(), process.env.SECRET);
-    //         return res.status(201).send({ success: true, user: user.toObject(), token })
-    //     })
-    // })
 })
 
 authRouter.post("/login", (req, res) => {

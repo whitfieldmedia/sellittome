@@ -6,17 +6,12 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
 const cors = require('cors');
-const secret = process.env.SECRET || "secret key";
-const expressJwt = require("express-jwt");
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(morgan('dev'));
 
-app.use('/profile', expressJwt({ secret: secret }));
-
-app.use('/profile', require('./routes/profile'));
 app.use('/auth', require('./routes/auth'));
 app.use('/vehicle', require('./routes/vehicleDatabase'));
 
