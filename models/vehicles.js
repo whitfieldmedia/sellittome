@@ -19,4 +19,4 @@ const vehicleSchema = new Schema ({
     files: Array
 })
 
-module.exports = mongoose.model("vehicles", vehicleSchema)
+module.exports = mongoose.model("Vehicles", vehicleSchema)
