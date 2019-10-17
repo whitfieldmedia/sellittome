@@ -28,9 +28,6 @@ class Price extends React.Component {
         if(this.props.blackValue.used_vehicles.used_vehicle_list.length > 0) {
             this.getPrice();
         }
-        if(this.props.blackValue.used_vehicles) {
-            this.getPrice()
-        }
         if(this.props.form.basePrice > 0) {
             this.getRange()
         }
@@ -40,13 +37,12 @@ class Price extends React.Component {
     }
 
     getPrice = () => {
-        console.log("GETTING PRICE")
         var props = this.props;
         var condition = props.form.condition;
         if(this.props.form.basePrice === 0) {
             if(this.state.usedVin) {
                 this.props.blackValue.used_vehicles.used_vehicle_list.map(res => {
-                    props.addYear(res.modelyear);
+                    props.addYear(res.year);
                     props.addMake(res.make);
                     props.addModel(res.model);
                     props.addStyle(res.body);
@@ -162,7 +158,6 @@ class Price extends React.Component {
         }
     }
     render() {
-        console.log(this.props)
         return (
             <div>      
                 {this.state.finishedLoading 
