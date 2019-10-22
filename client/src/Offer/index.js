@@ -23,6 +23,7 @@ class Offer extends React.Component {
             fileError: false
         }
     }
+
     componentDidMount() {
         let props = this.props;
         let form = props.form;
@@ -52,16 +53,19 @@ class Offer extends React.Component {
             props.addIndex(0)
         }
     }
+    //Throw error if info isn't inserted
     handleError = () => {
         if(!this.props.form.error) {
             this.props.showError(true)
         }
     }
+    //Clear error when info is entered
     clearError = () => { 
         if(this.props.form.error) {
             this.props.showError(false)
         }
     }
+    //Clear redux form and blackValue storage
     handleClear = () => { 
         this.props.clearForm();
         this.props.purgeBlackValue();
@@ -74,7 +78,7 @@ class Offer extends React.Component {
         return this.props.addIndex(index);
     }
 
-    //form validation
+    //Validate form on next
     handleNext = (target) => {
         if(this.props.form.index === 0) { 
             this.next(); 
@@ -147,7 +151,6 @@ class Offer extends React.Component {
             this.props.showError(false)
         }
     }
-
     //show next unless they are on the vin input page
     showNext = () => {
         if(this.props.form.index > 0) {
@@ -219,7 +222,7 @@ class Offer extends React.Component {
         } else if (this.props.form.index === 9) {
             return ( <h1 className="form-header"> Enter Your Contact Info </h1> )
         } else if (this.props.form.index === 10) {
-            return ( <h2 className="form-header"> Your Estimated Offer </h2> )
+            return ( <h2 className="form-header"></h2> )
         }
     }
 

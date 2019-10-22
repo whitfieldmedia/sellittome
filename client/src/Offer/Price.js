@@ -13,7 +13,8 @@ class Price extends React.Component {
             finishedLoading: false,
             noOffer: false,
             basePrice: false,
-            gettingPrice: false
+            gettingPrice: false,
+            highMileage: false
         }
     }
     async componentDidMount() {
@@ -21,6 +22,9 @@ class Price extends React.Component {
            await this.props.getVin(this.props.form.vin, this.props.form.miles)
         } else {
             await this.props.getValue(this.props.form.uvc, this.props.form.miles)
+        }
+        if(this.props.form.miles > 125000 && !this.state.highMileage) {
+            this.setState({ highMileage: true })
         }
     }
     componentDidUpdate() {
@@ -147,14 +151,20 @@ class Price extends React.Component {
             ?
             <div className="pricing-page">
                 <div className="price-container">
-                    <h2 className="price-vehicle"> {this.props.form.year} {this.props.form.make} {this.props.form.model} {this.props.form.style} </h2>
-                    {this.state.noOffer 
-                    ? <h2 className="price-range"> Unable to provide an instant offer. We will send an offer within 24hrs </h2> 
-                    :
-                    <h2 className="price-range"> ${this.props.form.lowPrice} - ${this.props.form.highPrice} </h2>
+                    {this.state.noOffer ? 
+                        <h2 className="price-range"> 
+                            Unable to provide an instant offer. We will send an offer within 24hrs 
+                        </h2> 
+                    : 
+                        <h2 className="price-range">
+                            Your instant offer has been sent to your email.
+                        </h2>
                     }
+                    <h2 className="price-vehicle"> 
+                        {this.props.form.year} {this.props.form.make} {this.props.form.model} {this.props.form.style} 
+                    </h2>
                     <p className="price-text"> 
-                        Thank you for using Sell It To Me. We will send you an official offer within 24hrs. We have sent an email explaining further steps and giving you the chance to send us pictures if you haven't already.
+                        Thank you for using Sell It To Me. Your instant offer has been sent to your email. We will send you an official offer within 24hrs.
                     </p>
                 </div>
             </div>
@@ -163,7 +173,7 @@ class Price extends React.Component {
                 <div className="price-container">
                     <h2 className="price-vehicle"> Getting your vehicles value. </h2>
                     <p className="price-text"> 
-                        Thank you for using Sell It To Me. We will send you an official offer within 24hrs. We have sent an email explaining further steps and giving you the chance to send us pictures if you haven't already.
+                        Thank you for using Sell It To Me. Your instant offer has been sent to your email. We will send you an official offer within 24hrs. In the email we will explain further steps to get cash for your vehicle.
                     </p>
                 </div>
             </div>
