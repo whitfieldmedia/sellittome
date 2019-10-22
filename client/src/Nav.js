@@ -39,9 +39,14 @@ class Nav extends React.Component {
                     </li>
                     {this.props.auth.isAuthenticated
                     ?
-                    <li onClick={this.logout} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
-                        <p className="nav-link"> Log Out </p>
-                    </li>
+                    <div>
+                        <li onClick={this.logout} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
+                            <p className="nav-link"> Log Out </p>
+                        </li>
+                        <li onClick={this.closeNav} className={this.state.isOpen ? "nav-link-holder nav-holder" : "nav-link-closed nav-holder"}>
+                            <Link to="/vehicle-database" className="nav-link"> Database </Link>
+                        </li>
+                    </div>
                     : null}
                 </ul>
             </div>

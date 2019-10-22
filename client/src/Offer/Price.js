@@ -11,151 +11,128 @@ class Price extends React.Component {
         this.state = {
             usedVin: false,
             finishedLoading: false,
-            noOffer: false
+            noOffer: false,
+            basePrice: false
         }
     }
     componentDidMount() {
         if(this.props.form.vin.length === 17) {
+            if(!this.state.usedVin) {
+                this.setState({ usedVin: true })
+            }
             this.props.getVin(this.props.form.vin, this.props.form.miles)
-            this.setState({
-                usedVin: true
-            })
         } else {
             this.props.getValue(this.props.form.uvc, this.props.form.miles)
         }
     }
     componentDidUpdate() {
-        if(this.props.blackValue.used_vehicles.used_vehicle_list.length > 0) {
+        if(this.props.blackValue.used_vehicles.used_vehicle_list.length > 0 && !this.state.basePrice) {
             this.getPrice();
-        }
-        if(this.props.form.basePrice > 0) {
-            this.getRange()
-        }
-        if(this.props.form.lowPrice > 0 && this.props.form.highPrice > 0) {
-            this.sendEmail();
+        } else {
+            if(this.props)
         }
     }
 
     getPrice = () => {
         var props = this.props;
         var condition = props.form.condition;
-        if(this.props.form.basePrice === 0) {
-            if(this.state.usedVin) {
-                this.props.blackValue.used_vehicles.used_vehicle_list.map(res => {
-                    props.addYear(res.year);
-                    props.addMake(res.make);
-                    props.addModel(res.model);
-                    props.addStyle(res.body);
-                    props.addUvc(res.uvc);
-                    var price = 0;
-                    if(condition === 'clean') {
-                        price = parseInt(res.adjusted_tradein_clean, 10)
-                    } else if (condition === 'average') {
-                        price = parseInt(res.adjusted_tradein_avg, 10)
-                    } else {
-                        price = parseInt(res.adjusted_tradein_rough, 10)
-                    }
-                    if(this.props.form.basePrice !== price) {
-                        props.addBasePrice(price);
-                    }
-                    return this.getRange();
-                })
-            } else {
-                this.props.blackValue.used_vehicles.used_vehicle_list.map(res => {
-                    var price = 0;
-                    if(condition === 'clean') {
-                        price = parseInt(res.adjusted_tradein_clean, 10)
-                    } else if (condition === 'average') {
-                        price = parseInt(res.adjusted_tradein_avg, 10)
-                    } else {
-                        price = parseInt(res.adjusted_tradein_rough, 10)
-                    }
-                    console.log(price)
-                    if(this.props.form.basePrice !== price) {
-                        this.props.addBasePrice(price);
-                    }
-                    return this.getRange()
-                })
+        this.props.blackValue.used_vehicles.used_vehicle_list.map(res => {
+            if(res.year !== props.form.year || res.make !== props.form.make || res.model !== props.form.model) {
+                props.addYear(res.model_year);
+                props.addMake(res.make);
+                props.addModel(res.model);
+                props.addStyle(res.style);
+                props.addUvc(res.uvc);
             }
-        } 
+            var price = 0;
+            if(condition === 'clean') {
+                price = parseInt(res.adjusted_tradein_clean, 10)
+            } else if (condition === 'average') {
+                price = parseInt(res.adjusted_tradein_avg, 10)
+            } else {
+                price = parseInt(res.adjusted_tradein_rough, 10)
+            }
+            if(this.props.form.basePrice !== price) {
+                props.addBasePrice(price);
+            }
+            if(!this.state.basePrice) {
+                this.setState({ basePrice: true })
+            }
+            return this.getRange();
+        })
     }
 
     getRange = () => {
-        console.log("GET RANGE")
-        if( ((this.props.form.lowPrice === 0 || this.props.form.highPrice === 0) && this.props.form.basePrice !== 0)) {
-            let fileLength = this.props.form.files.length;
+        if((this.props.form.lowPrice === 0 || this.props.form.highPrice === 0) && this.props.form.basePrice !== 0) {
+            let files = this.props.form.files;
             var price = this.props.form.basePrice;
             var low = price;
             var high = price;
-            if(fileLength > 0) {
+            if(files.length > 0) {
                 low = (low * 0.8)
                 high = (high * 0.9)
             } else {
                 low = (low * .7)
                 high = (high * .8)
             }
-            if((low - 800) < 0 && !this.state.noOffer) {
-                console.log('noOffer')
+            if(low < 900 && !this.state.noOffer) {
                 this.setState({ noOffer: true })
             } else {
-                console.log(high)
-                console.log(low)
                 this.props.addHighPrice(high);
                 this.props.addLowPrice(low);
             }
         }
+        return this.sendEmail();
     }
 
     sendEmail = () => {
-        console.log("SEND EMAIL")
         let form = this.props.form
-        if(!form.sent) {
-            if(this.state.noOffer) {
-                var message = {
-                    lowPrice: "NO",
-                    highPrice: "OFFER",
-                    name: form.name,
-                    from: form.email,
-                    phone: form.phone,
-                    year: form.year,
-                    make: form.make,
-                    model: form.model,
-                    style: form.style,
-                    uvc: form.uvc,
-                    vin: form.vin,
-                    zip: form.zip,
-                    condition: form.condition,
-                    files: form.files,
-                    miles: form.miles
-                }
-                this.props.sendEmail(message);
-                this.props.emailSent(true);
-            } else {
-                var message2 = {
-                    lowPrice: parseInt(form.lowPrice - 800),
-                    highPrice: parseInt(form.highPrice - 800),
-                    name: form.name,
-                    from: form.email,
-                    phone: form.phone,
-                    year: form.year,
-                    make: form.make,
-                    model: form.model,
-                    style: form.style,
-                    uvc: form.uvc,
-                    vin: form.vin,
-                    zip: form.zip,
-                    condition: form.condition,
-                    files: form.files,
-                    miles: form.miles
-                }
-                this.props.sendEmail(message2);
-                this.props.emailSent(true);
+        if(!this.props.form.sent) {
+        if(this.state.noOffer) {
+            var message = {
+                lowPrice: "NO",
+                highPrice: "OFFER",
+                name: form.name,
+                from: form.email,
+                phone: form.phone,
+                year: form.year,
+                make: form.make,
+                model: form.model,
+                style: form.style,
+                uvc: form.uvc,
+                vin: form.vin,
+                zip: form.zip,
+                condition: form.condition,
+                files: form.files,
+                miles: form.miles
             }
+            this.props.sendEmail(message);
         } else {
-            if(!this.state.finishedLoading) {
-                this.setState({ finishedLoading: true })
+            var message2 = {
+                lowPrice: parseInt(form.lowPrice - 800),
+                highPrice: parseInt(form.highPrice - 800),
+                name: form.name,
+                from: form.email,
+                phone: form.phone,
+                year: form.year,
+                make: form.make,
+                model: form.model,
+                style: form.style,
+                uvc: form.uvc,
+                vin: form.vin,
+                zip: form.zip,
+                condition: form.condition,
+                files: form.files,
+                miles: form.miles
             }
+            this.props.sendEmail(message2);
+            this.props.emailSent(true);
         }
+    } else {
+        if(!this.state.finishedLoading) {
+            this.setState({ finishedLoading: true })
+        }
+    }
     }
     render() {
         return (
