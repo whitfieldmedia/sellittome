@@ -52,7 +52,6 @@ class Offer extends React.Component {
             props.addIndex(0)
         }
     }
-
     handleError = () => {
         if(!this.props.form.error) {
             this.props.showError(true)

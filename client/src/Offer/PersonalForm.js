@@ -25,7 +25,7 @@ class PersonalForm extends React.Component {
         this.props.addPhone(number)
     }
     handleSubmit = () => {
-        return this.props.addIndex(this.props.index + 1)
+        return this.props.addIndex(10)
     }
     render() {
         return (
@@ -58,7 +58,7 @@ class PersonalForm extends React.Component {
                             value={this.props.form.phone}
                             placeholder="Your Phone #" />
                     </div>
-                    <button onClick={this.handleFileNext} className="submit-button"> Submit </button>
+                    <button value="submit" className="submit-button"> Submit </button>
                 </form>
             </div>
         )

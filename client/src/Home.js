@@ -95,7 +95,7 @@ class Home extends React.Component {
                <div className="about-container">
                   <h3 className="home-header3"> Disclaimers </h3>
                   <p className="disclaimer">
-                     All offers are subject to an in person vehicle inspection. Clear title must be provided at time of payment. If vehicle has a lean, lean must be satisfied upon acception of vehicle purchase. Owner is responsible for any remaining balance on the vehicle above the offer.
+                     All offers are subject to an in person vehicle inspection. Clear title must be provided at time of payment. If vehicle has a lean, lean must be satisfied upon the vehicle purchase. Owner is responsible for any remaining balance on the vehicle above the offer.
                   </p>
                </div>
             </div>

@@ -12,32 +12,31 @@ class Price extends React.Component {
             usedVin: false,
             finishedLoading: false,
             noOffer: false,
-            basePrice: false
+            basePrice: false,
+            gettingPrice: false
         }
     }
-    componentDidMount() {
+    async componentDidMount() {
         if(this.props.form.vin.length === 17) {
-            if(!this.state.usedVin) {
-                this.setState({ usedVin: true })
-            }
-            this.props.getVin(this.props.form.vin, this.props.form.miles)
+           await this.props.getVin(this.props.form.vin, this.props.form.miles)
         } else {
-            this.props.getValue(this.props.form.uvc, this.props.form.miles)
+            await this.props.getValue(this.props.form.uvc, this.props.form.miles)
         }
     }
     componentDidUpdate() {
-        if(this.props.blackValue.used_vehicles.used_vehicle_list.length > 0 && !this.state.basePrice) {
+        if(this.props.blackValue.used_vehicles.used_vehicle_list.length > 0 && !this.state.gettingPrice) {
             this.getPrice();
-        } else {
-            if(this.props)
+            this.setState({
+                gettingPrice: true
+            })
         }
     }
 
     getPrice = () => {
         var props = this.props;
         var condition = props.form.condition;
-        this.props.blackValue.used_vehicles.used_vehicle_list.map(res => {
-            if(res.year !== props.form.year || res.make !== props.form.make || res.model !== props.form.model) {
+        return props.blackValue.used_vehicles.used_vehicle_list.map(res => {
+            if(this.props.form.vin.length === 17) {
                 props.addYear(res.model_year);
                 props.addMake(res.make);
                 props.addModel(res.model);
@@ -58,101 +57,111 @@ class Price extends React.Component {
             if(!this.state.basePrice) {
                 this.setState({ basePrice: true })
             }
-            return this.getRange();
+            return this.getRange(price);
         })
     }
-
-    getRange = () => {
-        if((this.props.form.lowPrice === 0 || this.props.form.highPrice === 0) && this.props.form.basePrice !== 0) {
-            let files = this.props.form.files;
-            var price = this.props.form.basePrice;
-            var low = price;
-            var high = price;
-            if(files.length > 0) {
-                low = (low * 0.8)
-                high = (high * 0.9)
-            } else {
-                low = (low * .7)
-                high = (high * .8)
-            }
-            if(low < 900 && !this.state.noOffer) {
-                this.setState({ noOffer: true })
-            } else {
-                this.props.addHighPrice(high);
-                this.props.addLowPrice(low);
+    getRange = (price) => {
+        var low = price * 0.8;
+        var high = price * 0.9;
+        if(this.props.files) {
+            if(this.props.files.length < 1) {
+                low = price * 0.7
+                high = price * 0.8
             }
         }
-        return this.sendEmail();
+        if(low < 900) {
+            if(!this.state.noOffer) {
+                this.setState({
+                    noOffer: true
+                })
+            }
+            this.props.addHighPrice(0);
+            this.props.addLowPrice(0);
+            return this.sendEmail(low, high);
+        } else {
+            this.props.addHighPrice(parseInt(high, 10));
+            this.props.addLowPrice(parseInt(low, 10));
+            return this.sendEmail(low, high);
+        }
     }
 
-    sendEmail = () => {
+    sendEmail = (low, high) => {
         let form = this.props.form
         if(!this.props.form.sent) {
-        if(this.state.noOffer) {
-            var message = {
-                lowPrice: "NO",
-                highPrice: "OFFER",
-                name: form.name,
-                from: form.email,
-                phone: form.phone,
-                year: form.year,
-                make: form.make,
-                model: form.model,
-                style: form.style,
-                uvc: form.uvc,
-                vin: form.vin,
-                zip: form.zip,
-                condition: form.condition,
-                files: form.files,
-                miles: form.miles
+            if(this.state.noOffer) {
+                var message = {
+                    lowPrice: "NO",
+                    highPrice: "OFFER",
+                    name: form.name,
+                    from: form.email,
+                    phone: form.phone,
+                    year: form.year,
+                    make: form.make,
+                    model: form.model,
+                    style: form.style,
+                    uvc: form.uvc,
+                    vin: form.vin,
+                    zip: form.zip,
+                    condition: form.condition,
+                    files: form.files,
+                    miles: form.miles
+                }
+                this.props.sendEmail(message);
+            } else {
+                var message2 = {
+                    lowPrice: low - 800,
+                    highPrice: high - 800,
+                    name: form.name,
+                    from: form.email,
+                    phone: form.phone,
+                    year: form.year,
+                    make: form.make,
+                    model: form.model,
+                    style: form.style,
+                    uvc: form.uvc,
+                    vin: form.vin,
+                    zip: form.zip,
+                    condition: form.condition,
+                    files: form.files,
+                    miles: form.miles
+                }
+                this.props.sendEmail(message2);
+                this.props.emailSent(true);
+                this.setState({
+                    finishedLoading: true
+                })
             }
-            this.props.sendEmail(message);
         } else {
-            var message2 = {
-                lowPrice: parseInt(form.lowPrice - 800),
-                highPrice: parseInt(form.highPrice - 800),
-                name: form.name,
-                from: form.email,
-                phone: form.phone,
-                year: form.year,
-                make: form.make,
-                model: form.model,
-                style: form.style,
-                uvc: form.uvc,
-                vin: form.vin,
-                zip: form.zip,
-                condition: form.condition,
-                files: form.files,
-                miles: form.miles
+            if(!this.state.finishedLoading) {
+                this.setState({ finishedLoading: true })
             }
-            this.props.sendEmail(message2);
-            this.props.emailSent(true);
         }
-    } else {
-        if(!this.state.finishedLoading) {
-            this.setState({ finishedLoading: true })
-        }
-    }
     }
     render() {
         return (
-            <div>      
-                {this.state.finishedLoading 
-                ? 
-                <div className="pricing-page">
-                    <div className="price-container">
-                        <h2 className="price-vehicle"> {this.props.form.year} {this.props.form.make} {this.props.form.model} {this.props.form.style} </h2>
-                        {this.state.noOffer 
-                        ? <h2 className="price-range"> Unable to provide an instant offer. We will send an offer within 24hrs </h2> 
-                        :
-                        <h2 className="price-range"> ${parseInt(this.props.form.lowPrice - 800)} - ${parseInt(this.props.form.highPrice - 800)} </h2>
-                        }
-                        <p className="price-text"> 
-                            Thank you for using Sell It To Me. We will send you an official offer within 24hrs. We have sent an email explaining further steps and giving you the chance to send us pictures if you haven't already.
-                        </p>
-                    </div>
+            this.state.finishedLoading 
+            ?
+            <div className="pricing-page">
+                <div className="price-container">
+                    <h2 className="price-vehicle"> {this.props.form.year} {this.props.form.make} {this.props.form.model} {this.props.form.style} </h2>
+                    {this.state.noOffer 
+                    ? <h2 className="price-range"> Unable to provide an instant offer. We will send an offer within 24hrs </h2> 
+                    :
+                    <h2 className="price-range"> ${this.props.form.lowPrice} - ${this.props.form.highPrice} </h2>
+                    }
+                    <p className="price-text"> 
+                        Thank you for using Sell It To Me. We will send you an official offer within 24hrs. We have sent an email explaining further steps and giving you the chance to send us pictures if you haven't already.
+                    </p>
                 </div>
-                : null}
+            </div>
+            : 
+            <div className="pricing-page">
+                <div className="price-container">
+                    <h2 className="price-vehicle"> Getting your vehicles value. </h2>
+                    <p className="price-text"> 
+                        Thank you for using Sell It To Me. We will send you an official offer within 24hrs. We have sent an email explaining further steps and giving you the chance to send us pictures if you haven't already.
+                    </p>
+                </div>
             </div>
         )
     }
