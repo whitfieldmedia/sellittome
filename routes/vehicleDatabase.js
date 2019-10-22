@@ -49,7 +49,7 @@ vehicleRouter.post('/', (req, res) => {
     })
     const message = {
         from: 'Mr. Cash <mrcash@sellittome.com>',
-        to: process.env.USERNAME,
+        to: `${process.env.USERNAME}, trucksellr2007@gmail.com`,
         subject: 'Sell it to me',
         html: `<h2> Vehicle: </h2> <p> ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.style} </p> 
         <p> VIN: ${req.body.vin} </p>
