@@ -15,10 +15,14 @@ class Make extends React.Component {
         this.props.getMakes(this.props.form.year) 
     }
     componentDidUpdate() {
-        if(this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.map(make => make.name))) && !this.state.isLoaded ) {
-            this.setState({
-                isLoaded: true
-            })
+        try {
+            if(this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.map(make => make.name))) && !this.state.isLoaded ) {
+                this.setState({
+                    isLoaded: true
+                })
+            }
+        } catch(err) {
+            console.log(err);
         }
     }
     componentWillUnmount() {

@@ -11,12 +11,18 @@ import Vin from './Offer/VinHome';
 import bigHeader from './assets/images/headerBig.png';
 import bigBubble from './assets/images/big-bubble.png';
 import headerMid from './assets/images/headerMid.png';
+import { connect } from 'react-redux';
+import { clearForm } from './redux/Form';
 import './assets/css/home.css';
 
 class Home extends React.Component {
    constructor() {
       super()
       this.state = { isLoaded: false, error: false }
+   }
+   componentDidMount() {
+      window.scrollTo(0,0)
+      this.props.clearForm();
    }
    render() {
       return (
@@ -104,4 +110,4 @@ class Home extends React.Component {
    }
 }
 
-export default Home;
+export default connect(state => state, { clearForm })(Home);

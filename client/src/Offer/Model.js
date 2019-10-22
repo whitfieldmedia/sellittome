@@ -15,10 +15,14 @@ class Model extends React.Component {
             this.props.getModels(this.props.form.year, this.props.form.make);
     }
     componentDidUpdate() {
-        if(this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.length > 0)) && !this.state.isLoaded) {
-            this.setState({
-                isLoaded: true
-            })
+        try {
+            if(this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.length > 0)) && !this.state.isLoaded) {
+                this.setState({
+                    isLoaded: true
+                })
+            }
+        } catch(err) {
+            console.log(err);
         }
     }
     componentWillUnmount() {

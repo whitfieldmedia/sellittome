@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addVin, addIndex, addYear, showError } from '../redux/Form';
+import { addVin, addIndex, addYear, showError, clearForm } from '../redux/Form';
 import button from '../assets/images/offer-button.svg';
 import { Redirect } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ class VinHome extends React.Component {
             this.props.addIndex(5)
             this.setState({ continue: true })
         } else { 
-            this.props.addIndex(0);
+            this.props.addIndex(2);
             this.props.showError(true);
             this.setState({ continue: true }) 
         }
@@ -116,4 +116,4 @@ class VinHome extends React.Component {
     }
 }
 
-export default connect(state => state, { addVin, addIndex, addYear, showError })(VinHome)
+export default connect(state => state, { addVin, addIndex, addYear, showError, clearForm })(VinHome)

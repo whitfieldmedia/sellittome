@@ -12,10 +12,14 @@ class Trim extends React.Component {
         this.props.getTrims(this.props.form.year, this.props.form.make, this.props.form.model)
     }
     componentDidUpdate() {
-        if(this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.map(make => make.model_list.map(model => model.series_list.map(series => series.style_list.length > 0))))) && !this.state.isLoaded) {
-            return this.setState({
-                isLoaded: true
-            })
+        try {
+            if(this.props.blackValue.drilldown.class_list.map(list => list.year_list.map(year => year.make_list.map(make => make.model_list.map(model => model.series_list.map(series => series.style_list.length > 0))))) && !this.state.isLoaded) {
+                return this.setState({
+                    isLoaded: true
+                })
+            }
+        } catch(err) {
+            console.log(err);
         }
     }
     handleClick = (uvc, trim, series) => {

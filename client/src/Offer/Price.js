@@ -24,11 +24,15 @@ class Price extends React.Component {
         }
     }
     componentDidUpdate() {
-        if(this.props.blackValue.used_vehicles.used_vehicle_list.length > 0 && !this.state.gettingPrice) {
-            this.getPrice();
-            this.setState({
-                gettingPrice: true
-            })
+        try {
+            if(this.props.blackValue.used_vehicles.used_vehicle_list.map(res => res) && !this.state.gettingPrice) {
+                this.getPrice();
+                this.setState({
+                    gettingPrice: true
+                })
+            }
+        } catch(error) {
+            console.log(error)
         }
     }
 
