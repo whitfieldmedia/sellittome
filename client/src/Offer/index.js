@@ -83,7 +83,7 @@ class Offer extends React.Component {
         if(this.props.form.index === 0) { 
             this.next(); 
         } else if(this.props.form.index === 1) {
-            if(this.props.form.year > 1945 && this.props.form.year < 2022) {
+            if(this.props.form.year > 1980 && this.props.form.year < 2022) {
                 this.next();
             } else {
                 this.handleError();

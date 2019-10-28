@@ -16,7 +16,7 @@ class Year extends React.Component {
         } 
     }
     componentDidUpdate() {
-        if(this.props.form.year.length === 4 && this.props.form.year !== this.state.year && this.props.form.year > 1950 && this.props.form.year < 2021) {
+        if(this.props.form.year.length === 4 && this.props.form.year !== this.state.year && this.props.form.year > 1980 && this.props.form.year < 2021) {
             setTimeout(
                 function() {
                     var index = (this.props.form.index + 1)
