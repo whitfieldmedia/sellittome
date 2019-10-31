@@ -8,7 +8,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
-app.use(express.static(path.join(__dirname, "client", "build", "index.html")));
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
