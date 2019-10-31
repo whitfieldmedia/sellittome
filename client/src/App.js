@@ -13,7 +13,6 @@ import './assets/css/app.css';
 
 class App extends React.Component {
   render() {
-    console.log(this.props)
     const { isAuthenticated } = this.props.auth;
     return (
       <div>

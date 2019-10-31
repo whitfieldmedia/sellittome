@@ -19,11 +19,10 @@ class Trim extends React.Component {
                 })
             }
         } catch(err) {
-            console.log(err);
+            throw err;
         }
     }
     handleClick = (uvc, trim, series) => {
-        console.log("TRIM: " + trim, 'SERIES: ' + series)
         var style = (trim + ' ' + series)
         this.props.addUvc(uvc);
         this.props.addStyle(style);

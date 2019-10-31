@@ -37,7 +37,6 @@ class Year extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="input-container">
                 <input 

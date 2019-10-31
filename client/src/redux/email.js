@@ -5,7 +5,7 @@ export function sendEmail(email) {
         axios.post('/vehicle', email).then(res => {
             dispatch({ type: "SEND_EMAIL", email: res.data })
         }).catch(err => {
-            console.log(err)
+            throw err;
         })
     }
 }

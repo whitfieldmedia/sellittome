@@ -23,7 +23,6 @@ class Nav extends React.Component {
         this.props.logout();
     }
     render() {
-        console.log("NAV this.props.auth.isAuthenticated", this.props)
         return (
             <div className="nav-bar-container">
                 <Link to="/" className="nav-header"> SELL IT TO ME </Link>

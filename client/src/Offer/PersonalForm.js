@@ -20,7 +20,6 @@ class PersonalForm extends React.Component {
         this.props.addEmail(e.target.value)
     }
     handlePhoneChange = e => {
-        console.log(e.target.value)
         var number = e.target.value.replace(/\D/,'')
         this.props.addPhone(number)
     }

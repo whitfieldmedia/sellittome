@@ -39,7 +39,6 @@ class Login extends React.Component {
         this.clearInputs();
     }
     render() {
-        console.log(this.props)
         return (
             <LoginForm handleChange={this.handleChange} 
                 handleSubmit={this.handleSubmit}

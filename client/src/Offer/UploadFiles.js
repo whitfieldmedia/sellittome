@@ -15,7 +15,6 @@ class UploadFiles extends React.Component {
         let widget = window.cloudinary.createUploadWidget({ cloudName: 'duw9diprk', uploadPreset: 'my_preset'}, 
         (error, result) => {
             if (!error && result && result.event === "success") {
-                 console.log(result.info.secure_url)
                  this.setState({
                      files: [ ...this.state.files, result.info.secure_url]
                  })

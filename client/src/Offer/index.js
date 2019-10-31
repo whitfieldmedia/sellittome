@@ -221,9 +221,7 @@ class Offer extends React.Component {
             return ( <h1 className="form-header"> Upload Pictures </h1> )
         } else if (this.props.form.index === 9) {
             return ( <h1 className="form-header"> Enter Your Contact Info </h1> )
-        } else if (this.props.form.index === 10) {
-            return ( <h2 className="form-header"></h2> )
-        }
+        } 
     }
 
     //Show input depending on what index(page) user is on
@@ -256,7 +254,6 @@ class Offer extends React.Component {
         this.props.addIndex(0)
     }
     render() {
-        console.log(this.props)
         return (
             <div className="offer-page">
                 <div className="form-container">

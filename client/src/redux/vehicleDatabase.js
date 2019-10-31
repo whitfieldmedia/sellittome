@@ -12,7 +12,9 @@ export function getVehicles() {
         axios.get('/vehicle')
             .then(res => {
                 dispatch(setVehicleDatabase(res.data))
-            }).catch(err => console.log(err))
+            }).catch(err => {
+                throw err
+            })
     }
 }
 
@@ -20,7 +22,9 @@ export function getVehicle(id) {
     return dispatch => {
         axios.get(`/vehicle/:${id}`).then(res => {
             dispatch(setVehicleDatabase(res.data))
-        }).catch(err => console.log(err))
+        }).catch(err => {
+            throw err;
+        })
     }
 }
 
@@ -28,7 +32,9 @@ export function addVehicle(vehicle) {
     return dispatch => {
         axios.post('/vehicle', vehicle).then(res => {
             dispatch(getVehicles())
-        }).catch(err => console.log(err))
+        }).catch(err => {
+            throw err;
+        })
     }
 }
 

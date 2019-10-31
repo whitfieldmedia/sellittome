@@ -10,7 +10,7 @@ export function getMakes(year) {
                 makes: res.data
             })
         }).catch(err => {
-            console.log(err)
+            throw err;
         })
     }
 }
@@ -18,13 +18,12 @@ export function getMakes(year) {
 export function getModels(year, make) {
     return dispatch => {
         axios.get(url + 'Drilldown/' + encodeURIComponent("ALL") + '/' + encodeURIComponent(year) + '/' + encodeURIComponent(make) + '?drilldeep=' + encodeURIComponent('false') + '&getclass=' + encodeURIComponent("false") + "&customerid=" + encodeURIComponent('false')).then(res => {
-            console.log(res.data)
             dispatch({
                 type: 'GET_MODELS2',
                 models: res.data
             })
         }).catch(err => {
-            console.log(err)
+            throw err;
         })
     }
 }
@@ -32,13 +31,12 @@ export function getModels(year, make) {
 export function getTrims(year, make, model) {
     return dispatch => {
         axios.get(url + "Drilldown/" + encodeURIComponent("ALL") + '/' + encodeURIComponent(year) + '/' + encodeURIComponent(make) + '?model=' + encodeURIComponent(model) + '&drilldeep=' + encodeURIComponent('false') + '&getclass=' + encodeURIComponent("false") + "&customerid=" + encodeURIComponent('test')).then(res => {
-            console.log(res.data)
             dispatch({
                 type: "GET_TRIMS2",
                 trims: res.data
             })
         }).catch(err => {
-            console.log(err)
+            throw err;
         })
     }
 }
@@ -46,13 +44,12 @@ export function getTrims(year, make, model) {
 export function getValue(uvc, miles) {
     return dispatch => {
         axios.get(url + "UsedVehicle/UVC/" + encodeURIComponent(uvc) + '?mileage=' + encodeURIComponent(miles) + '&customerid=' + encodeURIComponent("test")).then(res => {
-            console.log('GET_BLACK_VALUE: ', res.data)
             dispatch({
                 type: "GET_VALUE2",
                 value: res.data
             })
         }).catch(err => {
-            console.log(err)
+            throw err;
         })
     }
 }
@@ -65,7 +62,7 @@ export function getVin(vin, miles) {
                 vinValue: res.data
             })
         }).catch(err => {
-            console.log(err)
+            throw err;
         })
     }
 }

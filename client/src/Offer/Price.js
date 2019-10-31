@@ -36,7 +36,7 @@ class Price extends React.Component {
                 })
             }
         } catch(error) {
-            console.log(error)
+            throw error
         }
     }
 

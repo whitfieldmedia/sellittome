@@ -57,7 +57,6 @@ export function signup(userInfo) {
                 localStorage.setItem("user", JSON.stringify(user))
                 dispatch(authenticate(user))
             }).catch(err => {
-                console.dir(err);
                 dispatch(authError("signup", err));
             })
     }
@@ -67,13 +66,11 @@ export function login(credentials) {
     return dispatch => {
         axios.post("/auth/login", credentials)
             .then(res => {
-                console.log(res)
                 const {token, user} = res.data;
                 localStorage.setItem("token", token)
                 localStorage.setItem("user", JSON.stringify(user))
                 dispatch(authenticate(user))
             }).catch(err => {
-                console.log(err);
                 dispatch(authError("login", err));
             })
     }
@@ -99,7 +96,6 @@ let verifyAxios = axios.create();
 verifyAxios.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
     config.headers.Authorization = `Bearer ${token}`;
-    console.log(token)
     return config;
 })
 
@@ -107,10 +103,8 @@ export function verify() {
     return dispatch => {
         verifyAxios.get('/profile')
             .then(res => {
-                console.log(res);
                 dispatch(authenticate(res.data.user))
             }).catch(err => {
-                console.log(err)
                 dispatch(authError("verify", err.res.status))
             })
     }
