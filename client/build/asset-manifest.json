@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.eb0bf255.chunk.css",
+    "main.js": "/static/js/main.44c0c68c.chunk.js",
+    "main.js.map": "/static/js/main.44c0c68c.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.1b939dbd.chunk.js": "/static/js/2.1b939dbd.chunk.js",
+    "static/js/2.1b939dbd.chunk.js.map": "/static/js/2.1b939dbd.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.9aa42b7024a429982ab717fb804bcae4.js": "/precache-manifest.9aa42b7024a429982ab717fb804bcae4.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.eb0bf255.chunk.css.map": "/static/css/main.eb0bf255.chunk.css.map",
+    "static/media/automobile.svg": "/static/media/automobile.74d71190.svg",
+    "static/media/big-bubble.png": "/static/media/big-bubble.ef6b2e0b.png",
+    "static/media/home.css": "/static/media/dots.9531a6ed.svg",
+    "static/media/header-bubble.png": "/static/media/header-bubble.cbc94b01.png",
+    "static/media/headerBig.png": "/static/media/headerBig.0fe614b5.png",
+    "static/media/headerMid.png": "/static/media/headerMid.c17d189d.png",
+    "static/media/money-bag.svg": "/static/media/money-bag.6d377334.svg",
+    "static/media/mr-cash-flying.png": "/static/media/mr-cash-flying.37e4dacd.png",
+    "static/media/mrcashtall2.png": "/static/media/mrcashtall2.092b0862.png",
+    "static/media/offer-button.svg": "/static/media/offer-button.4c9f098d.svg",
+    "static/media/offer.svg": "/static/media/offer.492d1426.svg"
+  }
+}
