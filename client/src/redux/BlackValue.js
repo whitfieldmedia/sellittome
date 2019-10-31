@@ -18,11 +18,7 @@ export function getMakes(year) {
 
 export function getModels(year, make) {
     return dispatch => {
-        axios.get(url + 'Drilldown/' + encodeURIComponent("ALL") + '/' + encodeURIComponent(year) + '/' + encodeURIComponent(make) + '?drilldeep=' + encodeURIComponent('false') + '&getclass=' + encodeURIComponent("false") + "&customerid=" + encodeURIComponent('getModels'), {
-            headers: {
-                "Access-Control-Allow-Origin": "*"
-            }
-        }).then(res => {
+        axios.get(url + 'Drilldown/' + encodeURIComponent("ALL") + '/' + encodeURIComponent(year) + '/' + encodeURIComponent(make) + '?drilldeep=' + encodeURIComponent('false') + '&getclass=' + encodeURIComponent("false") + "&customerid=" + encodeURIComponent('getModels')).then(res => {
             dispatch({
                 type: 'GET_MODELS2',
                 models: res.data
@@ -35,11 +31,7 @@ export function getModels(year, make) {
 
 export function getTrims(year, make, model) {
     return dispatch => {
-        axios.get(url + "Drilldown/" + encodeURIComponent("ALL") + '/' + encodeURIComponent(year) + '/' + encodeURIComponent(make) + '?model=' + encodeURIComponent(model) + '&drilldeep=' + encodeURIComponent('false') + '&getclass=' + encodeURIComponent("false") + "&customerid=" + encodeURIComponent('getUvc'), {
-            headers: {
-                "Access-Control-Allow-Origin": "*"
-            }
-        }).then(res => {
+        axios.get(url + "Drilldown/" + encodeURIComponent("ALL") + '/' + encodeURIComponent(year) + '/' + encodeURIComponent(make) + '?model=' + encodeURIComponent(model) + '&drilldeep=' + encodeURIComponent('false') + '&getclass=' + encodeURIComponent("false") + "&customerid=" + encodeURIComponent('getUvc')).then(res => {
             dispatch({
                 type: "GET_TRIMS2",
                 trims: res.data
@@ -52,11 +44,7 @@ export function getTrims(year, make, model) {
 
 export function getValue(uvc, miles) {
     return dispatch => {
-        axios.get(url + "UsedVehicle/UVC/" + encodeURIComponent(uvc) + '?mileage=' + encodeURIComponent(miles) + '&customerid=' + encodeURIComponent("get_value_from_uvc"), {
-            headers: {
-                "Access-Control-Allow-Origin": "*"
-            }
-        }).then(res => {
+        axios.get(url + "UsedVehicle/UVC/" + encodeURIComponent(uvc) + '?mileage=' + encodeURIComponent(miles) + '&customerid=' + encodeURIComponent("get_value_from_uvc")).then(res => {
             dispatch({
                 type: "GET_VALUE2",
                 value: res.data
