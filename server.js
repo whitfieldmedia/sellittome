@@ -18,7 +18,6 @@ app.use(cors());
 
 app.use('/auth', require('./routes/auth'));
 app.use('/vehicle', require('./routes/vehicleDatabase'));
-app.use('/blackbook', require('./routes/blackValue'));
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
