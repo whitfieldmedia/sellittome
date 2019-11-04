@@ -4,21 +4,20 @@ const url = "https://service.blackbookcloud.com/UsedCarWs/UsedCarWs/"
 
 export function getMakes(year) {
     return dispatch => {
-        axios.get(url + 'Drilldown/' + encodeURIComponent("ALL") + '/' + encodeURIComponent(year) + '?drilldeep=' + encodeURIComponent('false') + '&getclass=' + encodeURIComponent("false") + "&customerid=" + encodeURIComponent('getMakes')).then(res => {
-            console.log("RES = " + res)
+        axios.get(`https://service.blackbookcloud.com/UsedCarWS/UsedCarWS/Drilldown/ALL/${year}?drilldeep=false&getclass=false`).then(res => {
             dispatch({
                 type: 'GET_MAKES2',
                 makes: res.data
             })
         }).catch(err => {
-            throw err;
+            console.log(err)
         })
     }
 }
 
 export function getModels(year, make) {
     return dispatch => {
-        axios.get(url + 'Drilldown/' + encodeURIComponent("ALL") + '/' + encodeURIComponent(year) + '/' + encodeURIComponent(make) + '?drilldeep=' + encodeURIComponent('false') + '&getclass=' + encodeURIComponent("false") + "&customerid=" + encodeURIComponent('getModels')).then(res => {
+        axios.get(`https://service.blackbookcloud.com/UsedCarWS/UsedCarWS/Drilldown/ALL/${year}/${make}?drilldeep=false&getclass=false`).then(res => {
             dispatch({
                 type: 'GET_MODELS2',
                 models: res.data
@@ -31,7 +30,7 @@ export function getModels(year, make) {
 
 export function getTrims(year, make, model) {
     return dispatch => {
-        axios.get(url + "Drilldown/" + encodeURIComponent("ALL") + '/' + encodeURIComponent(year) + '/' + encodeURIComponent(make) + '?model=' + encodeURIComponent(model) + '&drilldeep=' + encodeURIComponent('false') + '&getclass=' + encodeURIComponent("false") + "&customerid=" + encodeURIComponent('getUvc')).then(res => {
+        axios.get(`https://service.blackbookcloud.com/UsedCarWS/UsedCarWS/Drilldown/ALL/${year}/${make}?model=${model}&drilldeep=false&getclass=false&customerid=getUvc`).then(res => {
             dispatch({
                 type: "GET_TRIMS2",
                 trims: res.data
@@ -44,7 +43,7 @@ export function getTrims(year, make, model) {
 
 export function getValue(uvc, miles) {
     return dispatch => {
-        axios.get(url + "UsedVehicle/UVC/" + encodeURIComponent(uvc) + '?mileage=' + encodeURIComponent(miles) + '&customerid=' + encodeURIComponent("get_value_from_uvc")).then(res => {
+        axios.get(`https://service.blackbookcloud.com/UsedCarWS/UsedCarWS/UsedVehicle/UVC/${uvc}?mileage=${miles}&customerid=getUvcValue`).then(res => {
             dispatch({
                 type: "GET_VALUE2",
                 value: res.data
@@ -57,7 +56,7 @@ export function getValue(uvc, miles) {
 
 export function getVin(vin, miles) {
     return dispatch => {
-        axios.get(url + "UsedVehicle/" + encodeURIComponent("VIN") + '/' + encodeURIComponent(vin) + '?mileage=' + encodeURIComponent(miles) + '&customerid=' + encodeURIComponent("get_value_from_vin")).then(res => {
+        axios.get(`https://service.blackbookcloud.com/UsedCarWS/UsedCarWS/UsedVehicle/VIN/${vin}?mileage=${miles}&customerid=getVinValue`).then(res => {
             dispatch({
                 type: 'GET_VIN2',
                 vinValue: res.data
