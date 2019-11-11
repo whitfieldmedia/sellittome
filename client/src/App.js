@@ -12,7 +12,7 @@ import './assets/css/app.css';
 
 class App extends React.Component {
   render() {
-    const { isAuthenticated, props } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
     return (
       <div>
         <Nav />

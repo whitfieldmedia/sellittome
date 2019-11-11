@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const url = "https://service.blackbookcloud.com/UsedCarWs/UsedCarWs/"
-
 export function getMakes(year) {
     return dispatch => {
         axios.get(`https://service.blackbookcloud.com/UsedCarWS/UsedCarWS/Drilldown/ALL/${year}?drilldeep=false&getclass=false`).then(res => {

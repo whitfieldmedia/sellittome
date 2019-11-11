@@ -3,26 +3,34 @@ import { Link } from 'react-router-dom';
 import mrCash from './assets/images/mr-cash-flying.png';
 import mrCashTall from './assets/images/mrcashtall2.png';
 import header from './assets/images/header-bubble.png';
-import button from './assets/images/offer-button.svg';
 import car from './assets/images/automobile.svg';
 import offer from './assets/images/offer.svg';
 import money from './assets/images/money-bag.svg';
-import Vin from './Offer/VinHome';
 import bigHeader from './assets/images/headerBig.png';
 import bigBubble from './assets/images/big-bubble.png';
 import headerMid from './assets/images/headerMid.png';
 import { connect } from 'react-redux';
 import { clearForm } from './redux/Form';
-import './assets/css/home.css';
+import './assets/scss/home.scss';
 
 class Home extends React.Component {
    constructor() {
       super()
-      this.state = { isLoaded: false, error: false }
+      this.state = { isLoaded: false, error: false, showVideo: false }
    }
    componentDidMount() {
       window.scrollTo(0,0)
       this.props.clearForm();
+   }
+   showVideo = () => {
+      this.setState({
+         showVideo: true
+      })
+   }
+   closeVideo = () => {
+      this.setState({
+         showVideo: false
+      })
    }
    render() {
       return (
@@ -39,14 +47,24 @@ class Home extends React.Component {
                   <div className="top-column">
                      <img src={bigHeader} className="header-bubble-big" alt="Selling a Car? Sell It To Me!"/>
                      <img src={header} className="header-bubble" alt="Sell your car to me! Get a fast, easy, & hassle-free offer in minutes"/>
-                     <Link to="/get-offer" id="cta-holder">
-                        <img src={button} className="cta-button" alt="Get My Offer"/>
-                     </Link>
-                     <div className="input-column">
-                        <Vin />
+                     <div className="cta-container">
+                        <Link to="/get-offer" className="home-cta">
+                           Get your offer
+                        </Link>
+                        <p className="home-learn-header" onClick={this.showVideo}>
+                           Learn More
+                           <i className="far fa-play-circle"></i>
+                        </p>
                      </div>
                   </div>
                </div>
+               {this.state.showVideo
+                  ?
+                  <div className="home-video-holder">
+                     <p onClick={this.closeVideo} className="close-video"> X </p>
+                     <iframe className="home-video" title="Sell It To Me" src="https://player.vimeo.com/video/368375512?autoplay=1" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
+                  </div>
+                  : null}
             </div>
             <div className="how-container">
                <h2 className="home-header2"> How it works </h2>

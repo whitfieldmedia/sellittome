@@ -1,3 +1,4 @@
+require('newrelic');
 const express = require('express');
 const app = express();
 require("dotenv").config();
@@ -23,7 +24,6 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, (err, db) => {
     if (err)  console.log(err)
     else {
-        console.log(db)
         console.log('connected to db')
     }
 })

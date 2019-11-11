@@ -36,7 +36,8 @@ class Price extends React.Component {
                 })
             }
         } catch(error) {
-            throw error
+            this.forceUpdate();
+            console.dir(error)
         }
     }
 
@@ -44,7 +45,7 @@ class Price extends React.Component {
         var props = this.props;
         var condition = props.form.condition;
         return props.blackValue.used_vehicles.used_vehicle_list.map(res => {
-            if(this.props.form.vin.length === 17) {
+            if(this.props.form.vin.length > 0) {
                 props.addYear(res.model_year);
                 props.addMake(res.make);
                 props.addModel(res.model);
@@ -77,7 +78,7 @@ class Price extends React.Component {
                 high = price * 0.8
             }
         }
-        if(low < 900) {
+        if(low < 1500) {
             if(!this.state.noOffer) {
                 this.setState({
                     noOffer: true

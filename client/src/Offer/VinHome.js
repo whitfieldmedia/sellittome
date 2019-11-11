@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { addVin, addIndex, addYear, showError, clearForm } from '../redux/Form';
 import button from '../assets/images/offer-button.svg';
 import { Redirect } from 'react-router-dom';
+import '../assets/scss/vinHome.scss';
+
 
 class VinHome extends React.Component {
     constructor() {
@@ -65,53 +67,61 @@ class VinHome extends React.Component {
 
     render() {
         return (
-            this.state.continue 
-            ? <Redirect to="/get-offer" />
-            :
             <div className="home-input-container">
-                <div className="select-box">
-                    <div className={this.state.vinSelected ? "selected" : "select-holder"} onClick={this.handleVinClick} id="vin-select">
-                        VIN
-                    </div>
-                    <div className={this.state.makeSelected ? "selected" : "select-holder"} onClick={this.handleMakeClick} id="make-select">
-                        NO VIN?
-                    </div>
+                <div className="home-cta-column">
+                    <button className="home-cta"> Learn More </button>
                 </div>
-                {this.state.makeSelected 
-                ? 
-                <div className="home-input-holder">
-                    <input type="number" maxLength="4" 
-                        value={this.props.form.year} onChange={this.handleYearChange}
-                        name="year" placeholder="Enter 4 digit year"
-                        className="home-offer-input"
-                    />
-                    <button className="home-submit-button" onClick={this.handleYearNext}> 
-                        <img src={button} className="get-offer-button" alt="get my offer" />
-                    </button>
+                <div className="home-cta-column">
+                    <button className="home-cta"> Get your offer </button>
                 </div>
-                : 
-                <div className="home-input-holder">
-                    <input 
-                        type="text" 
-                        maxLength="17"
-                        value={this.props.form.vin} 
-                        onChange={this.handleChange}
-                        name="vin" 
-                        placeholder="Enter 17 Digit Vin"
-                        className="home-offer-input" 
-                    /> 
-                    <button onClick={this.handleSubmit} className="home-submit-button"> 
-                        <img src={button} className="get-offer-button" alt="get my offer" />
-                    </button>
-                </div>
-                }
-                {this.state.vinError 
-                ? <p> Enter 17 Digit Vin </p>
-                : null }
-                {this.state.yearError 
-                ? <p> Enter 4 Digit Number </p> 
-                : null }
             </div>
+            // this.state.continue 
+            // ? <Redirect to="/get-offer" />
+            // :
+            // <div className="home-input-container">
+            //     <div className="select-box">
+            //         <div className={this.state.vinSelected ? "selected" : "select-holder"} onClick={this.handleVinClick} id="vin-select">
+            //             VIN
+            //         </div>
+            //         <div className={this.state.makeSelected ? "selected" : "select-holder"} onClick={this.handleMakeClick} id="make-select">
+            //             NO VIN?
+            //         </div>
+            //     </div>
+            //     {this.state.makeSelected 
+            //     ? 
+            //     <div className="home-input-holder">
+            //         <input type="number" maxLength="4" 
+            //             value={this.props.form.year} onChange={this.handleYearChange}
+            //             name="year" placeholder="Enter 4 digit year"
+            //             className="home-offer-input"
+            //         />
+            //         <button className="home-submit-button" onClick={this.handleYearNext}> 
+            //             <img src={button} className="get-offer-button" alt="get my offer" />
+            //         </button>
+            //     </div>
+            //     : 
+            //     <div className="home-input-holder">
+            //         <input 
+            //             type="text" 
+            //             maxLength="17"
+            //             value={this.props.form.vin} 
+            //             onChange={this.handleChange}
+            //             name="vin" 
+            //             placeholder="Enter 17 Digit Vin"
+            //             className="home-offer-input" 
+            //         /> 
+            //         <button onClick={this.handleSubmit} className="home-submit-button"> 
+            //             <img src={button} className="get-offer-button" alt="get my offer" />
+            //         </button>
+            //     </div>
+            //     }
+            //     {this.state.vinError 
+            //     ? <p> Enter 17 Digit Vin </p>
+            //     : null }
+            //     {this.state.yearError 
+            //     ? <p> Enter 4 Digit Number </p> 
+            //     : null }
+            // </div>
         )
     }
 }

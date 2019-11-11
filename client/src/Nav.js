@@ -25,7 +25,7 @@ class Nav extends React.Component {
     render() {
         return (
             <div className="nav-bar-container">
-                <Link to="/" className="nav-header"> SELL IT TO ME </Link>
+                <Link to="/" className="nav-header"> SELLITTOME.COM </Link>
                 <div className="nav-bars-holder" onClick={this.handleClick}>
                     <i className="fas fa-bars" id="nav-bars"></i>
                 </div>
