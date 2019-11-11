@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addVin, addIndex, addYear, showError, clearForm } from '../redux/Form';
-import button from '../assets/images/offer-button.svg';
-import { Redirect } from 'react-router-dom';
-import '../assets/scss/vinHome.scss';
+import '../assets/css/vinHome.css';
 
 
 class VinHome extends React.Component {
