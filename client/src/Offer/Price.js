@@ -13,8 +13,7 @@ class Price extends React.Component {
             finishedLoading: false,
             noOffer: false,
             basePrice: false,
-            gettingPrice: false,
-            highMileage: false
+            gettingPrice: false
         }
     }
     async componentDidMount() {
@@ -22,9 +21,6 @@ class Price extends React.Component {
            await this.props.getVin(this.props.form.vin, this.props.form.miles)
         } else {
             await this.props.getValue(this.props.form.uvc, this.props.form.miles)
-        }
-        if(this.props.form.miles > 125000 && !this.state.highMileage) {
-            this.setState({ highMileage: true })
         }
     }
     componentDidUpdate() {
@@ -70,24 +66,22 @@ class Price extends React.Component {
         })
     }
     getRange = (price) => {
-        var low = price * 0.8;
-        var high = price * 0.9;
-        if(this.props.files) {
-            if(this.props.files.length < 1) {
-                low = price * 0.7
-                high = price * 0.8
-            }
-        }
+        var low;
+        var high;
         if(low < 1500) {
             if(!this.state.noOffer) {
                 this.setState({
                     noOffer: true
                 })
             }
+            low = 0;
+            high = 0;
             this.props.addHighPrice(0);
             this.props.addLowPrice(0);
-            return this.sendEmail(low, high);
+            return this.sendEmail(low, high)
         } else {
+            low = price * 0.7;
+            high = price * 0.9;
             this.props.addHighPrice(parseInt(high, 10));
             this.props.addLowPrice(parseInt(low, 10));
             return this.sendEmail(low, high);
@@ -97,10 +91,10 @@ class Price extends React.Component {
     sendEmail = (low, high) => {
         let form = this.props.form
         if(!this.props.form.sent) {
-            if(this.state.noOffer) {
+            if(low < 1500) {
                 var message = {
-                    lowPrice: "NO",
-                    highPrice: "OFFER",
+                    lowPrice: "Unable to provide an instant offer. ",
+                    highPrice: "We will get back to you shortly with your offer!",
                     name: form.name,
                     from: form.email,
                     phone: form.phone,
@@ -116,6 +110,9 @@ class Price extends React.Component {
                     miles: form.miles
                 }
                 this.props.sendEmail(message);
+                return this.setState({
+                    finishedLoading: true
+                })
             } else {
                 var message2 = {
                     lowPrice: low - 800,
@@ -136,13 +133,13 @@ class Price extends React.Component {
                 }
                 this.props.sendEmail(message2);
                 this.props.emailSent(true);
-                this.setState({
+                return this.setState({
                     finishedLoading: true
                 })
             }
         } else {
             if(!this.state.finishedLoading) {
-                this.setState({ finishedLoading: true })
+                return this.setState({ finishedLoading: true })
             }
         }
     }

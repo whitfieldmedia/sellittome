@@ -62,7 +62,7 @@ class Home extends React.Component {
                   ?
                   <div className="home-video-holder">
                      <p onClick={this.closeVideo} className="close-video"> X </p>
-                     <iframe className="home-video" title="Sell It To Me" src="https://player.vimeo.com/video/368375512?autoplay=1" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
+                     <iframe className="home-video" title="Sell It To Me" src="https://player.vimeo.com/video/372667462?autoplay=1" width="640" height="360" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
                   </div>
                   : null}
             </div>

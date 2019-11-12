@@ -54,7 +54,8 @@ vehicleRouter.post('/', (req, res) => {
     })
     const message = {
         from: 'mrcash@sellittome.com',
-        to: 'mrcash@sellittome.com,trucksellr2007@gmail.com',
+        // to: 'mrcash@sellittome.com,trucksellr2007@gmail.com',
+        to: 'spencer@wemakeads.com',
         subject: 'Sell it to me',
         html: `<h2> Vehicle: </h2> <p> ${req.body.year} ${req.body.make} ${req.body.model} ${req.body.style} </p> <p> VIN: ${req.body.vin} </p> <p> UVC: ${req.body.uvc} </p> <h2> Price range Customer Received </h2>  <h2> Low Price: </h2> <p> $${req.body.lowPrice} </p> <h2> High Price: </h2> <p> $${req.body.highPrice} </p> <h2> MILES: </h2> <p> ${req.body.miles} </p> <h2> Condition: </h2> <p>${req.body.condition}</p> <br /> <h1> Customer Info </h1> <h2> Customer Name:</h2> <p>${req.body.name}</p> <h2> ${req.body.name} email address:</h2> <p> ${req.body.from}</p> <h2> PHONE NUMBER: </h2> <p> ${req.body.phone}</p> <br /> <h2> Zip Code: </h2> <p> ${req.body.zip} </p> <div> ${newFiles} </div> `
     };
