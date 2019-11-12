@@ -2,7 +2,8 @@
 
 .top-container {
     position: relative;
-    height: calc(100vh - 60px);
+    height: auto;
+    min-height: calc(100vh - 60px);
     width: 100vw;
     display: flex;
     flex-flow: column;
@@ -24,7 +25,8 @@
     display: flex;
     flex-flow: column;
     width: auto;
-    height: 60vh;
+    min-height: 60vh;
+    height: auto;
     position: relative;
     justify-content: space-evenly;
     align-items: space-evenly;
@@ -330,26 +332,52 @@
    border-radius: 15px;
    box-shadow: 1px 1px 3px $dark;
 }
-.home-learn-header {
+
+.video-thumbnail-container {
    width: 90%;
-   padding: 5px;
-   height: 40px;
-   font-size: 30px;
-   font-family: $sans;
-   color: $green;
-   background: $gray;
+   height: 200px;
+   max-height: 200px;
+   overflow: hidden;
+   height: auto;
+   position: relative;
    display: flex;
+   flex-flow: column;
    justify-content: center;
    align-items: center;
-   text-decoration: none;
    border-radius: 15px;
-   box-shadow: 1px 1px 3px $dark;
-   i {
-      padding-left: 20px;
-      font-size: 25px;
-   }
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+.video-thumbnail {
+   width: 100%;
+   height: auto;
+   filter: brightness(70%);
+   display: block;
+   align-self: center;
+   justify-self: center;
+}
+#play_circle {
+   font-size: 50px;
+   color: $white;
+   position: absolute;
+   display: block;
 }
 
+.learn-more-text {
+   font-family: $sans;
+   font-size: 35px;
+   color: $white;
+   position: absolute;
+   bottom: -20px;
+}
+#play_circle2 {
+   padding-left: 10px;
+}
+.video-thumbnail-container:hover {
+   .learn-more-text {
+      transform: scale(1.05);
+   }
+}
 @keyframes fly {
     0% {
         transform: scale(.1);
@@ -367,6 +395,18 @@
    }
 }
 
+@media only screen and (max-width: 400px) {
+   .video-thumbnail-container {
+      height: auto;
+      max-height: 150px;
+   }
+   .video-thumbnail {
+      filter: brightness(60%);
+   }
+   .learn-more-text {
+      font-size: 25px;
+   }
+}
 @media only screen and (max-width: 420px) {
    .header-bubble {
       max-width: 350px;

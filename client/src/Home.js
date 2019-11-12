@@ -9,6 +9,7 @@ import money from './assets/images/money-bag.svg';
 import bigHeader from './assets/images/headerBig.png';
 import bigBubble from './assets/images/big-bubble.png';
 import headerMid from './assets/images/headerMid.png';
+import videoThumbnail from './assets/images/video_thumbnail2.png';
 import { connect } from 'react-redux';
 import { clearForm } from './redux/Form';
 import './assets/css/home.css';
@@ -51,10 +52,13 @@ class Home extends React.Component {
                         <Link to="/get-offer" className="home-cta">
                            Get your offer
                         </Link>
-                        <p className="home-learn-header" onClick={this.showVideo}>
-                           Learn More
-                           <i className="far fa-play-circle"></i>
-                        </p>
+                        <div className="video-thumbnail-container" onClick={this.showVideo}>
+                           <img src={videoThumbnail} className="video-thumbnail" alt="sellittome learn more video thumbnail"/>
+                           <p className="learn-more-text"> 
+                              Learn More 
+                              <i id="play_circle2" className="far fa-play-circle"></i>
+                           </p>
+                        </div>
                      </div>
                   </div>
                </div>
