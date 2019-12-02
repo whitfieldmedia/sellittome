@@ -91,10 +91,10 @@ class Price extends React.Component {
     sendEmail = (low, high) => {
         let form = this.props.form
         if(!this.props.form.sent) {
-            if(low < 1500) {
+            if(low < 1000) {
                 var message = {
-                    lowPrice: "Unable to provide an instant offer. ",
-                    highPrice: "We will get back to you shortly with your offer!",
+                    lowPrice: 250,
+                    highPrice: 750,
                     name: form.name,
                     from: form.email,
                     phone: form.phone,

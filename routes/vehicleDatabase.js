@@ -36,7 +36,7 @@ vehicleRouter.get("/:id", (req, res) => {
 vehicleRouter.post('/', (req, res) => {
     var newFiles = req.body.files.map(file => {
         return (
-            `<img src=${file} alt=${file} />`
+            `<img src=${file} style="max-width: 350px; max-height: 350px; height: auto; width: auto;" alt=${file} />`
         )
     })
     const message = {
